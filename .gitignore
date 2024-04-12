@@ -1,0 +1,10 @@
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Jupyter Notebook temporary files
+*.ipynb_checkpoints
+*.ipynb_checkpoint
+
+# Jupyter Notebook autosave
+*.autosave.ipynb
