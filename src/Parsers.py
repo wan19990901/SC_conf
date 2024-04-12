@@ -4,8 +4,7 @@ from langchain_core.pydantic_v1 import BaseModel, Field
 # Define your desired data structure.
 class CoT(BaseModel):
     CoT: str = Field(...,description='''
-        Return your complete thought process by following the format: 
-        Step 1: xxx
+        Return your complete thought process by following the format: Step 1: xxx
          Step 2: xxx
          ...
         ''')
