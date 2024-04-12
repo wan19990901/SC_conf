@@ -3,9 +3,9 @@ from LLM_agent import *
 if __name__ == '__main__':
     llm_config = {
         # change these three together
-        'llm_type': 'openai',  # openai, ollama, anthropic
-        'api_key_link': 'api_key_yw.txt',
-        'model': "gpt-4",  # see llm_model.txt
+        'llm_type': 'ollama',  # openai, ollama, anthropic
+        'api_key_link': 'api_key_claude_yw.txt',
+        'model': "llama2:13b",  # see llm_model.txt
         # change these two together
         'prompt_link': 'prompt_template.json',
         'parser_template': CoT,
