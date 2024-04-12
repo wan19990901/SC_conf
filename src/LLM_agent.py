@@ -42,7 +42,6 @@ class LLM_agent:
                     success = True
             except:
                 success = False
-        print(response)
         return response
     def get_llm(self):
         return self.llm
