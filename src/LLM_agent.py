@@ -31,17 +31,17 @@ class LLM_agent:
             output_parser = extract_json
         chain = self.chat_prompt | self.llm | output_parser
         success = False
-        attempts = 1
+        attempts = 0
         response = None
-        while (not success) and attempts < 5:
-            attempts += 1
+        while (not success) and attempts < 4:
             try:
                 response = chain.invoke(var_dict)
                 if len(response) == self.num_of_llm_output:
                     success = True
             except:
+                attempts += 1
                 success = False
-        return response
+        return response, attempts
     def get_llm(self):
         return self.llm
     def set_prompt(self,prompt_json_link):
