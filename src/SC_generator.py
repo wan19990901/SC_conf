@@ -11,16 +11,17 @@ DIFFICULTY = 'easy'
 NUM_OF_SAMPLES = 500
 NUM_OF_COT = 40
 llm_config = {
-        # change these three together
-        'llm_type': 'openai',  # openai, ollama, anthropic
-        'api_key_link': 'api_key_yw.txt',
-        'model': "gpt-3.5-turbo-0125",  # see llm_model.txt
-        # change these two together
-        'prompt_link': 'prompt_template.json',
-        'parser_template': CoT,
-        # change as needed
-        'temperature': 0,
-    }
+    # change these three together
+    'llm_type': 'openai',  # openai, ollama, anthropic
+    'api_key_link': 'api_key_yw.txt',
+    'model': "gpt-3.5-turbo-0125",  # see llm_model.txt
+    # change these two together
+    'prompt_link': 'prompt_template.json',
+    'parser_template': CoT,
+    # change as needed
+    'temperature': 0,
+}
+
 
 def save_csv(row):
     storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/{llm_config["model"]}')
@@ -54,21 +55,27 @@ if __name__ == '__main__':
         }
 
         for round in tqdm(range(NUM_OF_COT), colour='green', desc='Round', position=1):
+            instruction_violation_count = []
             parse_error = True
-            while parse_error:
+            parse_error_attempt = 0
+            while parse_error and parse_error_attempt < 4:
                 cot_agent = LLM_agent(llm_type=llm_config['llm_type'], api_key=api_key, model=llm_config['model'],
                                       temperature=llm_config['temperature'])
                 cot_agent.set_prompt(llm_config['prompt_link'])
                 cot_agent.set_parser(llm_config['parser_template'])
-                response = cot_agent.involk(arguments_dict)
+                response, attempts = cot_agent.involk(arguments_dict)
                 try:
                     CoT = response['CoT']
                     Final_Answer = response['Final_answer']
                     parse_error = False
                 except:
+                    CoT = 'error'
+                    Final_Answer = 'error'
                     parse_error = True
-
+                    parse_error_attempt += 1
+                instruction_violation_count.append((attempts,parse_error_attempt))
             row[f'CoT_{round}'] = CoT
             row[f'Final Answer_{round}'] = Final_Answer
+            row[f'Instruction Violation_{round}'] = instruction_violation_count
 
         save_csv(row)
