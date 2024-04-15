@@ -6,7 +6,7 @@ from tqdm import tqdm
 DATA_DIR = '../data'
 
 # Experiment Config
-DF_NAME = 'GSM8K'
+DF_NAME = 'MathQA'
 DIFFICULTY = 'easy'
 NUM_OF_SAMPLES = 500
 NUM_OF_COT = 40
