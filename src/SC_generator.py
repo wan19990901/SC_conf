@@ -6,15 +6,15 @@ from tqdm import tqdm
 DATA_DIR = '../data'
 
 # Experiment Config
-DF_NAME = 'GSM8K'
-DIFFICULTY = 'easy'
-NUM_OF_SAMPLES = 500
+DF_NAME = 'MathQA'
+DIFFICULTY = 'hard'
+NUM_OF_SAMPLES = 100
 NUM_OF_COT = 40
 llm_config = {
     # change these three together
     'llm_type': 'openai',  # openai, ollama, anthropic
     'api_key_link': 'api_key_yw.txt',
-    'model': "gpt-3.5-turbo-0125",  # see llm_model.txt
+    'model': "gpt-4",  # see llm_model.txt
     # change these two together
     'prompt_link': 'prompt_template.json',
     'parser_template': CoT,
