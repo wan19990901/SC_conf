@@ -33,7 +33,7 @@ class LLM_agent:
         success = False
         attempts = 0
         response = None
-        while (not success) and attempts < 4:
+        while (not success) and attempts < 3:
             try:
                 response = chain.invoke(var_dict)
                 if len(response) == self.num_of_llm_output:
@@ -41,6 +41,9 @@ class LLM_agent:
             except:
                 attempts += 1
                 success = False
+                if attempts == 3:
+                    response = chain.invoke(var_dict)
+
         return response, attempts
     def get_llm(self):
         return self.llm

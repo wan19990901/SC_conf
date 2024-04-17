@@ -6,9 +6,9 @@ from tqdm import tqdm
 DATA_DIR = '../data'
 
 # Experiment Config
-DF_NAME = 'GSM8K'
-DIFFICULTY = 'easy'
-NUM_OF_SAMPLES = 500
+DF_NAME = 'MathQA'
+DIFFICULTY = 'hard'
+NUM_OF_SAMPLES = 100
 NUM_OF_COT = 40
 llm_config = {
     # change these three together
@@ -44,8 +44,8 @@ if __name__ == '__main__':
     df_subset = df[:NUM_OF_SAMPLES]
 
     # Data collection
-    for row_idx in tqdm(range(len(df_subset)), colour='blue', desc='Sample Progress', position=0):
-        row = df.iloc[row_idx]
+    for row_idx in tqdm(range(7,len(df_subset)), colour='blue', desc='Sample Progress', position=0):
+        row = df_subset.iloc[row_idx]
         subject = row['Category']
         question = row['Question']
 
@@ -58,7 +58,7 @@ if __name__ == '__main__':
             instruction_violation_count = []
             parse_error = True
             parse_error_attempt = 0
-            while parse_error and parse_error_attempt < 4:
+            while parse_error and parse_error_attempt < 3:
                 cot_agent = LLM_agent(llm_type=llm_config['llm_type'], api_key=api_key, model=llm_config['model'],
                                       temperature=llm_config['temperature'])
                 cot_agent.set_prompt(llm_config['prompt_link'])
@@ -69,7 +69,7 @@ if __name__ == '__main__':
                     Final_Answer = response['Final_answer']
                     parse_error = False
                 except:
-                    CoT = 'error'
+                    CoT = response
                     Final_Answer = 'error'
                     parse_error = True
                     parse_error_attempt += 1
