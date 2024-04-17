@@ -13,7 +13,7 @@ NUM_OF_COT = 40
 llm_config = {
     # change these three together
     'llm_type': 'openai',  # openai, ollama, anthropic
-ink': 'api_key_yw.txt',
+    'apink': 'api_key_yw.txt',
     'model': "gpt-4",  # see llm_model.txt
     # change these two together
     'prompt_link': 'prompt_template.json',
@@ -58,7 +58,7 @@ if __name__ == '__main__':
             instruction_violation_count = []
             parse_error = True
             parse_error_attempt = 0
-            while parse_error and parse_error_attempt < 4:
+            while parse_error and parse_error_attempt < 3:
                 cot_agent = LLM_agent(llm_type=llm_config['llm_type'], api_key=api_key, model=llm_config['model'],
                                       temperature=llm_config['temperature'])
                 cot_agent.set_prompt(llm_config['prompt_link'])
