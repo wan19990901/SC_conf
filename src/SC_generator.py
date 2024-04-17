@@ -13,7 +13,7 @@ NUM_OF_COT = 40
 llm_config = {
     # change these three together
     'llm_type': 'openai',  # openai, ollama, anthropic
-    'apink': 'api_key_yw.txt',
+    'api_key_link': 'api_key_yw.txt',
     'model': "gpt-4",  # see llm_model.txt
     # change these two together
     'prompt_link': 'prompt_template.json',
@@ -41,10 +41,10 @@ if __name__ == '__main__':
     with open(llm_config['api_key_link'], 'r') as f:
         api_key = f.read()
     df = pd.read_csv(os.path.join(DATA_DIR, f'{DF_NAME}/{DF_NAME}_{DIFFICULTY}.csv'))
-    df_subset = df.iloc[87:NUM_OF_SAMPLES]
+    df_subset = df[:NUM_OF_SAMPLES]
 
     # Data collection
-    for row_idx in tqdm(range(len(df_subset)), colour='blue', desc='Sample Progress', position=0):
+    for row_idx in tqdm(range(7,len(df_subset)), colour='blue', desc='Sample Progress', position=0):
         row = df_subset.iloc[row_idx]
         subject = row['Category']
         question = row['Question']
@@ -69,7 +69,7 @@ if __name__ == '__main__':
                     Final_Answer = response['Final_answer']
                     parse_error = False
                 except:
-                    CoT = 'error'
+                    CoT = response
                     Final_Answer = 'error'
                     parse_error = True
                     parse_error_attempt += 1
