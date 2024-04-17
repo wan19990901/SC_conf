@@ -44,7 +44,7 @@ if __name__ == '__main__':
     df_subset = df[:NUM_OF_SAMPLES]
 
     # Data collection
-    for row_idx in tqdm(range(len(df_subset)), colour='blue', desc='Sample Progress', position=0):
+    for row_idx in tqdm(range(3,len(df_subset)), colour='blue', desc='Sample Progress', position=0):
         row = df.iloc[row_idx]
         subject = row['Category']
         question = row['Question']
@@ -58,7 +58,7 @@ if __name__ == '__main__':
             instruction_violation_count = []
             parse_error = True
             parse_error_attempt = 0
-            while parse_error and parse_error_attempt < 4:
+            while parse_error and parse_error_attempt < 3:
                 cot_agent = LLM_agent(llm_type=llm_config['llm_type'], api_key=api_key, model=llm_config['model'],
                                       temperature=llm_config['temperature'])
                 cot_agent.set_prompt(llm_config['prompt_link'])
