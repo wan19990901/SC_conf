@@ -42,6 +42,8 @@ class LLM_agent:
                 attempts += 1
                 success = False
                 if attempts == 3:
+                    print('maximum attempts arrived')
+                    chain = self.chat_prompt | self.llm
                     response = chain.invoke(var_dict)
 
         return response, attempts
