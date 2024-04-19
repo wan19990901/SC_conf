@@ -13,7 +13,7 @@ NUM_OF_COT = 40
 llm_config = {
     # change these three together
     'llm_type': 'openai',  # openai, ollama, anthropic
-    'api_key_link': 'api_key_yw.txt',
+    'api_key_link': 'api_key_gy.txt',
     'model': "gpt-4",  # see llm_model.txt
     # change these two together
     'prompt_link': 'prompt_template.json',
