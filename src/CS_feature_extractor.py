@@ -1,19 +1,29 @@
 import os
-import pandas
-import numpy as np
 import pandas as pd
 import re
 import ast
 from tqdm import tqdm
+from utils import *
+from collections import Counter
+from scipy.stats import mode
 DATA_DIR = '../data'
 
 # Experiment Config
-DF_NAME = 'GSM8K'
-DIFFICULTY = 'easy'
+DF_NAME = 'Bigbench'
+DIFFICULTY = 'hard'
 NUM_OF_SAMPLES = 500
 NUM_OF_COT = 40
 MODEL = 'gpt-3.5-turbo-0125'
 
+def extract_sim(df,method = 'bigram',emb='jaccard'):
+    if method == 'bigram':
+        return calculate_similarity_with_bigram(df,method=emb)
+    elif method == 'agg':
+        return calculate_similarity_with_aggregation(df,method=emb)
+    elif method == 'pw':
+        return calculate_similarity_pairwise(df,method=emb)
+    else:
+        print('error')
 def extract_cot_answer(df):
     tmp = []
     binary_correct = []
@@ -96,17 +106,41 @@ def extract_IV(df):
     instruction_error = np.array(instruction_buffer).T
     return instruction_error
 
-def extract_AC(arr):
+def extract_AC(arr,method = 'bigram'):
     consistency_checks = np.full(arr.shape, False, dtype=bool)
-
-    # Perform the check, starting from the second column (index 1)
-    consistency_checks[:, 1:] = arr[:, 1:] == arr[:, :-1]
+    if method == 'bigram':
+        consistency_checks[:, 1:] = arr[:, 1:] == arr[:, :-1]
+    elif method == 'agg':
+        results = []
+        for row in arr:
+            result = [False]  # Initialize with 0 for the first item.
+            for i in range(1, len(row)):
+                # Get the most common element in the array up to the current position
+                most_common_item, _ = Counter(row[:i]).most_common(1)[0]
+                # Append 1 if the current item matches the most common, else append 0
+                result.append(True if row[i] == most_common_item else False)
+            results.append(result)
+        consistency_checks = np.array(results)
+    elif method =='pw':
+        results = []
+        for row in arr:
+            row_results = [False]  # The first element has no predecessors, initialize with 0.
+            for i in range(1, len(row)):
+                # Perform pairwise comparison between current item and all previous items
+                comparisons = [row[i] == row[j] for j in range(i)]
+                # Calculate the mode of the comparison results
+                most_common_comparison, count = mode(comparisons)
+                # The mode() function returns the smallest mode in case of multiple modes.
+                # To handle this, we will consider 'True' as the mode if it's one of the modes and its count > 1.
+                if True in most_common_comparison and count[0] > 1:
+                    comparison_mode = True
+                else:
+                    comparison_mode = False
+                row_results.append(comparison_mode)
+            results.append(row_results)
+        consistency_checks = np.array(results)
     return consistency_checks
-
-if __name__ == '__main__':
-    storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/{MODEL}')
-    file_path = os.path.join(storage_dir, f'{DF_NAME}_{DIFFICULTY}.csv')
-    df = pd.read_csv(file_path)
+def extract_feature(df):
     feature_dict = {
         'id': [],
         'correct answer': [],
@@ -117,14 +151,25 @@ if __name__ == '__main__':
         # ('QUA', 'UKW'): [],
         ('DIF', 'IV'): [],
         ('DIF', 'SUB'): [],
-        'AC': []
+        ('SIM', 'COT_BIGRAM'): [],
+        ('SIM', 'COT_AGG'): [],
+        ('SIM', 'COT_PW'): [],
+        ('SIM', 'AC_BIGRAM'): [],
+        ('SIM', 'AC_AGG'): [],
+        ('SIM', 'AC_PW'): [],
     }
     cot_answer_arr, binary_arr = extract_cot_answer(df)
     IV = extract_IV(df)
     LEN = extract_len(df)
     IM = extract_IM(df)
-    AC = extract_AC(cot_answer_arr)
-    assert (cot_answer_arr).shape == (binary_arr).shape == (IV).shape == (LEN).shape == (AC).shape
+    SIM_cot_bigram = extract_sim(df, method='bigram')
+    SIM_cot_agg = extract_sim(df, method='agg')
+    SIM_cot_pw = extract_sim(df, method='pw')
+    SIM_AC_bigram = extract_AC(cot_answer_arr, method='bigram')
+    SIM_AC_agg = extract_AC(cot_answer_arr, method='agg')
+    SIM_AC_pw = extract_AC(cot_answer_arr, method='pw')
+
+    assert (cot_answer_arr).shape == (binary_arr).shape == (IV).shape == (LEN).shape == (SIM_cot_bigram).shape
     for row in tqdm(range(len(df))):
         feature_dict['id'].append(row)
         feature_dict['correct answer'].append(df.iloc[row]['Correct Answer'])
@@ -134,10 +179,22 @@ if __name__ == '__main__':
         feature_dict[('QUA', 'IM')].append(IM[row])
         feature_dict[('DIF', 'IV')].append(IV[row])
         feature_dict['LEN'].append(LEN[row])
-        feature_dict['AC'].append(AC[row])
+        feature_dict[('SIM', 'COT_BIGRAM')].append(SIM_cot_bigram[row])
+        feature_dict[('SIM', 'COT_AGG')].append(SIM_cot_agg[row])
+        feature_dict[('SIM', 'COT_PW')].append(SIM_cot_pw[row])
+        feature_dict[('SIM', 'AC_BIGRAM')].append(SIM_AC_bigram[row])
+        feature_dict[('SIM', 'AC_AGG')].append(SIM_AC_agg[row])
+        feature_dict[('SIM', 'AC_PW')].append(SIM_AC_pw[row])
+    return feature_dict
+if __name__ == '__main__':
+    storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/{MODEL}')
+    file_path = os.path.join(storage_dir, f'{DF_NAME}_{DIFFICULTY}.csv')
+    df = pd.read_csv(file_path)
+    data = extract_feature(df)
 
-    df_to_save = pd.DataFrame(feature_dict)
+    df_to_save = pd.DataFrame(data)
     storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/Algo_Design_Data')
-    file_store_path = os.path.join(storage_dir, f'{DF_NAME}_{DIFFICULTY}.csv')
-    df_to_save.to_csv(file_store_path,index= False)
+
+    file_store_path = os.path.join(storage_dir, f'{DF_NAME}_{DIFFICULTY}_Jaccard.csv')
+    df_to_save.to_csv(file_store_path,index=False)
 
