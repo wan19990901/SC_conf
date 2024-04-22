@@ -6,8 +6,8 @@ from tqdm import tqdm
 DATA_DIR = '../data'
 
 # Experiment Config
-DF_NAME = 'BigBench'
-DIFFICULTY = 'hard'
+DF_NAME = 'MathQA'
+DIFFICULTY = 'easy'
 NUM_OF_SAMPLES = 100
 NUM_OF_COT = 40
 llm_config = {
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     df_subset = df[:NUM_OF_SAMPLES]
 
     # Data collection
-    for row_idx in tqdm(range(99,len(df_subset)), colour='blue', desc='Sample Progress', position=0):
+    for row_idx in tqdm(range(16,len(df_subset)), colour='blue', desc='Sample Progress', position=0):
         row = df_subset.iloc[row_idx]
         subject = row['Category']
         question = row['Question']
