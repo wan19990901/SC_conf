@@ -10,12 +10,20 @@ from scipy.stats import mode
 DATA_DIR = '../data'
 
 # Experiment Config
-DF_NAME = 'MathQA'
+DF_NAME = 'GSM8K'
 DIFFICULTY = 'easy'
 NUM_OF_SAMPLES = 500
 NUM_OF_COT = 40
 MODEL = 'gpt-3.5-turbo-0125'
-
+class NpEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        if isinstance(obj, np.floating):
+            return float(obj)
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return super(NpEncoder, self).default(obj)
 def extract_sim(df,method = 'bigram',emb='jaccard'):
     if method == 'bigram':
         return calculate_similarity_with_bigram(df,method=emb)
@@ -65,7 +73,7 @@ def extract_IM(df):
             cleaned_answers = []
             for entry in df[col]:
                 # Extract numbers using regular expression
-                misktake = re.findall(r'(be a mistake)|(be an error)', str(entry))
+                misktake = re.findall(r'(be a mistake)|(be an error)|(not solvable)', str(entry))
                 if misktake:
                     cleaned_answers.append(1)
                 else:
@@ -198,6 +206,6 @@ if __name__ == '__main__':
 
     file_store_path = os.path.join(storage_dir, f'{DF_NAME}_{DIFFICULTY}.json')
     with open(file_store_path,'w') as f:
-        json.dump(data,f)
+        json.dump(data,f,cls=NpEncoder)
     # df_to_save.to_csv(file_store_path,index=False)
 
