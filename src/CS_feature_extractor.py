@@ -1,3 +1,4 @@
+import json
 import os
 import pandas as pd
 import re
@@ -9,8 +10,8 @@ from scipy.stats import mode
 DATA_DIR = '../data'
 
 # Experiment Config
-DF_NAME = 'Bigbench'
-DIFFICULTY = 'hard'
+DF_NAME = 'MathQA'
+DIFFICULTY = 'easy'
 NUM_OF_SAMPLES = 500
 NUM_OF_COT = 40
 MODEL = 'gpt-3.5-turbo-0125'
@@ -31,7 +32,7 @@ def extract_cot_answer(df):
         if col.startswith('Final Answer_'):
             final_ans=df[col].to_numpy()
             correct_ans = [str(i) for i in df['Correct Answer']]
-            correctness = final_ans == correct_ans
+            correctness = 1*(final_ans == correct_ans)
             tmp.append(final_ans)
             binary_correct.append(correctness)
     tmp_arr = np.vstack(tmp)
@@ -107,24 +108,24 @@ def extract_IV(df):
     return instruction_error
 
 def extract_AC(arr,method = 'bigram'):
-    consistency_checks = np.full(arr.shape, False, dtype=bool)
+    consistency_checks = np.full(arr.shape, 0, dtype=int)
     if method == 'bigram':
-        consistency_checks[:, 1:] = arr[:, 1:] == arr[:, :-1]
+        consistency_checks[:, 1:] = 1*(arr[:, 1:] == arr[:, :-1])
     elif method == 'agg':
         results = []
         for row in arr:
-            result = [False]  # Initialize with 0 for the first item.
+            result = [0]  # Initialize with 0 for the first item.
             for i in range(1, len(row)):
                 # Get the most common element in the array up to the current position
                 most_common_item, _ = Counter(row[:i]).most_common(1)[0]
                 # Append 1 if the current item matches the most common, else append 0
-                result.append(True if row[i] == most_common_item else False)
+                result.append(1 if row[i] == most_common_item else 0)
             results.append(result)
         consistency_checks = np.array(results)
     elif method =='pw':
         results = []
         for row in arr:
-            row_results = [False]  # The first element has no predecessors, initialize with 0.
+            row_results = [0]  # The first element has no predecessors, initialize with 0.
             for i in range(1, len(row)):
                 # Perform pairwise comparison between current item and all previous items
                 comparisons = [row[i] == row[j] for j in range(i)]
@@ -133,9 +134,9 @@ def extract_AC(arr,method = 'bigram'):
                 # The mode() function returns the smallest mode in case of multiple modes.
                 # To handle this, we will consider 'True' as the mode if it's one of the modes and its count > 1.
                 if True in most_common_comparison and count[0] > 1:
-                    comparison_mode = True
+                    comparison_mode = 1
                 else:
-                    comparison_mode = False
+                    comparison_mode = 0
                 row_results.append(comparison_mode)
             results.append(row_results)
         consistency_checks = np.array(results)
@@ -147,16 +148,16 @@ def extract_feature(df):
         'CoT answers': [],
         'Correctness': [],
         'LEN': [],
-        ('QUA', 'IM'): [],
+        'QUA_IM': [],
         # ('QUA', 'UKW'): [],
-        ('DIF', 'IV'): [],
-        ('DIF', 'SUB'): [],
-        ('SIM', 'COT_BIGRAM'): [],
-        ('SIM', 'COT_AGG'): [],
-        ('SIM', 'COT_PW'): [],
-        ('SIM', 'AC_BIGRAM'): [],
-        ('SIM', 'AC_AGG'): [],
-        ('SIM', 'AC_PW'): [],
+        'DIF_IV': [],
+        'DIF_SUB': [],
+        'SIM_COT_BIGRAM': [],
+        'SIM_COT_AGG': [],
+        'SIM_COT_PW': [],
+        'SIM_AC_BIGRAM': [],
+        'SIM_AC_AGG': [],
+        'SIM_AC_PW': [],
     }
     cot_answer_arr, binary_arr = extract_cot_answer(df)
     IV = extract_IV(df)
@@ -173,18 +174,18 @@ def extract_feature(df):
     for row in tqdm(range(len(df))):
         feature_dict['id'].append(row)
         feature_dict['correct answer'].append(df.iloc[row]['Correct Answer'])
-        feature_dict[('DIF', 'SUB')].append(df.iloc[row]['Category'])
-        feature_dict['CoT answers'].append(cot_answer_arr[row])
-        feature_dict['Correctness'].append(binary_arr[row])
-        feature_dict[('QUA', 'IM')].append(IM[row])
-        feature_dict[('DIF', 'IV')].append(IV[row])
-        feature_dict['LEN'].append(LEN[row])
-        feature_dict[('SIM', 'COT_BIGRAM')].append(SIM_cot_bigram[row])
-        feature_dict[('SIM', 'COT_AGG')].append(SIM_cot_agg[row])
-        feature_dict[('SIM', 'COT_PW')].append(SIM_cot_pw[row])
-        feature_dict[('SIM', 'AC_BIGRAM')].append(SIM_AC_bigram[row])
-        feature_dict[('SIM', 'AC_AGG')].append(SIM_AC_agg[row])
-        feature_dict[('SIM', 'AC_PW')].append(SIM_AC_pw[row])
+        feature_dict['DIF_SUB'].append(df.iloc[row]['Category'])
+        feature_dict['CoT answers'].append(cot_answer_arr[row].tolist())
+        feature_dict['Correctness'].append(binary_arr[row].tolist())
+        feature_dict['QUA_IM'].append(IM[row].tolist())
+        feature_dict['DIF_IV'].append(IV[row].tolist())
+        feature_dict['LEN'].append(LEN[row].tolist())
+        feature_dict['SIM_COT_BIGRAM'].append(SIM_cot_bigram[row].tolist())
+        feature_dict['SIM_COT_AGG'].append(SIM_cot_agg[row].tolist())
+        feature_dict['SIM_COT_PW'].append(SIM_cot_pw[row].tolist())
+        feature_dict['SIM_AC_BIGRAM'].append(SIM_AC_bigram[row].tolist())
+        feature_dict['SIM_AC_AGG'].append(SIM_AC_agg[row].tolist())
+        feature_dict['SIM_AC_PW'].append(SIM_AC_pw[row].tolist())
     return feature_dict
 if __name__ == '__main__':
     storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/{MODEL}')
@@ -195,6 +196,8 @@ if __name__ == '__main__':
     df_to_save = pd.DataFrame(data)
     storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/Algo_Design_Data')
 
-    file_store_path = os.path.join(storage_dir, f'{DF_NAME}_{DIFFICULTY}_Jaccard.csv')
-    df_to_save.to_csv(file_store_path,index=False)
+    file_store_path = os.path.join(storage_dir, f'{DF_NAME}_{DIFFICULTY}.json')
+    with open(file_store_path,'w') as f:
+        json.dump(data,f)
+    # df_to_save.to_csv(file_store_path,index=False)
 
