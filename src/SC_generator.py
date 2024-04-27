@@ -44,7 +44,7 @@ if __name__ == '__main__':
     df_subset = df[:NUM_OF_SAMPLES]
 
     # Data collection
-    for row_idx in tqdm(range(18,73), colour='blue', desc='Sample Progress', position=0):
+    for row_idx in tqdm(range(25,73), colour='blue', desc='Sample Progress', position=0):
         row = df_subset.iloc[row_idx]
         subject = row['Category']
         question = row['Question']
