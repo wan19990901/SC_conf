@@ -6,8 +6,10 @@ from tqdm import tqdm
 DATA_DIR = '../data'
 
 # Experiment Config
-DF_NAME = 'BigBench'
-DIFFICULTY = 'easy'
+
+DF_NAME = 'GSM8K'
+DIFFICULTY = 'hard'
+
 NUM_OF_SAMPLES = 100
 NUM_OF_COT = 40
 llm_config = {
