@@ -7,7 +7,7 @@ DATA_DIR = '../data'
 
 # Experiment Config
 
-DF_NAME = 'GSM8K'
+DF_NAME = 'MathQA'
 DIFFICULTY = 'hard'
 
 NUM_OF_SAMPLES = 100
@@ -43,11 +43,11 @@ if __name__ == '__main__':
     with open(llm_config['api_key_link'], 'r') as f:
         api_key = f.read()
     df = pd.read_csv(os.path.join(DATA_DIR, f'{DF_NAME}/{DF_NAME}_{DIFFICULTY}.csv'))
-    df_subset = df[:NUM_OF_SAMPLES]
+    df_subset = df[:NUM_OF_SAMPLES+2]
 
     # Data collection
-    for row_idx in tqdm(range(82,len(df_subset)), colour='blue', desc='Sample Progress', position=0):
-        row = df_subset.iloc[row_idx]
+    for row_idx in tqdm(range(101,len(df_subset)), colour='blue', desc='Sample Progress', position=0):
+        row = df_subset.iloc[7]
         subject = row['Category']
         question = row['Question']
 

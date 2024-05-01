@@ -38,7 +38,10 @@ def extract_cot_answer(df):
     binary_correct = []
     for col in df.columns:
         if col.startswith('Final Answer_'):
-            final_ans=df[col].to_numpy()
+            if (type(df[col][0])==np.float64):
+                final_ans=np.array([str(int(i)) for i in df[col]])
+            else:
+                final_ans = df[col].to_numpy()
             correct_ans = [str(i) for i in df['Correct Answer']]
             correctness = 1*(final_ans == correct_ans)
             tmp.append(final_ans)
