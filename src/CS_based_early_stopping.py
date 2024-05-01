@@ -1,57 +1,90 @@
 from IDV_CS_Model import *
+
 DATA_DIR = '../data'
 DF_NAME = 'GSM8K'
 DIFFICULTY = 'easy'
 NUM_OF_SAMPLES = 500
 NUM_OF_COT = 40
 MODEL = 'gpt-3.5-turbo-0125'
+
+
 def normalize_cs(cs_li, threshold):
     cs_arr = np.array(cs_li)
     # normalized_cs = [(cs-threshold)/(1-threshold) if cs > threshold else (cs-threshold)/(threshold) for cs in cs_arr]
-    normalized_cs = cs_arr-threshold
+    normalized_cs = cs_arr - threshold
     # normalized_cs = [0.5 if cs > threshold else -0.5 for cs in cs_arr]
     return np.array(normalized_cs)
+
 
 def stop_con1(individual_cs):
     cumulative_difference = (individual_cs).cumsum()
     stop_idx = np.argmax(cumulative_difference > 0.5)
     return stop_idx
-def stop_con2(individual_cs,buffer_size=5):
+
+
+def stop_con2(individual_cs, buffer_size=5):
     buffer = []
-    for idx,cs in enumerate(individual_cs):
-        if cs>0:
+    for idx, cs in enumerate(individual_cs):
+        if cs > 0:
             buffer.append(idx)
         if len(buffer) == buffer_size:
             return buffer[-1]
 
-def CS_early_stopping(df,threshold,N=3):
+
+def consecutive_scores_above_threshold(scores, answers, threshold, n):
+    for i in range(len(scores) - n + 1):
+        # Check if all the next 'n' scores are above the threshold
+        if all(score > threshold for score in scores[i:i + n]):
+            # Check if all answers in this range are the same
+            if len(set(answers[i:i + n])) == 1:
+                return True, i + n, answers[i]
+    return False, len(scores), None  # If no consecutive scores found or answers differ
+
+
+def CS_early_stopping(df, threshold, N=5, stop_mechanism='PositiveN'):
     CS_Answer = []
     CS_correctness = []
     CS_steps = []
-    for row_idx in range(len(df)):
-        test_row = df.iloc[row_idx]
-        individual_cs = normalize_cs(test_row['confidence_score'], threshold)
-        # individual_cs = test_row['confidence_score'][warm_up_steps:] - threshold
-        stop_idx = stop_con2(individual_cs,buffer_size=N)
+    if stop_mechanism == 'PostiveN':
+        for row_idx in range(len(df)):
+            test_row = df.iloc[row_idx]
+            individual_cs = normalize_cs(test_row['confidence_score'], threshold)
+            # individual_cs = test_row['confidence_score'][warm_up_steps:] - threshold
+            stop_idx = stop_con2(individual_cs, buffer_size=N)
 
-        if stop_idx:
-            num_of_steps = stop_idx
-        else:
-            num_of_steps = 40
-        answers = test_row['CoT answers'][:num_of_steps]
-        scores = individual_cs[:num_of_steps]
-        weighted_votes = Counter()
-        for answer, score in zip(answers, scores):
-            if score > 0:
-                weighted_votes[answer] += score
-        # Find the answer with the highest total score
-        if (len(weighted_votes)) == 0:
+            if stop_idx:
+                num_of_steps = stop_idx
+            else:
+                num_of_steps = 40
+            answers = test_row['CoT answers'][:num_of_steps]
+            scores = individual_cs[:num_of_steps]
+            weighted_votes = Counter()
             for answer, score in zip(answers, scores):
-                weighted_votes[answer] += score
-        result = max(weighted_votes, key=weighted_votes.get)
-        CS_Answer.append(result)
-        CS_correctness.append(1 if result == str(test_row['correct answer']) else 0)
-        CS_steps.append(num_of_steps)
+                if score > 0:
+                    weighted_votes[answer] += score
+            # Find the answer with the highest total score
+            if (len(weighted_votes)) == 0:
+                for answer, score in zip(answers, scores):
+                    weighted_votes[answer] += score
+            result = max(weighted_votes, key=weighted_votes.get)
+            CS_Answer.append(result)
+            CS_correctness.append(1 if result == str(test_row['correct answer']) else 0)
+            CS_steps.append(num_of_steps)
+    elif stop_mechanism == 'ConsistencyN':
+        found_count = 0
+        for idx, row in df.iterrows():
+            confidence_scores = row['confidence_score']
+            answers = row['CoT answers']
+            found, num_of_steps, answer = consecutive_scores_above_threshold(confidence_scores, answers, threshold, N)
+            if found:
+                found_count += 1
+                CS_Answer.append(answer)
+                CS_correctness.append(1 if answer == str(row['correct answer']) else 0)
+                CS_steps.append(num_of_steps)  # +1 to account for the 0-indexing
+            else:
+                CS_Answer.append(None)
+                CS_correctness.append(row['SC_correctness'])
+                CS_steps.append(num_of_steps)
     df['CS_Answer'] = CS_Answer
     df['CS_correctness'] = CS_correctness
     df['CS_steps'] = CS_steps
@@ -64,12 +97,12 @@ def CS_early_stopping(df,threshold,N=3):
     df_model_comp_dict['ES_Avg_Steps'] = df.ES_steps.mean()
     df_model_comp_dict['CS_Avg_Steps'] = df.CS_steps.mean()
 
-    for key,val in df_model_comp_dict.items():
+    for key, val in df_model_comp_dict.items():
         print(key, ' : ', val)
 
-
-
     return df, df_model_comp_dict
+
+
 if __name__ == '__main__':
     storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/{MODEL}')
     file_path = os.path.join(storage_dir, f'df_all.csv')
@@ -92,4 +125,4 @@ if __name__ == '__main__':
     intercept = -2
     df_cs, threshold = customized_LR_model(df=df_with_features, feature_li=feature_li, coe=coe, intercept=intercept)
     # df_cs, threshold = trained_LR_model(df= df_with_features, feature_li=feature_li)
-    CS_early_stopping(df=df_cs,threshold=0.5,N=5)
+    CS_early_stopping(df=df_cs, threshold=0.5, N=2, stop_mechanism='ConsistencyN')
