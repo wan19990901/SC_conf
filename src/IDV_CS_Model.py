@@ -202,7 +202,7 @@ if __name__ == '__main__':
     df_raw = pd.read_csv(file_path)
     df_with_features = pd.DataFrame(extract_feature(df_raw))
     feature_li = [
-        'LEN',
+        # 'LEN',
         'QUA_IM',
         'DIF_IV',
         # 'DIF_SUB',
@@ -217,4 +217,3 @@ if __name__ == '__main__':
     coe = [-0.1,-5,-1,3,2,2,2]
     intercept = -1.5
     df = trained_LR_model(df_with_features,feature_li)
-    print(df.columns)
