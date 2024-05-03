@@ -58,13 +58,17 @@ def extract_len(df):
             cleaned_answers = []
             for entry in df[col]:
                 # Extract numbers using regular expression
-                steps = re.findall(r'[Ss]tep\s?\d', str(entry))
-                if steps:
-                    # Join all numbers with space if there are multiple numbers
-                    cleaned_answers.append(len(steps))
+                if re.match(r'^(\s?A:)|(def)|(#)',entry):
+                    num_of_sentence = len(entry.split('.'))-1
+                    cleaned_answers.append(num_of_sentence)
                 else:
-                    # If no number is found, replace with 'error'
-                    cleaned_answers.append(0)
+                    steps = re.findall(r'[Ss]tep\s?\d', str(entry))
+                    if steps:
+                        # Join all numbers with space if there are multiple numbers
+                        cleaned_answers.append(len(steps))
+                    else:
+                        # If no number is found, replace with 'error'
+                        cleaned_answers.append(0)
             step_count_buffer.append(cleaned_answers)
 
     step_count = np.array(step_count_buffer).T
@@ -76,7 +80,7 @@ def extract_IM(df):
             cleaned_answers = []
             for entry in df[col]:
                 # Extract numbers using regular expression
-                misktake = re.findall(r'(be a mistake)|(be an error)|(not solvable)', str(entry))
+                misktake = re.findall(r'(be a mistake)|(be an error)|(not solvable)|(not enough information)', str(entry))
                 if misktake:
                     cleaned_answers.append(1)
                 else:

@@ -123,6 +123,6 @@ if __name__ == '__main__':
     ]
     coe = [-0.1, -5, -1, 3, 2, 2, 2]
     intercept = -2
-    df_cs, threshold = customized_LR_model(df=df_with_features, feature_li=feature_li, coe=coe, intercept=intercept)
-    # df_cs, threshold = trained_LR_model(df= df_with_features, feature_li=feature_li)
+    # df_cs, threshold = customized_LR_model(df=df_with_features, feature_li=feature_li, coe=coe, intercept=intercept)
+    df_cs, threshold = trained_LR_model(df= df_with_features, feature_li=feature_li)
     CS_early_stopping(df=df_cs, threshold=0.5, N=2, stop_mechanism='ConsistencyN')
