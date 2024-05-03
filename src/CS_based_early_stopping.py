@@ -45,7 +45,7 @@ def CS_early_stopping(df, threshold, N=5, stop_mechanism='PositiveN'):
     CS_Answer = []
     CS_correctness = []
     CS_steps = []
-    if stop_mechanism == 'PostiveN':
+    if stop_mechanism == 'PositiveN':
         for row_idx in range(len(df)):
             test_row = df.iloc[row_idx]
             individual_cs = normalize_cs(test_row['confidence_score'], threshold)
@@ -106,12 +106,12 @@ def CS_early_stopping(df, threshold, N=5, stop_mechanism='PositiveN'):
 if __name__ == '__main__':
     storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/{MODEL}')
     file_path = os.path.join(storage_dir, f'df_all.csv')
-    df_raw = pd.read_csv(file_path)
+    df_raw = pd.read_csv('../data/ES_data/Llama2_result/strategy/strategy_cleaned.csv')
     df_with_features = pd.DataFrame(extract_feature(df_raw))
     feature_li = [
         'LEN',
-        'QUA_IM',
-        'DIF_IV',
+        # 'QUA_IM',
+        # 'DIF_IV',
         # 'DIF_SUB',
         # 'SIM_COT_BIGRAM',
         'SIM_COT_AGG',
@@ -125,4 +125,4 @@ if __name__ == '__main__':
     intercept = -2
     # df_cs, threshold = customized_LR_model(df=df_with_features, feature_li=feature_li, coe=coe, intercept=intercept)
     df_cs, threshold = trained_LR_model(df= df_with_features, feature_li=feature_li)
-    CS_early_stopping(df=df_cs, threshold=0.5, N=2, stop_mechanism='ConsistencyN')
+    CS_early_stopping(df=df_cs, threshold=threshold, N=2, stop_mechanism='ConsistencyN')
