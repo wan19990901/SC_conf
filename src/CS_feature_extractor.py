@@ -6,15 +6,9 @@ import ast
 from tqdm import tqdm
 from utils import *
 from collections import Counter
-from scipy.stats import mode
-DATA_DIR = '../data'
+import statistics
+DATA_DIR = '../data/Evaluation_CoTs/'
 
-# Experiment Config
-DF_NAME = 'GSM8K'
-DIFFICULTY = 'easy'
-NUM_OF_SAMPLES = 500
-NUM_OF_COT = 40
-MODEL = 'gpt-3.5-turbo-0125'
 class NpEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, np.integer):
@@ -122,10 +116,10 @@ def extract_IV(df):
     instruction_error = np.array(instruction_buffer).T
     return instruction_error
 
-def extract_AC(arr,method = 'bigram'):
+def extract_AC(arr, method='bigram'):
     consistency_checks = np.full(arr.shape, 0, dtype=int)
     if method == 'bigram':
-        consistency_checks[:, 1:] = 1*(arr[:, 1:] == arr[:, :-1])
+        consistency_checks[:, 1:] = 1 * (arr[:, 1:] == arr[:, :-1])
     elif method == 'agg':
         results = []
         for row in arr:
@@ -137,7 +131,7 @@ def extract_AC(arr,method = 'bigram'):
                 result.append(1 if row[i] == most_common_item else 0)
             results.append(result)
         consistency_checks = np.array(results)
-    elif method =='pw':
+    elif method == 'pw':
         results = []
         for row in arr:
             row_results = [0]  # The first element has no predecessors, initialize with 0.
@@ -145,49 +139,50 @@ def extract_AC(arr,method = 'bigram'):
                 # Perform pairwise comparison between current item and all previous items
                 comparisons = [row[i] == row[j] for j in range(i)]
                 # Calculate the mode of the comparison results
-                most_common_comparison, count = mode(comparisons)
-                # The mode() function returns the smallest mode in case of multiple modes.
-                # To handle this, we will consider 'True' as the mode if it's one of the modes and its count > 1.
-                if True in most_common_comparison and count[0] > 1:
-                    comparison_mode = 1
-                else:
-                    comparison_mode = 0
+                most_common_comparison = statistics.multimode(comparisons)
+                # The multimode() function returns a list of the most frequent values.
+                # We assign 1 if True is in the list, otherwise 0.
+                comparison_mode = 1 if True in most_common_comparison else 0
                 row_results.append(comparison_mode)
             results.append(row_results)
         consistency_checks = np.array(results)
     return consistency_checks
+
 def extract_feature(df):
     feature_dict = {
         'id': [],
+        'Name': [],
+        'Model': [],
         'correct answer': [],
         'CoT answers': [],
         'Correctness': [],
         'LEN': [],
         'QUA_IM': [],
-        # ('QUA', 'UKW'): [],
         'DIF_IV': [],
         'DIF_SUB': [],
-        'SIM_COT_BIGRAM': [],
+        # 'SIM_COT_BIGRAM': [],
         'SIM_COT_AGG': [],
-        'SIM_COT_PW': [],
-        'SIM_AC_BIGRAM': [],
+        # 'SIM_COT_PW': [],
+        # 'SIM_AC_BIGRAM': [],
         'SIM_AC_AGG': [],
-        'SIM_AC_PW': [],
+        # 'SIM_AC_PW': [],
     }
     cot_answer_arr, binary_arr = extract_cot_answer(df)
     IV = extract_IV(df)
     LEN = extract_len(df)
     IM = extract_IM(df)
-    SIM_cot_bigram = extract_sim(df, method='bigram')
+    # SIM_cot_bigram = extract_sim(df, method='bigram')
     SIM_cot_agg = extract_sim(df, method='agg')
-    SIM_cot_pw = extract_sim(df, method='pw')
-    SIM_AC_bigram = extract_AC(cot_answer_arr, method='bigram')
+    # SIM_cot_pw = extract_sim(df, method='pw')
+    # SIM_AC_bigram = extract_AC(cot_answer_arr, method='bigram')
     SIM_AC_agg = extract_AC(cot_answer_arr, method='agg')
-    SIM_AC_pw = extract_AC(cot_answer_arr, method='pw')
+    # SIM_AC_pw = extract_AC(cot_answer_arr, method='pw')
 
-    assert (cot_answer_arr).shape == (binary_arr).shape == (IV).shape == (LEN).shape == (SIM_cot_bigram).shape
+    assert (cot_answer_arr).shape == (binary_arr).shape == (IV).shape == (LEN).shape
     for row in tqdm(range(len(df))):
         feature_dict['id'].append(row)
+        feature_dict['Name'].append(df.iloc[row]['Name'])  # Add this line
+        feature_dict['Model'].append(df.iloc[row]['Model'])  # Add this line
         feature_dict['correct answer'].append(df.iloc[row]['Correct Answer'])
         feature_dict['DIF_SUB'].append(df.iloc[row]['Category'])
         feature_dict['CoT answers'].append(cot_answer_arr[row].tolist())
@@ -195,23 +190,22 @@ def extract_feature(df):
         feature_dict['QUA_IM'].append(IM[row].tolist())
         feature_dict['DIF_IV'].append(IV[row].tolist())
         feature_dict['LEN'].append(LEN[row].tolist())
-        feature_dict['SIM_COT_BIGRAM'].append(SIM_cot_bigram[row].tolist())
+        # feature_dict['SIM_COT_BIGRAM'].append(SIM_cot_bigram[row].tolist())
         feature_dict['SIM_COT_AGG'].append(SIM_cot_agg[row].tolist())
-        feature_dict['SIM_COT_PW'].append(SIM_cot_pw[row].tolist())
-        feature_dict['SIM_AC_BIGRAM'].append(SIM_AC_bigram[row].tolist())
+        # feature_dict['SIM_COT_PW'].append(SIM_cot_pw[row].tolist())
+        # feature_dict['SIM_AC_BIGRAM'].append(SIM_AC_bigram[row].tolist())
         feature_dict['SIM_AC_AGG'].append(SIM_AC_agg[row].tolist())
-        feature_dict['SIM_AC_PW'].append(SIM_AC_pw[row].tolist())
+        # feature_dict['SIM_AC_PW'].append(SIM_AC_pw[row].tolist())
     return feature_dict
 if __name__ == '__main__':
-    storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/{MODEL}')
-    file_path = os.path.join(storage_dir, f'{DF_NAME}_{DIFFICULTY}.csv')
+    file_path = os.path.join(DATA_DIR, 'final.csv')
     df = pd.read_csv(file_path)
     data = extract_feature(df)
 
     df_to_save = pd.DataFrame(data)
-    storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/Algo_Design_Data')
+    storage_dir = os.path.join(DATA_DIR, f'Algo_Design_Data/')
 
-    file_store_path = os.path.join(storage_dir, f'{DF_NAME}_{DIFFICULTY}.json')
+    file_store_path = os.path.join(storage_dir, 'final.json')
     with open(file_store_path,'w') as f:
         json.dump(data,f,cls=NpEncoder)
     # df_to_save.to_csv(file_store_path,index=False)

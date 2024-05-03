@@ -4,3 +4,15 @@ This is a document to gather relevant papers:
 
 - \[[arxiv](https://arxiv.org/abs/2307.08678)\] Do Models Explain Themselves? Counterfactual Simulatability of Natural Language Explanations
 
+Question:
+
+IV for Invalid answer?
+DIF_SUB does not work
+too slow if data gets large
+Need a automatic/systematic way to select features
+need different window size (as ablation study) to justify our work
+
+TO DO:
+
+Plots and experiments for different N
+

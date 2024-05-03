@@ -1,11 +1,12 @@
 from IDV_CS_Model import *
+import sys
 
-DATA_DIR = '../data'
-DF_NAME = 'GSM8K'
-DIFFICULTY = 'easy'
-NUM_OF_SAMPLES = 500
-NUM_OF_COT = 40
-MODEL = 'gpt-3.5-turbo-0125'
+DATA_DIR = '../data/Evaluation_CoTs/'
+# DF_NAME = 'GSM8K'
+# DIFFICULTY = 'easy'
+# NUM_OF_SAMPLES = 500
+# NUM_OF_COT = 40
+# MODEL = 'gpt-3.5-turbo-0125'
 
 
 def normalize_cs(cs_li, threshold):
@@ -104,25 +105,34 @@ def CS_early_stopping(df, threshold, N=5, stop_mechanism='PositiveN'):
 
 
 if __name__ == '__main__':
-    storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/{MODEL}')
-    file_path = os.path.join(storage_dir, f'df_all.csv')
-    df_raw = pd.read_csv('../data/ES_data/Llama2_result/strategy/strategy_cleaned.csv')
+    # storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/{MODEL}')
+    file_path = os.path.join(DATA_DIR, 'final.csv')
+    df_raw = pd.read_csv(file_path)
+    df_raw = df_raw.sample(1000).reset_index(drop=True)
     df_with_features = pd.DataFrame(extract_feature(df_raw))
     feature_li = [
         'LEN',
-        # 'QUA_IM',
-        # 'DIF_IV',
+        'QUA_IM',
+        'DIF_IV',
         # 'DIF_SUB',
         # 'SIM_COT_BIGRAM',
         'SIM_COT_AGG',
         # 'SIM_COT_PW',
-        'SIM_AC_BIGRAM',
+        # 'SIM_AC_BIGRAM',
         'SIM_AC_AGG',
-        'SIM_AC_PW',
+        # 'SIM_AC_PW',
         # 'size_of_cot'
     ]
-    coe = [-0.1, -5, -1, 3, 2, 2, 2]
-    intercept = -2
+    # coe = [-0.1, -5, -1, 3, 2, 2, 2]
+    # intercept = -2
     # df_cs, threshold = customized_LR_model(df=df_with_features, feature_li=feature_li, coe=coe, intercept=intercept)
-    df_cs, threshold = trained_LR_model(df= df_with_features, feature_li=feature_li)
-    CS_early_stopping(df=df_cs, threshold=threshold, N=2, stop_mechanism='ConsistencyN')
+    # threshold = float(sys.argv[1])
+    # N = int(sys.argv[2])
+    N = 3
+    threshold = 0.5
+    df_cs, _ = trained_LR_model(df=df_with_features, feature_li=feature_li)
+    stop_mechanism = 'ConsistencyN'
+    df, _ = CS_early_stopping(df=df_cs, threshold=threshold, N=N, stop_mechanism=stop_mechanism)
+    file_name = f"df_threshold_{threshold}_N_{N}_stop_{stop_mechanism}.csv"
+    storage_dir = '../result/experiments_output/'
+    df.to_csv(storage_dir + file_name, index=False)

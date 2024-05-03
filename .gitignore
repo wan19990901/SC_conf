@@ -8,3 +8,5 @@
 
 # Jupyter Notebook autosave
 *.autosave.ipynb
+
+data/Evaluation_CoTs/final.csv
