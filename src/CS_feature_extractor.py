@@ -52,7 +52,7 @@ def extract_len(df):
             cleaned_answers = []
             for entry in df[col]:
                 # Extract numbers using regular expression
-                if re.match(r'^A:',entry):
+                if re.match(r'^(A:)|(def)|(#)',entry):
                     num_of_sentence = len(entry.split('.'))-1
                     cleaned_answers.append(num_of_sentence)
                 else:
@@ -67,6 +67,7 @@ def extract_len(df):
 
     step_count = np.array(step_count_buffer).T
     return step_count
+
 def extract_IM(df):
     mistake_buffer = []
     for col in df:
@@ -163,9 +164,9 @@ def extract_feature(df):
         # 'SIM_COT_BIGRAM': [],
         'SIM_COT_AGG': [],
         # 'SIM_COT_PW': [],
-        # 'SIM_AC_BIGRAM': [],
+        'SIM_AC_BIGRAM': [],
         'SIM_AC_AGG': [],
-        # 'SIM_AC_PW': [],
+        'SIM_AC_PW': [],
     }
     cot_answer_arr, binary_arr = extract_cot_answer(df)
     IV = extract_IV(df)
@@ -174,9 +175,9 @@ def extract_feature(df):
     # SIM_cot_bigram = extract_sim(df, method='bigram')
     SIM_cot_agg = extract_sim(df, method='agg')
     # SIM_cot_pw = extract_sim(df, method='pw')
-    # SIM_AC_bigram = extract_AC(cot_answer_arr, method='bigram')
+    SIM_AC_bigram = extract_AC(cot_answer_arr, method='bigram')
     SIM_AC_agg = extract_AC(cot_answer_arr, method='agg')
-    # SIM_AC_pw = extract_AC(cot_answer_arr, method='pw')
+    SIM_AC_pw = extract_AC(cot_answer_arr, method='pw')
 
     assert (cot_answer_arr).shape == (binary_arr).shape == (IV).shape == (LEN).shape
     for row in tqdm(range(len(df))):
@@ -193,9 +194,9 @@ def extract_feature(df):
         # feature_dict['SIM_COT_BIGRAM'].append(SIM_cot_bigram[row].tolist())
         feature_dict['SIM_COT_AGG'].append(SIM_cot_agg[row].tolist())
         # feature_dict['SIM_COT_PW'].append(SIM_cot_pw[row].tolist())
-        # feature_dict['SIM_AC_BIGRAM'].append(SIM_AC_bigram[row].tolist())
+        feature_dict['SIM_AC_BIGRAM'].append(SIM_AC_bigram[row].tolist())
         feature_dict['SIM_AC_AGG'].append(SIM_AC_agg[row].tolist())
-        # feature_dict['SIM_AC_PW'].append(SIM_AC_pw[row].tolist())
+        feature_dict['SIM_AC_PW'].append(SIM_AC_pw[row].tolist())
     return feature_dict
 if __name__ == '__main__':
     file_path = os.path.join(DATA_DIR, 'final.csv')

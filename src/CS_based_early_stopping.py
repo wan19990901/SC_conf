@@ -118,9 +118,9 @@ if __name__ == '__main__':
         # 'SIM_COT_BIGRAM',
         'SIM_COT_AGG',
         # 'SIM_COT_PW',
-        # 'SIM_AC_BIGRAM',
+        'SIM_AC_BIGRAM',
         'SIM_AC_AGG',
-        # 'SIM_AC_PW',
+        'SIM_AC_PW',
         # 'size_of_cot'
     ]
     # coe = [-0.1, -5, -1, 3, 2, 2, 2]

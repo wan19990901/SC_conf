@@ -4,7 +4,7 @@
 thresholds=(0.3 0.4 0.5 0.6 0.7)
 
 # Array of N values
-Ns=(1 2 3 4 5)
+Ns=(2 3 4 5)
 
 # Iterate over threshold values
 for threshold in "${thresholds[@]}"
