@@ -58,7 +58,7 @@ def extract_len(df):
             cleaned_answers = []
             for entry in df[col]:
                 # Extract numbers using regular expression
-                if re.match(r'^A:',entry):
+                if re.match(r'^(\s?A:)|(def)|(#)',entry):
                     num_of_sentence = len(entry.split('.'))-1
                     cleaned_answers.append(num_of_sentence)
                 else:
@@ -80,7 +80,7 @@ def extract_IM(df):
             cleaned_answers = []
             for entry in df[col]:
                 # Extract numbers using regular expression
-                misktake = re.findall(r'(be a mistake)|(be an error)|(not solvable)|(I apologize)', str(entry))
+                misktake = re.findall(r'(be a mistake)|(be an error)|(not solvable)|(not enough information)', str(entry))
                 if misktake:
                     cleaned_answers.append(1)
                 else:
