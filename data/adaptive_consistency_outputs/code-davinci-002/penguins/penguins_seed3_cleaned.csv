@@ -110,7 +110,7 @@ This question focuses on the age. We know the following: Louis is 7 years old, B
 According to the table, Gladys is the oldest amongst them.
 The oldest penguin is Gladys. So the answer is (E).
 
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old. Now, we add James to this table: James is 12 years old.
 In the table of giraffes, we know that Jody is 5 years old, Gladys is 10 years old, Marian is 2 years old, and Donna is 9 years old.
 The oldest penguin is James. He is the oldest at 12 years old.
@@ -193,7 +193,7 @@ select avg(weight) from penguins;
 
 # There is a table called penguins with the following columns: name, age, height (cm), weight (kg).
 # Write a query that lists the average height of a penguin.
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, Gwen is 8 years old, and James is 12 years old.
 So we just need to compare the age of these 5 animals.
 According to the table, James (12) is the oldest amongst them.
@@ -425,7 +425,7 @@ The name of the last penguin sorted by alphabetic order is Vincent. So the answe
 
 # Question type: Find the value
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 When we sort their names alphabetically, we get Bernard, Gwen, Louis, Vincent.
 The name of the last penguin sorted by alphabetical order is Vincent.
@@ -1108,7 +1108,7 @@ The penguin older than Gwen is Vincent.
 The penguin older than Gwen is Vincent. So the answer is (C).
 
 
-*/",,"[(0, 0)]","A: Let's think step by step.
+*/",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 According to the table, Vincent (9) is older than Gwen (8).
 The penguin that is older than Gwen is Vincent. So the answer is (C).
@@ -1246,7 +1246,7 @@ t1 = Table(['name', 'age', 'height (cm)', 'weight (kg)'], ['Louis', '7', '50', '
 #print(t1)
 
 #Q2
-t2 = Table(['name', 'age', 'height (cm)', 'weight (kg)'], ['Louis', '7', '50', '11'], ['Bernard', '5',",,"[(0, 0)]","A: Let's think step by step.
+t2 = Table(['name', 'age', 'height (cm)', 'weight (kg)'], ['Louis', '7', '50', '11'], ['Bernard', '5',",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the age of giraffes. We know the following: Jody is 5 years old, Gladys is 10 years old, Marian is 2 years old, and Donna is 9 years old.
 The cumulated age of the giraffes is 5 + 10 + 2 + 9 = 26.
 The cumulated age of the giraffes is 26. So the answer is (A).
@@ -1566,7 +1566,7 @@ The penguin that is 70 cm tall is Gwen.
 The name of the penguin that is 70 cm tall is Gwen. So the answer is (D).
 '''
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on height (cm). We know the following: Louis is 50 cm tall, Bernard is 80 cm tall, Vincent is 60 cm tall, and Gwen is 70 cm tall.
 If we look at the table, we can see that Gwen is 70 cm tall.
 The name of the penguin that is 70 cm tall is Gwen.
@@ -1593,7 +1593,7 @@ And here is a similar table, but listing giraffes:
 name, age, height (cm), weight (kg)
 Jody, 5, 430, 620
 Gladys, 10, 420, 590
-Marian, 2,",,"[(0, 0)]","A: Let's think step by step.
+Marian, 2,",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on height. We know the following:
 Louis is 50 cm tall, Bernard is 80 cm tall, Vincent is 60 cm tall, Gwen is 70 cm tall, and James is 90 cm tall.
 We are told to ignore the table with giraffes.
@@ -1608,7 +1608,7 @@ The name of the penguin that is 70 cm tall is Gwen. So the answer is (D).
 
 
 ## 8. Tables with random data
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the height. We know the following: Louis is 50 cm tall, Bernard is 80 cm tall, Vincent is 60 cm tall, Gwen is 70 cm tall, and James is 90 cm tall.
 According to the question, the penguin that is 70 cm tall is Gwen.
 The name of the penguin that is 70 cm tall is Gwen. So the answer is (D).
@@ -1775,7 +1775,7 @@ The name of the last giraffe sorted by alphabetical order is Donna.
 The name of the last giraffe sorted by alphabetical order is Donna. So the answer is (D).
 """"""
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the giraffes in the table are Jody, Gladys, Marian, and Donna.
 When we sort their names alphabetically, we get Donna, Gladys, Jody, Marian.
 The name of the last giraffe sorted by alphabetic order is Donna. The name of the last giraffe sorted by alphabetic order is Donna. So the answer is (D).
@@ -1921,7 +1921,7 @@ This question focuses on the name. We know the following: The names of the giraf
 When we sort their names alphabetically, we get Donna, Gladys, Jody, Marian.
 The name of the last giraffe sorted by alphabetical order is Marian.
 The name of the last giraffe sorted by alphabetic order is Marian. So the answer is (C).
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the giraffes in the table are Jody, Gladys, Marian, and Donna.
 When we sort their names alphabetically, we get Donna, Gladys, Jody, Marian.
 The name of the last giraffe sorted by alphabetic order is Marian.
@@ -2444,7 +2444,7 @@ Options:
 (C) 73.3333
 (D) 73.334
 (E) 73.33
-A: Let",,"[(0, 0)]","A: Let's think step by step.
+A: Let",error,"[(0, 0)]","A: Let's think step by step.
 In this question, we need to delete the penguin named Bernard from the table. The remaining penguins are: Louis, Vincent, Gwen
 This question focuses on age. We know the following: Louis is 7 years old, Vincent is 9 years old, and Gwen is 8 years old.
 If we remove the penguin named Bernard from the table, the remaining penguins are Louis, Vincent, Gwen.
@@ -2595,7 +2595,7 @@ Options:
 A: Let's think step by step.
 This question focuses on the number of penguins.
 According to the table, there are 4 penguins.
-There are",,"[(0, 0)]","A: Let's think step by step.
+There are",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 When we delete the penguin named Bernard from the table, we get Louis, Vincent, and Gwen.
 We know Louis is 7 years old, Vincent is 9 years old, and Gwen is 8 years old.
@@ -2804,7 +2804,7 @@ This question focuses on age. We know the following: Jody is 5 years old, Gladys
 According to the table, Gladys and Donna are more than 5 years old.
 There are 2 giraffes who are more than 5 years old. So the answer is (B).
 
-'''",,"[(0, 0)]","A: For this question, we can eliminate the irrelevant information about penguins.
+'''",error,"[(0, 0)]","A: For this question, we can eliminate the irrelevant information about penguins.
 This question focuses on age. We know the following: Jody is 5 years old, Gladys is 10 years old, Marian is 2 years old, and Donna is 9 years old.
 Two giraffes are more than 5 years old: Gladys and Donna.
 There are 2 giraffes more than 5 years old. So the answer is (B).
@@ -2911,7 +2911,7 @@ This question focuses on age. We know the following: Louis is 7 years old, Berna
 We then see that Bernard is deleted from the table.
 The penguins that are less than 8 years old are: Louis, Bernard and Gwen.
 There are 3 penguins less than 8 years old. So the answer is (C).
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, James is 12 years old, Gwen is 8 years old, and Vincent is 9 years old.
 We delete the penguin named Bernard from the table.
 The penguins that are less than 8 years old are Louis and Gwen.
@@ -3148,7 +3148,7 @@ df.head(10)
         vertical-align: middle;
     }
 
-    .dataframe t",,"[(0, 0)]","A: Let's think step by step.
+    .dataframe t",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 Now, we add James to this table: James is 12 years old.
 We then delete the penguin named Bernard from the table. This means that the youngest penguin (Bernard) is deleted.
@@ -3314,7 +3314,7 @@ This question focuses on the number of giraffes. We know the following: There ar
 And we know that there is 1 penguin added to the table, making it a total of 5 penguins.
 There are 4 giraffes, so the number of giraffes is (D).
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the number of giraffes. We know the following: There are 4 giraffes in the table.
 There are 4 giraffes. So the answer is (D).
 
@@ -3577,7 +3577,7 @@ There are 4 animals listed in the table. So the answer is (D).
 # Question 3
 Answer questions about a table of penguins and their attributes.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 A table is a collection of data organized in rows and columns.
 The table has 5 rows.
 A row tells us about one animal.
@@ -3644,7 +3644,7 @@ def penguin_answer(question):
     intros = data[0]
     intros = intros.split(""\n\n"")
     intro = intros[len(intros) - 1]
-    intro = intro[intro.find(""("") + 1: intro.find("")"")].split("",",,"[(0, 0)]","A: Let's think step by step.
+    intro = intro[intro.find(""("") + 1: intro.find("")"")].split("",",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and weighs 11 kg, Bernard is 5 years old and weighs 13 kg, Vincent is 9 years old and weighs 11 kg, Gwen is 8 years old and weighs 15 kg.
 Now, we add James to this table: James is 12 years old and weighs 12 kg.
 We then delete the penguin named Bernard from the table.
@@ -4394,7 +4394,7 @@ Options:
 (B) 1
 (C) 2
 (D) 3
-(E) 4",,"[(0, 0)]","A: Let's think step by step.
+(E) 4",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the height of the penguins. We know the following: Louis's height is 50 cm, Bernard's height is 80 cm, Vincent's height is 60 cm, Gwen's height is 70 cm, and James's height is 90 cm.
 The sum of the heights of all the penguins is 350 cm. There are 5 penguins.
 The average height of the penguins is the sum of all the heights divided by the number of penguins.
@@ -4768,7 +4768,7 @@ The youngest penguin is Louis. So the answer is (A).
 
 ```
 
-```",,"[(0, 0)]","A: Let's think step by step.
+```",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 When we delete the penguin named Bernard, we have left us with Louis (7 years old), Vincent (9 years old), and Gwen (8 years old).
 Since Louis is the youngest of them, the answer is (A).
@@ -6649,7 +6649,7 @@ The name of the last penguin is Vincent.
 The name of the last penguin is Vincent. So the answer is (C).
 """"""
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, Gwen, and James. The names of the giraffes are Jody, Gladys, Marian, and Donna.
 When we sort their names alphabetically, we get Bernard, Gwen, James, Louis, and Vincent for penguins and Donna, Gladys, Jody, and Marian for giraffes.
 The name of the last penguin is Vincent.
@@ -6836,7 +6836,7 @@ This question focuses on age and weight. We know the following: Louis is 7 years
 Now, we delete Bernard from this table: Bernard is 5 years old and weighs 13 kg.
 The penguin that is more than 5 years old and weight more than 12 kg is Gwen.
 There is 1 penguin more than 5 years old and weight more than 12 kg. So the answer is (A).
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and weighs 11 kg, Bernard is 5 years old and weighs 13 kg, Vincent is 9 years old and weighs 11 kg, and Gwen is 8 years old and weighs 15 kg.
 Now, we delete Bernard from the table.
 The penguins that are more than 5 years old and weigh more than 12 kg are Vincent (9 years old and 11 kg) and Gwen (8 years old and 15 kg).
@@ -6863,7 +6863,7 @@ Options:
 (B) 2
 (C) 3
 (D) 4
-(E",,"[(0, 0)]","
+(E",error,"[(0, 0)]","
 A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and 11 kg, Vincent is 9 years old and 11 kg, Gwen is 8 years old and 15 kg, and James is 12 years old and 12 kg.
 Now, we delete the penguin named Bernard from the table.
@@ -6979,7 +6979,7 @@ The name of the 60 cm tall penguin is Vincent. So the answer is (C).
 
 """"""
 (B)
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on height. We know the following: Louis is 50 cm tall, Bernard is 80 cm tall, Vincent is 60 cm tall, Gwen is 70 cm tall, and James is 90 cm tall.
 According to the table, Vincent is the only penguin who is 60 cm tall.
 The name of the 60 cm tall penguin is Vincent. So the answer is (C).
@@ -8044,7 +8044,7 @@ The name of the last penguin is Vincent. So the answer is (C).
 # name, product, amount
 # Daniel, paper towels, 2.49
 # Daniel, dish soap, 3.99
-#",,"[(0, 0)]","A: Let's think step by step.
+#",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 The last name in the list of penguins is Gwen.
 The name of the last penguin is Gwen. So the answer is (D).
@@ -8560,7 +8560,7 @@ print (penguins_df)
 # Add James (12, 90, 12) to the dataframe.
 penguins_df = pd.concat([penguins_df, pd.DataFrame([['James', 12, 90, 12]],
                                                    columns = ['name', 'age', 'height', 'weight'])],
-                                                   ignore_index",,"[(0, 0)]","A: Let's think step by step.
+                                                   ignore_index",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on species. We know the following: The species of the penguin in the table are Aptenodytes forsteri.
 There is only one species listed in the table.
 There is only one species listed in the table. So the answer is (A).
@@ -9479,7 +9479,7 @@ answers = {
     2: [2, 3, 4, 5],
     3: [1, 2, 3],
     4: [2, 3, 4, 5],
-}",,"[(0, 0)]","A: Let's think step by step.
+}",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the number of giraffes. We know the following: In the table, there are 4 giraffes: Jody, Gladys, Marian, and Donna.
 We can count them. There are 4 giraffes.
 There are 4 giraffes. So the answer is (D).
@@ -9663,7 +9663,7 @@ The number of giraffes is 4. So the answer is (D).
 # --------------------------------------------------------------------
 
 # --------------------------------------------------------------------
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on giraffes. We know the following: The names of the giraffes in the table are Jody, Gladys, Marian, and Donna.
 There are 4 giraffes in the table.
 The number of giraffes in the table is 4. So the answer is (D).
@@ -9987,7 +9987,7 @@ for line in text.split(""\n"")[6:]:
     if line.startswith(""Q:""):
         question = line[2:].strip()
         data[question] = []
-    elif line.startswith",,"[(0, 0)]","A: Let's think step by step.
+    elif line.startswith",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the age and weight. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, Gwen is 8 years old, James is 12 years old.
 Louis, Bernard, and Vincent weigh less than 12 kg.
 Louis is 7 years old and weighs less than 12 kg.
@@ -10045,7 +10045,7 @@ This question focuses on age and weight. We know the following: Louis is 7 years
 Now, we add James to this table: James is 12 years old and weighs 12 kg.
 The penguins that are less than 8 years old and weigh less than 12 kg are Louis and Bernard.
 There are 2 penguins less than 8 years old and weigh less than 12 kg. So the answer is (B).
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, Gwen is 8 years old, and James is 12 years old. Louis weights 11 kg, Bernard weights 13 kg, Vincent weights 11 kg, Gwen weights 15 kg, and James weights 12 kg.
 According to the table, only one penguin, Bernard, is both less than 8 years old and weighs less than 12 kg.
 There is 1 penguin that is less than 8 years old and weighs less than 12 kg. So the answer is (A).
@@ -10110,7 +10110,7 @@ There are 2 penguins that are less than 8 years old and weigh less than 12 kg. S
 
 # Alice, 5
 # Bob, 6
-#",,"[(0, 0)]","A: Let's think step by step.
+#",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and has 11 kg, Bernard is 5 years old and has 13 kg, Vincent is 9 years old and has 11 kg, Gwen is 8 years old and has 15 kg, James is 12 years old and has 12 kg.
 Now, we add James to this table: James is 12 years old and has 12 kg.
 The penguins that are less than 8 years old and weight less than 12 kg are Louis, Bernard, and Vincent.
@@ -10377,7 +10377,7 @@ The number of animals listed in the table is 4. So the answer is (D).
 #                               Gwen     8              70         15
 #                               James   12              90         12
 #
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 When we delete Bernard, the number of animals listed in the table will be 3.
 There are 3 animals listed in the table. So the answer is (C).
@@ -11457,7 +11457,7 @@ The name of the first penguin sorted by alphabetic order is Bernard. So the answ
 # A: Here is a table where the first line is a header and each subsequent line is a penguin:  name, age, height (cm), weight (kg) Louis, 7, 50, 11 Bernard, 5, 80, 13 Vincent, 9, 60, 11 Gwen, 8, 70, 15  For example: the age of Louis is 7, the weight of Gwen is 15 kg, the height of Bernard is 80 cm.  We now add a penguin to the table:
 James, 12, 90, 12
 Which penguin is the tallest and the heaviest?
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 When we sort their names alphabetically, we get Bernard, Gwen, Louis, Vincent.
 Now, we add James to this table: James is 12 years old.
@@ -11632,7 +11632,7 @@ The oldest giraffe is Donna. So the answer is (D).
 This question focuses on age. We know the following: Jody is 5 years old, Gladys is 10 years old, Marian is 2 years old, and Donna is 9 years old.
 According to the table, Gladys is the oldest amongst them.
 The oldest giraffe is Gladys. So the answer is (B).
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Jody is 5 years old, Gladys is 10 years old, Marian is 2 years old, and Donna is 9 years old.
 According to the table, Donna (9) is the oldest amongst them.
 The oldest giraffe is Donna. So the answer is (D).
@@ -11669,7 +11669,7 @@ name, age, height (cm), weight (kg)
 Jody, 5, 430, 620
 Gladys, 10, 420, 590
 Marian, 2, 310, 410
-Donna",,"[(0, 0)]","A: Let's think step by step.
+Donna",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Jody is 5 years old, Gladys is 10 years old, Marian is 2 years old, and Donna is 9 years old.
 According to the table, Gladys (10) is the oldest amongst them.
 The oldest giraffe is Gladys. So the answer is (B).
@@ -11694,7 +11694,7 @@ This question focuses on age. We know the following: Jody is 5 years old, Gladys
 According to the table, Gladys (10) is the oldest amongst them.
 The oldest giraffe is Gladys. So the answer is (B).
 """"""
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Donna is 9 years old, Gladys is 10 years old, Jody is 5 years old, and Marian is 2 years old.
 We can see that Gladys is the oldest amongst them.
 The oldest giraffe is Gladys. So the answer is (B).
@@ -12210,7 +12210,7 @@ Q: Here is a table where the first line is a header and each subsequent line is 
 A: Let's think step by step.
 This question focuses on weight. We know the following: The weights of the penguins are 11 kg, 13 kg, 11 kg, and 15 kg.
 The average of these weights is 12.5 kg.
-The average weight of the penguins is",,"[(0, 0)]","A: Let's think step by step.
+The average weight of the penguins is",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 Louis and Bernard are the only penguins with Welsh names.
 The penguin with Welsh name is Louis and Bernard. So the answer is (A).
@@ -13154,7 +13154,7 @@ The name of the first penguin is Bernard. So the answer is (B).
 # Test Case 1:
 # Correct!
 # Test Case 2:
-# Incorrect!",,"[(0, 0)]","A: Let's think step by step.
+# Incorrect!",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 When we sort their names alphabetically, we get Bernard, Gwen, Louis, Vincent.
 The name of the first penguin sorted by alphabetical order is Bernard.
@@ -13690,7 +13690,7 @@ The table has 4 columns. So the answer is (D).
 
 """"""
 """"""
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the number of columns.
 The table has 4 columns: name, age, height (cm), weight (kg).
 How many columns are there in the table? There are 4 columns in the table. So the answer is (D).
@@ -13791,7 +13791,7 @@ The height of Gwen is 70. So the answer is (D).
 This question focuses on height. We know the following: The heights of the penguins in the table are 50 cm, 80 cm, 60 cm, and 70 cm.
 According to the table, Gwen's height is 70 cm.
 The height of Gwen is 70 cm. So the answer is (D).
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the height. We know the following: Louis is 50 cm tall, Bernard is 80 cm tall, Vincent is 60 cm tall, and Gwen is 8 years old.
 According to the table, Gwen is 70 cm tall.
 The height of Gwen is 70. So the answer is (D).
@@ -14017,7 +14017,7 @@ Options:
 (D) 15
 (E) 18
 A: Let's think step by step.
-This question focuses on the weight of Louis in kg. We know the following: The weight of Gwen is 15 kg",,"[(0, 0)]","A: Let's think step by step.
+This question focuses on the weight of Louis in kg. We know the following: The weight of Gwen is 15 kg",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the column number. We know the following: The column names are name, age, height (cm), weight (kg).
 The name is the first column, so the column number is 1.
 The number of the column with the names is 1. So the answer is (A).
@@ -14031,7 +14031,7 @@ Vincent, 9, 60, 11
 Gwen, 8, 70, 15
 James, 12, 90, 12
 
-",,"[(0, 0)]","A: We have the following names: Louis, Bernard, Vincent, and Gwen.
+",error,"[(0, 0)]","A: We have the following names: Louis, Bernard, Vincent, and Gwen.
 In the table, the names of the penguins are in column 1.
 So, the number of the column with the names is 1.
 The answer is (A).
@@ -14699,7 +14699,7 @@ The name of the last penguin is Vincent.
 The name of the last penguin is Vincent. So the answer is (C).
 """"""
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 When we sort their names alphabetically, we get Bernard, Gwen, Louis, Vincent.
 We now add James to the table.
@@ -14955,7 +14955,7 @@ The name of the last penguin is Vincent. So the answer is (C).
 The main goal of the Tree of Life (ToL) project is to understand the history of life on Earth. There are many approaches to studying the Tree of Life. One approach is to focus on a particular group of organisms, such as birds or molluscs, and study that group using approaches like DNA sequencing and morphology. Another approach is to study the entire Tree of Life, and to use the relationships between organisms to understand how life has evolved on Earth.
 
 # 1.1.2. What is a tree?
-The Tree of Life is called a tree because it can be represented as a diagram with many branches. Here is",,"[(0, 0)]"
+The Tree of Life is called a tree because it can be represented as a diagram with many branches. Here is",error,"[(0, 0)]"
 penguins,"Here is a table where the first line is a header and each subsequent line is a penguin:  name, age, height (cm), weight (kg) Louis, 7, 50, 11 Bernard, 5, 80, 13 Vincent, 9, 60, 11 Gwen, 8, 70, 15  For example: the age of Louis is 7, the weight of Gwen is 15 kg, the height of Bernard is 80 cm.  What is the cumulated age of the penguins?
 Options:
 (A) 24
@@ -15165,7 +15165,7 @@ The cumulated age of the penguins is 29. So the answer is (B).
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, Gwen is 8 years old, and James is 12 years old.
 When we sum their ages, we get 7 + 5 + 9 + 8 + 12 = 41.
 The cumulated age of the penguins is 41. So the answer is (D).
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 This question asks us to compute the cumulated age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 The cumulated age is 7 + 5 + 9 + 8 = 29.
 The cumulated age of the penguins is 29. So the answer is (B).
@@ -15364,7 +15364,7 @@ Options:
 A: Let's think step by step.
 This question focuses on the penguin's weight.
 According to the table, the heaviest penguin is Gwen.
-The heaviest pengu",,"[(0, 0)]","A: Let's think step by step.
+The heaviest pengu",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the weight. We know the following: There are 4 columns in this table.
 The column with the weights is the 4th column.
 The number of the column with the weights is 4. So the answer is (D).
@@ -16053,7 +16053,7 @@ Options:
 (D) 75
 (E) 80
 A: Let's think step by step.
-This question focuses on height. We know the following",,"[(0, 0)]","A: Let's think step by step.
+This question focuses on height. We know the following",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the height. We know the following: Louis is 50 cm tall, Bernard is 80 cm tall, Vincent is 60 cm tall, Gwen is 70 cm tall.
 When we delete the penguin named Bernard from the table, we are left with the following average height: (50 + 60 + 70) ÷ 3 = 60.
 So the answer is (A).
@@ -16105,7 +16105,7 @@ After deleting Bernard's data, we just have to calculate the average height of L
 The average height of the penguins is 65. So the answer is (B).
 """"""
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 We know the following: The heights of Louis, Bernard, Vincent, and Gwen are 50, 80, 60, and 70, respectively.
 When we delete the penguin named Bernard from the table, we are left with Louis, Vincent, and Gwen.
 The average height of Louis, Vincent, and Gwen is (50 + 60 + 70) / 3 = 60 cm.
@@ -16472,7 +16472,7 @@ quiz_question_with_options_answers_csv_file_path_no_ext = os.path.splitext(
 
 
 def test_convert_quiz_question_with_options_answers():
-    convert_single_md_to_single_html",,"[(0, 0)]"
+    convert_single_md_to_single_html",error,"[(0, 0)]"
 penguins,"Here is a table where the first line is a header and each subsequent line is a penguin:  name, age, height (cm), weight (kg) Louis, 7, 50, 11 Bernard, 5, 80, 13 Vincent, 9, 60, 11 Gwen, 8, 70, 15  For example: the age of Louis is 7, the weight of Gwen is 15 kg, the height of Bernard is 80 cm.  We now add a penguin to the table:
 James, 12, 90, 12
 And here is a similar table, but listing giraffes:
@@ -16607,7 +16607,7 @@ This question focuses on the name. We know the following: The names of the pengu
 When we sort their names alphabetically, we get Bernard, Gwen, James, Louis, Vincent.
 The name of the last penguin sorted by alphabetical order is Vincent.
 The name of the last penguin sorted by alphabetic order is Vincent. So the answer is (C).
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, Gwen, and James.
 The names of the giraffe in the table are Jody, Gladys, Marian, and Donna.
 The question asks us to sort the names of both animals (penguins and giraffes) alphabetically.
@@ -16825,7 +16825,7 @@ We now add James to this table and delete Bernard.
 The penguins that are less than 8 years old and weight less than 12 kg are Louis and Bernard.
 There are 2 penguins less than 8 years old and weight less than 12 kg. So the answer is (B).
 
-#  Q: Here is a table where the first line is a header and each subsequent line is a penguin:  name, age, height (cm), weight (kg) Louis, 7, 50, 11 Bernard, 5, 80, 13 Vincent, 9, 60, 11 Gwen, 8, 70, 15  For example: the age of Louis is 7, the weight of Gwen is 15 kg, the height of Bernard is 80 cm.  We now add a penguin to the table",,"[(0, 0)]","A: Let's think step by step.
+#  Q: Here is a table where the first line is a header and each subsequent line is a penguin:  name, age, height (cm), weight (kg) Louis, 7, 50, 11 Bernard, 5, 80, 13 Vincent, 9, 60, 11 Gwen, 8, 70, 15  For example: the age of Louis is 7, the weight of Gwen is 15 kg, the height of Bernard is 80 cm.  We now add a penguin to the table",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and 11 kg, Bernard is 5 years old and 13 kg, Vincent is 9 years old and 11 kg, and Gwen is 8 years old and 15 kg.
 Now, we add James to this table. James is 12 years old and 12 kg.
 We then delete the penguin named Bernard from the table.
@@ -16841,7 +16841,7 @@ Now, we add James to this table: James is 12 years old and weights 12 kg.
 We then delete the penguin named Bernard from the table.
 The penguins that are less than 8 years old and weight less than 12 kg are Louis and Bernard.
 There are 2 penguins less than 8 years old and weight less than 12 kg. So the answer is (B).
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and weighs 11 kg, Bernard is 5 years old and weighs 13 kg, Vincent is 9 years old and weighs 11 kg, and Gwen is 8 years old and weighs 15 kg.
 We add James to the table: James is 12 years old and weighs 12 kg.
 We delete Bernard from the table.
@@ -16966,7 +16966,7 @@ def solve(case_no):
     while True:
         line = raw_input().strip()
         if line == '': break
-       ",,"[(0, 0)]","A: Let's think step by step.
+       ",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and 11 kg, Bernard is 5 years old and 13 kg, Vincent is 9 years old and 11 kg, Gwen is 8 years old and 15 kg, and James is 12 years old and 12 kg.
 After deleting the penguin named Bernard, we have Louis, Vincent, Gwen, and James.
 The penguins that are less than 8 years old are Louis and Vincent.
@@ -17126,7 +17126,7 @@ A:  (D) Gwen
 
 Q:  What is the name of the next to last penguin sorted by alphabetic order?
 A:  (A) Louis
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 When we sort their names alphabetically, we get Bernard, Gwen, Louis, Vincent.
 The name of the next to last penguin sorted by alphabetical order is Louis.
@@ -17444,7 +17444,7 @@ Options:
 (C) The number of penguins in the table is equal to the number of dogs in the table.
 (D) The number of penguins in the table is greater than or equal to the number of dogs in the table.
 (E) The number of penguins in the table is less than or equal to the number of dogs in the table.
-A: Let's think step by step",,"[(0, 0)]","A: Let's think step by step.
+A: Let's think step by step",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the number of penguins in the table. We know the following: There are 4 penguins in the table: Louis, Bernard, Vincent, and Gwen.
 Now, we add James to this table.
 We then delete Bernard from the table.
@@ -17742,7 +17742,7 @@ Vincent is 9 years old. Louis is 7 years old.
 As you can see, Gwen is older than Louis and younger than Vincent.
 The penguin younger than Vincent and older than Louis is Gwen.
 So the answer is (D).
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 According to the table, Gwen is younger than Vincent and older than Louis.
 The answer is (D).
@@ -17781,7 +17781,7 @@ The penguins that are between 7 and 9 years old are Louis, Gwen, and Bernard.
 However, according to the table, only Gwen is between 7 and 9 years old.
 The penguin that is younger than Vincent and older than Louis is Gwen.
 The penguin that is younger than Vincent and older than Louis is Gwen. So the answer is (D).
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 As per the question, Gwen is younger than Vincent and older than Louis.
 The penguin that is younger than Vincent and older than Louis is Gwen. So the answer is (D).
@@ -17889,7 +17889,7 @@ The second youngest penguin is Louis. So the answer is (A).
 # (D) 75
 # (E) 80
 
-# the average height of all penguins is (50+80+60+",,"[(0, 0)]","A: Let's think step by step.
+# the average height of all penguins is (50+80+60+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 When we sort their ages, we get Bernard, Louis, Gwen, Vincent.
 Bernard is the youngest, Louis is the second youngest.
@@ -18204,7 +18204,7 @@ This question focuses on the name. We know the following: The names of the pengu
 According to the table, Bernard has the shortest name.
 The penguin with the shortest name is Bernard. So the answer is (B).
 
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 The name that has the shortest name is Vincent.
 The penguin with the shortest name is Vincent. So the answer is (C).
@@ -18425,7 +18425,7 @@ This question focuses on the species. We know the following: penguins, giraffes 
 There are 2 species listed in the tables. So the answer is (B).
 
 
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the species. We know the following: The tables list the following species: penguin, giraffe.
 There are 2 species listed in the tables.
 The number of species listed in the tables is 2. So the answer is (B).
@@ -18699,7 +18699,7 @@ There are 9 animals listed in the tables. So the answer is (E).
 
 # Question 3
 # What will be the output of the following code?
-# A = {4,",,"[(0, 0)]","A: Let's think step by step.
+# A = {4,",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the number of animals. We know the following: There are 4 penguins in the first table (Louis, Bernard, Vincent, Gwen).
 Now we add a penguin to the first table: James.
 There are 4 giraffes in the second table (Jody, Gladys, Marian, Donna).
@@ -18778,7 +18778,7 @@ The number of animals is 9. So the answer is (E).
 
 ",(E),"[(0, 0)]","A: 
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 We have a table with 4 penguins: Louis, Bernard, Vincent, and Gwen.
 We add James to this table.
 We have a table with 4 giraffes: Jody, Gladys, Marian, and Donna.
@@ -18897,7 +18897,7 @@ Now, we add James to this table: James is 12 years old and weighs 12 kg.
 According to the table, only Bernard is less than 8 years old and weighs less than 12 kg.
 There is only 1 penguin that meets the conditions.
 How many penguins are less than 8 years old and weight less than 12 kg? So the answer is (A).
-*/",,"[(0, 0)]","A: Let's think step by step.
+*/",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and 11 kg, Bernard is 5 years old and 13 kg, Vincent is 9 years old and 11 kg, and Gwen is 8 years old and 15 kg.
 There are two penguins that are less than 8 years old (Louis and Bernard) and two that weigh less than 12 kg (Louis and Vincent).
 There are two penguins that are less than 8 years old and weigh less than 12 kg. So the answer is (B).
@@ -19695,7 +19695,7 @@ It will randomize the questions and answer choices, and prompt you to answer eac
 $ ./bin/mcq_test.sh
 ```
 
-It will randomize the questions and answer choices, and prompt you to",,"[(0, 0)]","A: Let's think step by step.
+It will randomize the questions and answer choices, and prompt you to",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old. We also know that James is 12 years old.
 Now, we delete the penguin named Bernard from the table.
 According to the table, the penguins that are more than 5 years old are Louis, Vincent, Gwen, and James.
@@ -20998,7 +20998,7 @@ The answer is (B).
 """"""
 
 # Quiz: Sum and Count
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and weights 11 kg, Bernard is 5 years old and weights 13 kg, Vincent is 9 years old and weights 11 kg, and Gwen is 8 years old and weights 15 kg.
 Now, we delete Bernard from the table.
 The penguins that are more than 5 years old and weight less than 12 kg are Louis and Vincent.
@@ -21116,7 +21116,7 @@ The cumulated age of the penguins and giraffes is 55. So the answer is (D).
 
 ####################################################################################################################################################
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the age. We know the following: The ages of the penguins are 7, 5, 9, and 8. The ages of the giraffes are 5, 10, 2, and 9.
 We now add the ages. We get 7 + 5 + 9 + 8 + 5 + 10 + 2 + 9.
 The cumulated ages of penguins and giraffes is 41. So the answer is (C).
@@ -21271,7 +21271,7 @@ We need to add all the ages together: 7 + 5 + 9 + 8 + 5 + 10 + 2 + 9 = 55.
 The cumulated age of the penguins and giraffes is 55. So the answer is (D).
 """"""
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the age. We know the following: The ages of the penguins are 7, 5, 9, 8, and 12. The ages of the giraffes are 5, 10, 2, and 9.
 When we add the ages of all the penguins and giraffes, we get: 7 + 5 + 9 + 8 + 12 + 5 + 10 + 2 + 9 = 67
 The cumulated age of the penguins and giraffes is 67. So the answer is (E).
@@ -21432,7 +21432,7 @@ The name of the penguin that is 60 cm tall is Vincent. So the answer is (C).
 
 # Answer: (B), (B), (D), (C)
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the height of the penguin. We know the following: Louis is 50 cm tall, Bernard is 80 cm tall, Vincent is 60 cm tall, and Gwen is 70 cm tall.
 Now, we add James to this table: James is 90 cm tall.
 We then delete the penguin named Bernard from the table.
@@ -22213,7 +22213,7 @@ There are 3 penguins more than 8 years old. So the answer is (C).
 
 
 
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and name. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 Now, we add James to this table: James is 12 years old.
 We then delete the penguin named Bernard from the table.
@@ -22593,7 +22593,7 @@ The name of the last animal sorted by alphabetic order is Vincent. So the answer
 
 Answer questions about an entire population and a sample of that population.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 We also know that the names of the giraffes in the second table are Jody, Gladys, Marian, and Donna.
 When we sort their names alphabetically, we get Bernard, Donna, Gladys, Gwen, Jody, Louis, Marian, Vincent.
@@ -22626,7 +22626,7 @@ def question_1(table):
     return table[1][1]
 
 def question_2(table):
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 The names of the giraffes in the table are Jody, Gladys, Marian, and Donna.
 When we sort the names alphabetically, we get Bernard, Donna, Gladys, Gwen, Jody, Louis, Marian, Vincent.
@@ -23353,7 +23353,7 @@ There are 3 penguins less than 8 years old and weight more than 12 kg. So the an
 
 # Answer: (D)
 
-#",,"[(0, 0)]","A: Let's think step by step.
+#",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and 11 kg, Bernard is 5 years old and 13 kg, Vincent is 9 years old and 11 kg, and Gwen is 8 years old and 15 kg.
 Now, we add James to this table: James is 12 years old and 12 kg.
 The penguins that are less than 8 years old are Louis and Bernard.
@@ -23525,7 +23525,7 @@ This question focuses on the name. We know the following: The names of the pengu
 When we delete Bernard from the table, we get Louis, Vincent, and Gwen.
 The name of the last penguin is Gwen.
 So the answer is (D).
-```",,"[(0, 0)]","A: Let's think step by step.
+```",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 When we sort their names alphabetically, we get Bernard, Gwen, Louis, Vincent.
 Since we've deleted the penguin named Bernard, the last penguin is Vincent.
@@ -24011,14 +24011,14 @@ Which species has the smallest beak depth?
 Options:
 (A) penguin gowdy
 (B) penguin torgersson
-(C",,"[(0, 0)]","A: Let's think step by step.
+(C",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 When we sort their names alphabetically, we get Bernard, Gwen, Louis, Vincent.
 When we delete Bernard, we get Gwen, Louis, and Vincent.
 If we sort the names alphabetically now, we get Gwen, Louis, and Vincent.
 The last penguin sorted by alphabetic order is Vincent.
 
-",,"[(0, 0)]"
+",error,"[(0, 0)]"
 penguins,"Here is a table where the first line is a header and each subsequent line is a penguin:  name, age, height (cm), weight (kg) Louis, 7, 50, 11 Bernard, 5, 80, 13 Vincent, 9, 60, 11 Gwen, 8, 70, 15  For example: the age of Louis is 7, the weight of Gwen is 15 kg, the height of Bernard is 80 cm.  How many penguins are there in the table?
 Options:
 (A) 1
@@ -24173,7 +24173,7 @@ can be represented as:
 [Vincent, 9, 60, 11],
 [Gwen, 8, 70, 15]]
 
-Each",,"[(0, 0)]","A: Let's think step by step.
+Each",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on counting. We know the following: There are 4 penguins in the table: Louis, Bernard, Vincent, and Gwen.
 There are 4 penguins in the table. So the answer is (D).
 
@@ -24894,7 +24894,7 @@ According to the table, the oldest penguin is Vincent.
 The oldest penguin is Vincent. So the answer is (C).
 """"""
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 According to the table, Vincent (9) is the oldest amongst them.
 The oldest penguin is Vincent. So the answer is (C).
@@ -25225,7 +25225,7 @@ Gwen is 8 years old and weighs 15 kg. So she does not fit the criteria.
 James is 12 years old and weighs 12 kg. So he does not fit the criteria.
 So far, we have only found one penguin that fits the criteria: Vincent is 9 years old and weighs 11 kg.
 How many penguins are more than 5 years old and weight less than 12 kg?
-There is only one penguin (Vincent) that is more than",,"[(0, 0)]","A: Let's think step by step.
+There is only one penguin (Vincent) that is more than",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight.
 We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, Gwen is 8 years old, and James is 12 years old.
 We know the following: Louis weighs 11 kg, Bernard weighs 13 kg, Vincent weighs 11 kg, Gwen weighs 15 kg, and James weighs 12 kg.
@@ -25483,7 +25483,7 @@ Options:
 (D) 20
 (E) 10
 A: Let's think step by step.
-This question",,"[(0, 0)]","A: Let's think step by step.
+This question",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on height. We know the following: Louis' height is 50, Bernard's height is 80, Vincent's height is 60, and Gwen's height is 70.
 Now, we add James to this table: James' height is 90.
 The shortest height is 50 (Louis).
@@ -25875,7 +25875,7 @@ If we remove the weight of Bernard, we are left with the weight of Louis (11), G
 The cumulated weight is 11 + 15 + 11 = 37.
 The cumulated weight of the penguins is (A).
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on weight. We know the following: Louis weighs 11 kg, Bernard weighs 13 kg, Vincent weighs 11 kg, and Gwen weighs 15 kg.
 The cumulated weight of all penguins is 49 kg.
 If we delete the penguin named Bernard, the cumulated weight of the penguins will be:
@@ -25888,7 +25888,7 @@ The cumulated weight of the penguins is 36 kg. So the answer is (A).
 ##############################################################################################################################
 #Q2: Answer questions about a table of groups and their attributes.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the weight of the penguins.
 The weight of Louis is 11 kg, the weight of Bernard is 13 kg, the weight of Vincent is 11 kg, and the weight of Gwen is 15 kg.
 When we delete the penguin Bernard from the table, the cumulated weight is 11 + 11 + 15 = 37 kg.
@@ -26002,7 +26002,7 @@ The tallest penguin is Bernard. So the answer is (B).
 This question focuses on height. We know the following: Louis is 50 cm, Bernard is 80 cm, Vincent is 60 cm, and Gwen is 70 cm.
 According to the table, Bernard (80 cm) is the tallest amongst them.
 The tallest penguin is Bernard. So the answer is (B).
-```",,"[(0, 0)]","A: Let's think step by step.
+```",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on height. We know the following: Louis is 50 cm tall, Bernard is 80 cm tall, Vincent is 60 cm tall, Gwen is 70 cm tall.
 According to the table, Bernard (80 cm) is the tallest amongst them.
 The tallest penguin is Bernard. So the answer is (B).
@@ -26786,7 +26786,7 @@ The oldest penguin is Vincent. So the answer is (C).
 # A: Let's think step by step.
 # This question focuses on the average weight of the penguins. We know the following: The weight of the penguins in the table are 11 kg, 13 kg, 11 kg, 15 kg.
 
-# The average weight of the",,"[(0, 0)]","A: Let's think step by step.
+# The average weight of the",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 We delete the penguin named Bernard from the table.
 Louis is 7 years old, Vincent is 9 years old, and Gwen is 8 years old.
@@ -26966,7 +26966,7 @@ According to the table, only Gwen is more than 5 years old and weighs more than 
 There is only 1 penguin that is more than 5 years old and weighs more than 12 kg.
 So the answer is (A).
 
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and weighs 11 kg, Bernard is 5 years old and weighs 13 kg, Vincent is 9 years old and weighs 11 kg, and Gwen is 8 years old and weighs 15 kg.
 Now, we add James to this table: James is 12 years old and weighs 12 kg.
 The penguins that are more than 5 years old and weight more than 12 kg are Louis, Vincent, and Gwen.
@@ -27244,7 +27244,7 @@ The penguins that are more than 5 years old and weigh less than 12 kg are only L
 There is only 1 penguin that is more than 5 years old and weighs less than 12 kg.
 The answer is (A).
 """"""
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and weighs 11 kg, Bernard is 5 years old and 13 kg, Vincent is 9 years old and 11 kg, and Gwen is 8 years old and 15 kg.
 Now, we add James to this table: James is 12 years old and 12 kg.
 The penguins that are more than 5 years old and weight less than 12 kg are Louis and Vincent.
@@ -27350,7 +27350,7 @@ The number of penguins that are more than 5 years old and weigh less than 12 kg 
 
 Q: Here is a table where the first line is a header and each subsequent line is a penguin:  name, age, height (cm), weight (kg) Louis, 7, 50, 11 Bernard, 5, 80, 13 Vincent, 9, 60, 11 Gwen, 8, 70, 15  For example: the age of Louis is 7, the weight of Gwen is 15 kg, the height of Bernard is 80 cm.  What is the maximum height amongst the penguins?
 Options:
-(A) 50",,"[(0, 0)]","A: Let's think step by step.
+(A) 50",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and weighs 11 kg, Bernard is 5 years old and weighs 13 kg, Vincent is 9 years old and weighs 11 kg, and Gwen is 8 years old and weighs 15 kg.
 The penguins that are more than 5 years old and weigh less than 12 kg are Louis, Vincent, and Gwen.
 There are 3 penguins that are more than 5 years old and weigh less than 12 kg. So the answer is (C).
@@ -27773,7 +27773,7 @@ The average height of the penguins is 65 cm. So the answer is (B).
 '''
 Answer questions about a table of penguins and their attributes.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the height of the penguins. We know the following: Louis's height is 50 cm, Bernard's height is 80 cm, Vincent's height is 60 cm, and Gwen's height is 70 cm.
 When we add them all up, we get 260 cm. And there are 4 penguins.
 So the average height of the penguins is 260 / 4 = 65 cm.
@@ -27838,7 +27838,7 @@ The average height of the penguins is 65 cm. So the answer is (B).
 # (E) 5
 
 # Answer:
-#",,"[(0, 0)]","A: Let's think step by step.
+#",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the height. We know the following: Louis is 50 cm tall, Bernard is 80 cm tall, Vincent is 60 cm tall, and Gwen is 70 cm tall.
 The average height of the penguins is 65 cm tall.
 The average height of the penguins is 65 cm tall. So the answer is (B).
@@ -28082,7 +28082,7 @@ df = pd.DataFrame({'names': ['Louis', 'Bernard', 'Vincent', 'Gwen', 'James'],
 Question_Class = QuestionClass()
 Question_Class.set_df(df)
 Question_Class.set_question(""Answer questions about a table of penguins and their attributes."")
-Question",,"[(0, 0)]","A: Let's think step by step.
+Question",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on height. We know the following: Louis is 50 cm tall, Bernard is 80 cm tall, Vincent is 60 cm tall, and Gwen is 70 cm tall.
 According to the table, Bernard (80 cm) is the tallest amongst them.
 The tallest penguin is Bernard. So the answer is (B).
@@ -28560,7 +28560,7 @@ The name of the last animal sorted by alphabetic order is Vincent. So the answer
 Question: How to sort a list?
 Answer: When we sort a list, we can use the .sort() method.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following:
 The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 The names of the giraffe in the table are Jody, Gladys, Marian, and Donna.
@@ -28970,7 +28970,7 @@ According to the table, Vincent is the second penguin.
 The name of the second penguin is Vincent. So the answer is (C).
 
 # Section 2: Missing Value
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 When we sort their names alphabetically, we get Bernard, Gwen, Louis, Vincent.
 The name of the second penguin is Gwen.
@@ -29198,7 +29198,7 @@ Louis is younger than Bernard and Gwen. So the answer is (B) (or) (D).
 
 '''
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 According to the table, Bernard (5) is the youngest amongst them.
 Louis (7) is not younger than Louis.
@@ -29340,7 +29340,7 @@ Here, you'll get to know the table you'll be working with!
 
 INSTRUCTIONS
 100XP
-Run the",,"[(0, 0)]","A: Let's think step by step.
+Run the",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, Gwen is 8 years old, and James is 12 years old.
 There are 4 penguins that are more than 5 years old.
 There are 4 penguins that are more than 5 years old. So the answer is (D).
@@ -29653,7 +29653,7 @@ The penguins that are less than 8 years old are Louis and Bernard.
 There are 2 penguins less than 8 years old. So the answer is (B).
 """"""
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 Now, we add James to this table: James is 12 years old.
 The penguins that are less than 8 years old are Louis and Bernard.
@@ -30182,7 +30182,7 @@ We are then asked to delete the penguin named Bernard from the table.
 When we delete Bernard, the penguins left are Louis, Vincent, and Gwen.
 The penguins that weight less than 12 kg is Louis.
 There is 1 penguin that weight less than 12 kg.
-Step 3: Add the results from Step 1",,"[(0, 0)]","A: Let's think step by step.
+Step 3: Add the results from Step 1",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and weighs 11 kg, Bernard is 5 years old and weighs 13 kg, Vincent is 9 years old and weighs 11 kg, and Gwen is 8 years old and weighs 15 kg.
 Now, we delete Bernard from this table.
 The penguins that are less than 8 years old and weigh less than 12 kg are Louis and Vincent.
@@ -30330,7 +30330,7 @@ Which penguin is older than Bernard and younger than Gwen? So the answer is (C).
 Question
 Answer questions about a table of penguins and their attributes.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 We can also look at the penguins' ages in chronological order: 5, 7, 8, 9.
 The penguin that is older than 5 (Bernard's age) and younger than 8 (Gwen's age) is Louis.
@@ -30402,7 +30402,7 @@ The penguin older than Bernard and younger than Gwen is Louis. So the answer is 
 
 # 1.2.2
 #
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 The penguin that is older than Bernard (5) and younger than Gwen (8) is Louis (7).
 The penguin that is older than Bernard and younger than Gwen is Louis. So the answer is (A).
@@ -31027,7 +31027,7 @@ The name of the last penguin sorted by alphabetic order is Vincent. So the answe
 '''
 # ------------------------------------------------------------------
 # ------------------------------------------------------------------
-#",,"[(0, 0)]","A: Let's think step by step.
+#",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 When we sort their names alphabetically, we get Bernard, Gwen, Louis, Vincent.
 We now add a penguin to the table: James, 12, 90, 12.
@@ -31439,7 +31439,7 @@ This question focuses on age. We know the following: Jody is 5 years old, Gladys
 The oldest giraffe is Gladys.
 The oldest giraffe is (B).
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Jody is 5 years old, Gladys is 10 years old, Marian is 2 years old, and Donna is 9 years old.
 According to the table, Gladys (10) is the oldest amongst them.
 The oldest giraffe is Gladys. So the answer is (B).
@@ -31469,7 +31469,7 @@ The oldest giraffe is Gladys. So the answer is (B).
 A: Let's think step by step.
 According to the giraffe table, Gladys is the oldest giraffe.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the age. We know the following: Jody is 5 years old, Gladys is 10 years old, Marian is 2 years old, and Donna is 9 years old.
 According to the table, Gladys (10) is the oldest amongst them.
 The oldest giraffe is Gladys. So the answer is (B).
@@ -31548,7 +31548,7 @@ There are 2 penguins that are more than 5 years old and weigh less than 12 kg. S
 # ==================================================================
 
 # ==================================================================
-# =================================================================",,"[(0, 0)]","A: Let's think step by step.
+# =================================================================",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and weighs 11 kg, Bernard is 5 years old and weighs 13 kg, Vincent is 9 years old and weighs 11 kg, and Gwen is 8 years old and weighs 15 kg.
 Now, we add James to this table: James is 12 years old and weighs 12 kg.
 We then delete the penguin named Bernard from the table.
@@ -31720,7 +31720,7 @@ So the answer is (B).
 This question focuses on age and weight. We know the following: Louis is 7 years old and weighs 11 kg, Bernard is 5 years old and weighs 13 kg, Vincent is 9 years old and weighs 11 kg, Gwen is 8 years old and weighs 15 kg, James is 12 years old and weighs 12 kg.
 Now, we delete Bernard from the table. The penguins that are more than 5 years old and weight less than 12 kg are Louis, Vincent, and James.
 There are 3 penguins more than 5 years old and weight less than 12 kg. So the answer is (C).
-==============================================",,"[(0, 0)]","A: Let's think step by step.
+==============================================",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and 11 kg, Bernard is 5 years old and 13 kg, Vincent is 9 years old and 11 kg, and Gwen is 8 years old and 15 kg.
 Now, we add James to this table: James is 12 years old and 12 kg.
 We delete the penguin named Bernard from the table.
@@ -31806,7 +31806,7 @@ There is only 1 penguin that is more than 5 years old and weight less than 12 kg
 ## 4.1 Making Sense of Data
 
 ```
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old and weighs 11 kg, Vincent is 9 years old and weighs 11 kg, Gwen is 8 years old and weighs 15 kg, and James is 12 years old and weighs 12 kg.
 Now, we add James to this table: James is 12 years old and weighs 12 kg.
 We then delete the penguin named Bernard from the table.
@@ -31836,7 +31836,7 @@ Now, we have to find out how many penguins are more than 5 years old and weigh l
 Louis is more than 5 years old and weighs less than 12 kg.
 Vincent is more than 5 years old and weighs less than 12 kg.
 So, there are 2 penguins more than 5 years old and weigh less than 12 kg.
-There are 2 penguins more than 5 years old and weight less than 12 kg",,"[(0, 0)]","A: Let's think step by step.
+There are 2 penguins more than 5 years old and weight less than 12 kg",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and weight. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, Gwen is 8 years old, and James is 12 years old.
 The weights of the penguins are: Louis's weight is 11 kg, Bernard's weight is 13 kg, Vincent's weight is 11 kg, Gwen's weight is 15 kg, and James's weight is 12 kg.
 When we delete the penguin named Bernard from the table, the updated table is without Bernard.
@@ -32975,7 +32975,7 @@ The cumulated weight of the penguins is 50. So the answer is (C).
 # peng[TableName].column(ColumnName).what_is(“number of penguins?”)
 # is equivalent to
 # peng[TableName].what_is(“number of penguins in column”, ColumnName)
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the weight. We know the following: The weights of the penguin in the table are 11, 13, 11, 15.
 The cumulated weight of the penguins is 11 + 13 + 11 + 15 = 50.
 The cumulated weight of the penguins is 50. So the answer is (C).
@@ -33087,7 +33087,7 @@ A: Let's think step by step.
 A[2] returns 5 and B[1] returns 4. So A[2] + B[1] is 5 + 4 = 9.
 The value of the expression A[2] + B[1] is 9. So the answer is (A).
 
-# Question: Suppose you have",,"[(0, 0)]","A: Let's think step by step.
+# Question: Suppose you have",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on weight. We know the following: Louis weighs 11 kg, Bernard weighs 13 kg, Vincent weighs 11 kg, and Gwen weighs 15 kg.
 The cumulated weight of the penguins is the sum of their weights.
 The cumulated weight is 11 kg + 13 kg + 11 kg + 15 kg = 50 kg.
@@ -33600,7 +33600,7 @@ A: Let's think step by step.
 This question focuses on the median. We know the following: The numbers are 3, 6, 8, and 6.
 When we list the numbers in ascending order, we get 3, 6, 6, 8.
 The median of the four numbers 3, 6, 8, and 6 is 6.
-The median of the four numbers 3, 6, 8, and 6",,"[(0, 0)]","A: Let's think step by step.
+The median of the four numbers 3, 6, 8, and 6",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the age of the animals. We know the following:
 The age of the giraffes are 5, 10, 2, 9.
 The age of the penguins are 7, 5, 9, 8.
@@ -33841,7 +33841,7 @@ The largest height is 90 cm. So the answer is (E).
 # and click ""Submit"" to submit your answer.
 
 
-print 60 * 24 * 7 * 7",,"[(0, 0)]","A: Let's think step by step.
+print 60 * 24 * 7 * 7",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on height. We know the following: Louis's height is 50 cm, Bernard's height is 80 cm, Vincent's height is 60 cm, and Gwen's height is 70 cm.
 Now, we add James to this table: James's height is 90 cm.
 The largest height is 90 cm.
@@ -33886,7 +33886,7 @@ According to the table, Louis (50) is the shortest amongst them.
 The shortest penguin is Louis. So the answer is (A).
 '''
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on height. We know the following: Louis is 50 cm tall, Bernard is 80 cm tall, Vincent is 60 cm tall, Gwen is 70 cm tall, and James is 90 cm tall.
 According to the table, Louis (50) is the shortest amongst them.
 The shortest penguin is Louis. So the answer is (A).
@@ -34237,7 +34237,7 @@ The penguin that is one year younger than Vincent is Gwen. So the answer is (D).
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 Vincent is 9 years old. So the penguin that is one year younger than Vincent is 8 years old.
 The penguin that is one year younger than Vincent is Gwen. So the answer is (D).
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, and Gwen is 8 years old.
 So we can see that Gwen is 1 year younger than Vincent.
 The penguin that is 1 year younger than Vincent is Gwen. So the answer is (D).
@@ -34888,7 +34888,7 @@ This question focuses on the age. We know the following: Louis is 7 years old, B
 We delete the penguin named Bernard from the table.
 The cumulated age of the penguins is: 7 + 9 + 8 + 12 = 36.
 The cumulated age of the penguins is 36. So the answer is (C).
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the age. We know the following: The ages of the penguins in the table are 7, 5, 9, and 8.
 When we delete Bernard from the table, we get the ages of Louis (7), Vincent (9), Gwen (8), and James (12).
 The cumulated ages of these penguins are 7 + 9 + 8 + 12 = 36.
@@ -34916,7 +34916,7 @@ print(df.info())
 # print the dimensions of the dataframe
 print(df.shape)
 
-# print the column names",,"[(0, 0)]","A: Let's think step by step.
+# print the column names",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, Gwen is 8 years old, and James is 12 years old.
 When we delete Bernard, we get the following: Louis is 7 years old, Vincent is 9 years old, Gwen is 8 years old, and James is 12 years old.
 The cumulated age of the penguins is 7 + 9 + 8 + 12 = 36.
@@ -35146,7 +35146,7 @@ Louis is 50 cm tall, Bernard is 80 cm tall, Vincent is 60 cm tall, and Gwen is 7
 According to the table, Bernard is younger but taller than Gwen.
 The penguin that is younger than Gwen but taller than Gwen is Bernard.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the age and height. We know the following: Louis is 7 years old, 50cm tall, Bernard is 5 years old, 80cm tall, Vincent is 9 years old, 60cm tall, and Gwen is 8 years old, 70cm tall.
 The penguin that is younger than Gwen but taller than her is Bernard.
 The penguin that is younger but taller than Gwen is Bernard. So the answer is (B).
@@ -35154,7 +35154,7 @@ The penguin that is younger but taller than Gwen is Bernard. So the answer is (B
 
 ## Logic Puzzles
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on age and height. We know the following: Louis is 7 years old, Bernard is 5 years old, Vincent is 9 years old, Gwen is 8 years old, and James is 12 years old.
 We know from the table that Gwen's height is 70 cm.
 According to the table, only Bernard (5) is younger but taller than Gwen.
@@ -35382,7 +35382,7 @@ import string
 # lst = []
 # for a0 in range(N):
 #     op, contact = input().strip().split(' ')
-#     op, contact = [str(op), str(contact)]",,"[(0, 0)]","A: Let's think step by step.
+#     op, contact = [str(op), str(contact)]",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on penguins. We know the following: There is a table with 4 penguins (Louis, Bernard, Vincent, Gwen). We add James to this table.
 There are now 5 penguins in this table.
 The number of penguins in the table is 5. So the answer is (E).
@@ -35416,7 +35416,7 @@ def get_answer(problem):
     #   Or None, if the problem is invalid
 
     # First, we split the problem into its question and options.
-    question_",,"[(0, 0)]","A: Let's think step by step.
+    question_",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the number of penguins. We know the following: Louis, Bernard, Vincent, and Gwen are penguins. Now, we add James to the table.
 There are 5 penguins in the table.
 There are 5 penguins in the tables. So the answer is (E).
@@ -35822,7 +35822,7 @@ The name of the first penguin sorted by alphabetic order is Bernard. So the answ
 ```
 ## Problem 2:
 ```
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 When we sort their names alphabetically, we get Bernard, Gwen, Louis, Vincent.
 The name of the first penguin sorted by alphabetical order is Bernard.
@@ -35908,7 +35908,7 @@ This question focuses on gender. We know the following: The names of the penguin
 The question asks, ""Which penguin is a female?""
 Gwen is a female. (D)
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on gender. We know the following: Louis is a male, Bernard is a male, Vincent is a male, Gwen is a female, and James is a male.
 According to the table, Gwen is a female.
 The only female in the table is Gwen.
@@ -36144,7 +36144,7 @@ The penguin taller than the other ones is James. So the answer is (E).
 
 '''
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on height. We know the following: Louis is 50 cm tall, Bernard is 80 cm tall, Vincent is 60 cm tall, Gwen is 70 cm tall, and James is 90 cm tall.
 According to the table, James (90 cm) is taller than the others.
 The penguin that is taller than the other ones is James. So the answer is (E).
@@ -36394,7 +36394,7 @@ The name of the last penguin sorted by alphabetic order is Vincent. So the answe
 
 Even though the table is full of information, you need to focus on the most important information that is needed to answer the question.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 This question focuses on the name. We know the following: The names of the penguin in the table are Louis, Bernard, Vincent, and Gwen.
 When we sort their names alphabetically, we get Bernard, Gwen, Louis, Vincent.
 We add James to the table. When we sort their names alphabetically, we get Bernard, Gwen, James, Louis, Vincent.
