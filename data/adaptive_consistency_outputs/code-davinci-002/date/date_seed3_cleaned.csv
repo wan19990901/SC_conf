@@ -540,7 +540,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# Yesterday is April 30, 2021.
+",error,"[(0, 0)]","# Yesterday is April 30, 2021.
 yesterday = datetime(2021, 4, 30)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
@@ -775,7 +775,7 @@ ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# Yesterday was April 30, 2021.
+",error,"[(0, 0)]","# Yesterday was April 30, 2021.
 yesterday = datetime(2021, 4, 30)
 # 10 days ago,
 ten_days_ago = yesterday - relativedelta(days=10)
@@ -2017,7 +2017,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# Yesterday was April 30, 2021.
+",error,"[(0, 0)]","# Yesterday was April 30, 2021.
 yesterday = datetime(2021, 4, 30)
 # One week from today,
 one_week_from_today = yesterday + relativedelta(weeks=1)
@@ -4063,7 +4063,7 @@ one_week_ago.strftime('%m/%d/%Y')
 ### 3.5.8 Tricky Python Questions
 
 ```python
-",,"[(0, 0)]","# If the deadline is Jun 1, 2021 and it is 2 days away from now, then today is 2 days before.
+",error,"[(0, 0)]","# If the deadline is Jun 1, 2021 and it is 2 days away from now, then today is 2 days before.
 today = datetime(2021, 6, 1) - relativedelta(days=2)
 # One week ago from today,
 a_week_ago = today - relativedelta(weeks=1)
@@ -4671,7 +4671,7 @@ later = now + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If the deadline is Jun 1, 2021, and today is 2 days away from the deadline, then the deadline is 2 days later.
+",error,"[(0, 0)]","# If the deadline is Jun 1, 2021, and today is 2 days away from the deadline, then the deadline is 2 days later.
 deadline = datetime(2021, 6, 1) + relativedelta(days=2)
 # 24 hours later,
 later = deadline + relativedelta(hours=24)
@@ -6799,7 +6799,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_2019.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If tomorrow is 11/12/2019, then today is 11/11/2019.
+",error,"[(0, 0)]","# If tomorrow is 11/12/2019, then today is 11/11/2019.
 today = datetime(2019, 11, 12) - relativedelta(days=1)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -6897,7 +6897,7 @@ one_week_from_today = today + relativedelta(days=7)
 # The answer formatted with %m/%d/%Y is
 one_week_from_2019.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If tomorrow is 11/12/2019, then today is 11/11/2019.
+",error,"[(0, 0)]","# If tomorrow is 11/12/2019, then today is 11/11/2019.
 today = datetime(2019, 11, 11)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -13926,7 +13926,7 @@ a_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 a_week_from_2019.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# It is 4/19/1969 today.
+",error,"[(0, 0)]","# It is 4/19/1969 today.
 today = datetime(1969, 4, 19)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -14708,7 +14708,7 @@ tomorrow.strftime('%m/%d/%Y')
 today = (datetime(2001, 2, 28) + relativedelta(years=16)).strftime('%Y-%m-%d')
 yesterday = (today - relativedelta(days=1)).strftime('%Y-%m-%d')
 
-",,"[(0, 0)]","# If Jane was born on the last day of Feburary in 2000 and today is her 16-year-old birthday, then today is 15 years later and 1 month later.
+",error,"[(0, 0)]","# If Jane was born on the last day of Feburary in 2000 and today is her 16-year-old birthday, then today is 15 years later and 1 month later.
 today = datetime(2000, 2, 29) + relativedelta(years=15, months=1)
 # Tomorrow,
 tomorrow = today + relativedelta(days=1)
@@ -16828,7 +16828,7 @@ later = today + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane was born on the last day of Feburary in 2000 and today is her 16-year-old birthday, then today is 16 years later.
+",error,"[(0, 0)]","# If Jane was born on the last day of Feburary in 2000 and today is her 16-year-old birthday, then today is 16 years later.
 today = datetime(2000, 2, 29) + relativedelta(years=16)
 # 24 hours later,
 later = today + relativedelta(hours=24)
@@ -17580,7 +17580,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane was born on the last day of Feburary in 2001 and today is her 16-year-old birthday, then today is 16 years later.
+",error,"[(0, 0)]","# If Jane was born on the last day of Feburary in 2001 and today is her 16-year-old birthday, then today is 16 years later.
 today = datetime(2001, 2, 28) + relativedelta(years=16)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -18342,7 +18342,7 @@ def test_time(function):
         (datetime(2019, 1, 1), datetime(2019, 1, 1, 1), '2019-01-01 01:00:00'),
         (datetime(2019, 1, 1), datetime(2019, 1, 1, 12), '2019-01-01 12:00:00'),
         (datetime(2019, 1, 1), datetime(2019, 1, 1, 23), '2019-01-01 23:00:00'),
-        (datetime(2019, 1, 1), datetime(2019, 1, 2),",,"[(0, 0)]","# If Jane was born on the last day of Feburary in 2001 and today is her 16-year-old birthday, then today is 16 years later.
+        (datetime(2019, 1, 1), datetime(2019, 1, 2),",error,"[(0, 0)]","# If Jane was born on the last day of Feburary in 2001 and today is her 16-year-old birthday, then today is 16 years later.
 today = datetime(2001, 2, 28) + relativedelta(years=16)
 # One year ago from today,
 one_year_ago = today - relativedelta(years=1)
@@ -18479,7 +18479,7 @@ one_week_ago = today - relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane was born on the last day of Feburary in 2001 and today is her 16-year-old birthday, then today is 16 years later.
+",error,"[(0, 0)]","# If Jane was born on the last day of Feburary in 2001 and today is her 16-year-old birthday, then today is 16 years later.
 today = datetime(2001, 2, 28) + relativedelta(years=16)
 # One week ago from today,
 one_week_ago_from_today = today - relativedelta(weeks=1)
@@ -21423,7 +21423,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_2019.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane and John married on Jan 2, 1958 and today is their golden wedding anniversary, then today is 50 years later.
+",error,"[(0, 0)]","# If Jane and John married on Jan 2, 1958 and today is their golden wedding anniversary, then today is 50 years later.
 today = datetime(1958, 1, 2) + relativedelta(years=50)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -21626,7 +21626,7 @@ today = datetime(1958, 1, 2) + relativedelta(years=50)
 # 24 hours later,
 later = today + relativedelta(hours=24)
 
-",,"[(0, 0)]","# If Jane and John married on Jan 2, 1958 and today is their golden wedding anniversary, then today is 50 years later.
+",error,"[(0, 0)]","# If Jane and John married on Jan 2, 1958 and today is their golden wedding anniversary, then today is 50 years later.
 today = datetime(1958, 1, 2) + relativedelta(years=50)
 # 24 hours later,
 later = today + relativedelta(hours=24)
@@ -21854,7 +21854,7 @@ today = datetime(2016, 12, 2) + relativedelta(years=3)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane got her job in 2016 and today is her 3-year work anniversary, then today is 3 years later.
+",error,"[(0, 0)]","# If Jane got her job in 2016 and today is her 3-year work anniversary, then today is 3 years later.
 today = datetime(2016, 1, 1) + relativedelta(years=3)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -24738,7 +24738,7 @@ yesterday = today - relativedelta(days=1)
 yesterday.strftime('%m/%d/%Y')
 
 # IMPORTANT: If a question involves a leap year, make sure to include the month of Feburary 29 in the related date.
-",,"[(0, 0)]","# If Jane quited her job on Mar 20, 2020, then today is 176 days later.
+",error,"[(0, 0)]","# If Jane quited her job on Mar 20, 2020, then today is 176 days later.
 today = datetime(2020, 3, 20) + relativedelta(days=176)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -26456,7 +26456,7 @@ later = 176_days_ago + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane quited her job on Mar 20, 2020 and 176 days have passed since then, then today is 176 days later.
+",error,"[(0, 0)]","# If Jane quited her job on Mar 20, 2020 and 176 days have passed since then, then today is 176 days later.
 today = datetime(2020, 3, 20) + relativedelta(days=176)
 # 24 hours later,
 later = today + relativedelta(hours=24)
@@ -29108,7 +29108,7 @@ today = datetime(1987, 1, 2)
 today.strftime('%m/%d/%Y')
 # We've seen that %m and %d in the strftime() method switches places when we do that.
 
-",,"[(0, 0)]","# If in the UK, today is 02/01/1987, then today is 1/2/1987.
+",error,"[(0, 0)]","# If in the UK, today is 02/01/1987, then today is 1/2/1987.
 today = datetime(1987, 1, 2)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -33455,7 +33455,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 one_week_from_today.strftime('%m/%d/%Y')
 ```
 
-Note that the questions are scrambled, so you should write your own code to read the question, parse the information, and do the maths.",,"[(0, 0)]","# If Jane booked a flight for tomorrow, Jul 29, 2002, then today is one week before Jul 29, 2002.
+Note that the questions are scrambled, so you should write your own code to read the question, parse the information, and do the maths.",error,"[(0, 0)]","# If Jane booked a flight for tomorrow, Jul 29, 2002, then today is one week before Jul 29, 2002.
 today = datetime(2002, 7, 29) - relativedelta(weeks=1)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -33589,7 +33589,7 @@ later = today + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane booked a flight for tomorrow, Jul 29, 2002, then tomorrow is 7/28/2002.
+",error,"[(0, 0)]","# If Jane booked a flight for tomorrow, Jul 29, 2002, then tomorrow is 7/28/2002.
 tomorrow = datetime(2002, 7, 28)
 # 24 hours later,
 later = tomorrow + relativedelta(hours=24)
@@ -33860,7 +33860,7 @@ later.strftime('%m/%d/%Y')
 today = datetime(2002, 7, 28)
 # 24 hours later,
 later = today + relativedelta(hours=24)
-# The answer formatt",,"[(0, 0)]"
+# The answer formatt",error,"[(0, 0)]"
 Date,Jane visits the bookstore on the 16th of each month starting from the October of 2009. It is her 5th visit to the bookstore today. What is the date today in MM/DD/YYYY?,02/16/2010,"# If Jane visits the bookstore on the 16th of each month starting from the October of 2009 and it is her 5th visit to the bookstore today, then today is 5 months later.
 today = datetime(2009, 10, 16) + relativedelta(months=5)
 # The answer formatted with %m/%d/%Y is
@@ -35640,7 +35640,7 @@ one_week_ago_from_today.strftime('%m/%d/%Y')
 # The lowest year number allowed in a date or datetime object. MINYEAR is 1.
 
 # MAXYEAR
-# The largest year number allowed in a date or",,"[(0, 0)]","# If Jane visits the bookstore on the 16th of each month starting from October 2009, and it is her 5th visit to the bookstore today, then today is the 16th of the 5th month after October 2009.
+# The largest year number allowed in a date or",error,"[(0, 0)]","# If Jane visits the bookstore on the 16th of each month starting from October 2009, and it is her 5th visit to the bookstore today, then today is the 16th of the 5th month after October 2009.
 today = datetime(2009, 10, 16) + relativedelta(months=5*16)
 # One week ago,
 one_week_ago = today - relativedelta(weeks=1)
@@ -36346,7 +36346,7 @@ later.strftime('%m/%d/%Y')
 3. Drop the mic
 """"""
 
-",,"[(0, 0)]"
+",error,"[(0, 0)]"
 Date,"Jane thought today is 3/11/2002, but today is in fact Mar 12, which is 1 day later. What is the date today in MM/DD/YYYY?",03/12/2002,"# If Jane thought today is 3/11/2002, but today is in fact Mar 12, then today is 3/1/2002.
 today = datetime(2002, 3, 12)
 # The answer formatted with %m/%d/%Y is
@@ -38252,7 +38252,7 @@ today = datetime(2002, 3, 12)
 one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_today.strftime('%m/%d/%Y')
-```",,"[(0, 0)]","# If Jane thought today is 3/11/2002, but today is in fact Mar 12, then today is 3/1/2002.
+```",error,"[(0, 0)]","# If Jane thought today is 3/11/2002, but today is in fact Mar 12, then today is 3/1/2002.
 today = datetime(2002, 3, 12)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -38476,7 +38476,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_2019.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane thought today is 3/11/2002, but today is in fact Mar 12, then today is 3/1/2002.
+",error,"[(0, 0)]","# If Jane thought today is 3/11/2002, but today is in fact Mar 12, then today is 3/1/2002.
 today = datetime(2002, 3, 12)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -38622,7 +38622,7 @@ today = datetime(2002, 3, 12)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane thought today is 3/11/2002, but today is in fact Mar 12, then today is 3/1/2002.
+",error,"[(0, 0)]","# If Jane thought today is 3/11/2002, but today is in fact Mar 12, then today is 3/1/2002.
 today = datetime(2002, 3, 12)
 # 24 hours later,
 later = today + relativedelta(hours=24)
@@ -38954,7 +38954,7 @@ today = datetime(2007, 1, 1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","today = datetime(2007, 1, 1)
+",error,"[(0, 0)]","today = datetime(2007, 1, 1)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
@@ -41915,7 +41915,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane's appointment will be 3 days later, then today is 3 days before.
+",error,"[(0, 0)]","# If Jane's appointment will be 3 days later, then today is 3 days before.
 today = datetime(1985, 4, 10) - relativedelta(days=3)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -43708,7 +43708,7 @@ later.strftime('%m/%d/%Y')
 ",04/11/1985,"[(0, 0)]","# If today is Apr 10, 1985 and Jane's appointment will be 3 days later, then the appointment is 3 days later.
 appointment = datetime(1985, 4, 10) + relativedelta(days=3)
 # 24 hours later,
-later = appointme",,"[(0, 0)]","# Today is Apr 10, 1985.
+later = appointme",error,"[(0, 0)]","# Today is Apr 10, 1985.
 today = datetime(1985, 4, 10)
 # Jane's appointment will be 3 days later.
 appointment = today + relativedelta(days=3)
@@ -43930,7 +43930,7 @@ today = datetime(1973, 3, 5, 0, 0) + relativedelta(times=2)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 3/5 and it is Jane's second time in the year 1973 to see a meteor shower, then today is the second time in the year 1973.
+",error,"[(0, 0)]","# If today is 3/5 and it is Jane's second time in the year 1973 to see a meteor shower, then today is the second time in the year 1973.
 today = datetime(1973, 1, 1) + relativedelta(years=2)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -43967,7 +43967,7 @@ today = datetime(1973, 1, 1) + relativedelta(weekday=SU(2))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 3/5, and it is Jane's second time in the year 1973 to see a meteor shower, then today is twice.
+",error,"[(0, 0)]","# If today is 3/5, and it is Jane's second time in the year 1973 to see a meteor shower, then today is twice.
 today = datetime(1973, 3, 5)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -44007,7 +44007,7 @@ today = datetime(1973, 1, 1) + relativedelta(times=2)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If it is Jane's second time in the year 1973 to see a meteor shower, then today is 2 times later.
+",error,"[(0, 0)]","# If it is Jane's second time in the year 1973 to see a meteor shower, then today is 2 times later.
 today = datetime(1973, 3, 5) - relativedelta(days=365) * 2
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -44103,7 +44103,7 @@ tomorrow = today + relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 tomorrow.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 3/5 and it is Jane's second time in the year 1973 to see a meteor shower, then today is the second day of the year.
+",error,"[(0, 0)]","# If today is 3/5 and it is Jane's second time in the year 1973 to see a meteor shower, then today is the second day of the year.
 today = datetime(1973, 1, 2)
 # Tomorrow,
 tomorrow = today + relativedelta(days=1)
@@ -44346,7 +44346,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 3/5, and it is Jane's second time in the year 1973 to see a meteor shower, then yesterday is 3/3/1973.
+",error,"[(0, 0)]","# If today is 3/5, and it is Jane's second time in the year 1973 to see a meteor shower, then yesterday is 3/3/1973.
 yesterday = datetime(1973, 3, 5) - relativedelta(days=2)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
@@ -44488,7 +44488,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# Today is 3/5.
+",error,"[(0, 0)]","# Today is 3/5.
 today = datetime(1973, 3, 5)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -44523,7 +44523,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 3/5, and it is Jane's second time in the year 1973 to see a meteor shower, then today is the end of the second month.
+",error,"[(0, 0)]","# If today is 3/5, and it is Jane's second time in the year 1973 to see a meteor shower, then today is the end of the second month.
 today = datetime(1973, 3, 5)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -44649,7 +44649,7 @@ ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# Today is 3/5 in the year 1973.
+",error,"[(0, 0)]","# Today is 3/5 in the year 1973.
 today = datetime(1973, 3, 5)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -44766,7 +44766,7 @@ today = datetime(1973, 3, 5) * 2
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
-ten_days_ago.strftime('%m/%d/%Y')",,"[(0, 0)]","# If today is 3/5, and it is Jane's second time in the year 1973 to see a meteor shower, then today is 2 days later.
+ten_days_ago.strftime('%m/%d/%Y')",error,"[(0, 0)]","# If today is 3/5, and it is Jane's second time in the year 1973 to see a meteor shower, then today is 2 days later.
 today = datetime(1973, 3, 5) + relativedelta(days=2)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -45269,7 +45269,7 @@ one_year_ago = today - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 3/5 and it is Jane's second time in the year 1973 to see a meteor shower, then today is one year later.
+",error,"[(0, 0)]","# If today is 3/5 and it is Jane's second time in the year 1973 to see a meteor shower, then today is one year later.
 today = datetime(1973, 3, 4) + relativedelta(years=1)
 # One year ago from today,
 one_year_ago = today - relativedelta(years=1)
@@ -45622,7 +45622,7 @@ one_week_ago = today - relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 3/5, and it is Jane's second time in the year 1973 to see a meteor shower, then today is 3/5/1973.
+",error,"[(0, 0)]","# If today is 3/5, and it is Jane's second time in the year 1973 to see a meteor shower, then today is 3/5/1973.
 today = datetime(1973, 3, 5)
 # One week ago,
 one_week_ago = today - relativedelta(weeks=1)
@@ -45653,7 +45653,7 @@ one_week_ago = today - relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# Today is 3/5, and it is Jane's second time in the year 1973 to see a meteor shower, then today is 35 days after Jan 1, 1973.
+",error,"[(0, 0)]","# Today is 3/5, and it is Jane's second time in the year 1973 to see a meteor shower, then today is 35 days after Jan 1, 1973.
 today = datetime(1973, 1, 1) + relativedelta(days=35)
 # One week ago,
 one_week_ago = today - relativedelta(weeks=1)
@@ -45688,7 +45688,7 @@ one_week_ago = today - relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# Today is 3/5, and it is Jane's second time in the year 1973.
+",error,"[(0, 0)]","# Today is 3/5, and it is Jane's second time in the year 1973.
 today = datetime(1973, 3, 5)
 # One week ago from today,
 one_week_ago = today - relativedelta(weeks=1)
@@ -45806,7 +45806,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 3/5 and it is Jane's second time in the year 1973 to see a meteor shower, then today is 2 days later.
+",error,"[(0, 0)]","# If today is 3/5 and it is Jane's second time in the year 1973 to see a meteor shower, then today is 2 days later.
 today = datetime(1973, 3, 5) + relativedelta(days=2)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -45902,7 +45902,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 3/5, it is Jane's second time in the year 1973 to see a meteor shower, then today is 3/5/1973.
+",error,"[(0, 0)]","# If today is 3/5, it is Jane's second time in the year 1973 to see a meteor shower, then today is 3/5/1973.
 today = datetime(1973, 3, 5)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -45989,7 +45989,7 @@ later = today + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 3/5, and it is Jane's second time in the year 1973 to see a meteor shower, then today is her second visit to the year 1973.
+",error,"[(0, 0)]","# If today is 3/5, and it is Jane's second time in the year 1973 to see a meteor shower, then today is her second visit to the year 1973.
 today = datetime(1973, 3, 5) + relativedelta(years=1)
 # 24 hours later,
 later = today + relativedelta(hours=24)
@@ -46189,7 +46189,7 @@ later = today + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is Jane's second time in the year 1973 to see a meteor shower, then today is in fact 3/3/1973.
+",error,"[(0, 0)]","# If today is Jane's second time in the year 1973 to see a meteor shower, then today is in fact 3/3/1973.
 today = datetime(1973, 3, 5) - relativedelta(days=2)
 # 24 hours later,
 later = today + relativedelta(hours=24)
@@ -46342,7 +46342,7 @@ yesterday = datetime(2011, 1, 21)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# Yesterday, Jan 21, 2011, Jane ate 2 pizzas and 5 wings.
+",error,"[(0, 0)]","# Yesterday, Jan 21, 2011, Jane ate 2 pizzas and 5 wings.
 yesterday = datetime(2011, 1, 21)
 # Today,
 today = yesterday + relativedelta(days=1)
@@ -46564,7 +46564,7 @@ tomorrow = today + relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 tomorrow.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# Yesterday, Jan 21, 2011
+",error,"[(0, 0)]","# Yesterday, Jan 21, 2011
 yesterday = datetime(2011, 1, 21)
 # Tomorrow,
 tomorrow = yesterday + relativedelta(days=2)
@@ -46973,7 +46973,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# Yesterday is Jan 21, 2011.
+",error,"[(0, 0)]","# Yesterday is Jan 21, 2011.
 yesterday = datetime(2011, 1, 21)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
@@ -47096,7 +47096,7 @@ ten_days_ago = yesterday - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If yesterday Jan 21, 2011, Jane ate 2 pizzas and 5 wings, then today is Jan 22.
+",error,"[(0, 0)]","# If yesterday Jan 21, 2011, Jane ate 2 pizzas and 5 wings, then today is Jan 22.
 today = datetime(2011, 1, 22)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -47598,7 +47598,7 @@ today = date(2011, 1, 21)
 # One year ago from today,
 one_year_ago = today - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
-one_year_ago.strftime('%m/%d/%Y')",,"[(0, 0)]","# If yesterday, Jan 21, 2011, Jane ate 2 pizzas and 5 wings, then today is one day later.
+one_year_ago.strftime('%m/%d/%Y')",error,"[(0, 0)]","# If yesterday, Jan 21, 2011, Jane ate 2 pizzas and 5 wings, then today is one day later.
 today = datetime(2011, 1, 21) + relativedelta(days=1)
 # One year ago from today,
 one_year_ago = today - relativedelta(years=1)
@@ -47647,7 +47647,7 @@ one_year_ago = today - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If yesterday, Jan 21, 2011, Jane ate 2 pizzas and 5 wings, then today is one day later.
+",error,"[(0, 0)]","# If yesterday, Jan 21, 2011, Jane ate 2 pizzas and 5 wings, then today is one day later.
 today = datetime(2011, 1, 21) + relativedelta(days=1)
 # One year ago,
 one_year_ago = today - relativedelta(years=1)
@@ -47879,7 +47879,7 @@ one_week_ago = today - relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If yesterday, Jan 21, 2011, Jane ate 2 pizzas and 5 wings, then today is one day later.
+",error,"[(0, 0)]","# If yesterday, Jan 21, 2011, Jane ate 2 pizzas and 5 wings, then today is one day later.
 today = datetime(2011, 1, 21) + relativedelta(days=1)
 # One week ago from today,
 one_week_ago = today - relativedelta(weeks=1)
@@ -48538,7 +48538,7 @@ later = yesterday + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# Yesterday is Jan 21, 2011.
+",error,"[(0, 0)]","# Yesterday is Jan 21, 2011.
 yesterday = datetime(2011, 1, 21)
 # 24 hours later,
 later = yesterday + relativedelta(hours=24)
@@ -48654,7 +48654,7 @@ today = datetime(2019, 6, 18)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",06/18/2019,"[(0, 0)]","# If Jane thinks today is 6/18/2019, but John",,"[(0, 0)]","# If Jane thinks today is 6/18/2019, but John thinks today is 6/19/2019, then today is 6/19/2019.
+",06/18/2019,"[(0, 0)]","# If Jane thinks today is 6/18/2019, but John",error,"[(0, 0)]","# If Jane thinks today is 6/18/2019, but John thinks today is 6/19/2019, then today is 6/19/2019.
 today = datetime(2019, 6, 19)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -49106,7 +49106,7 @@ tomorrow.strftime('%m/%d/%Y')
 
 ############################### !!!!!!!!!!!!!!!!!!!!!!!!!!! ##########################################
 # 3.4.4.4
-",,"[(0, 0)]"
+",error,"[(0, 0)]"
 Date,"Jane thinks today is 6/18/2019, but John thinks today is 6/19/2019. Jane is correct. What is the date yesterday in MM/DD/YYYY?",06/17/2019,"# If Jane thinks today is 6/18/2019 and John thinks today is 6/19/2019, then Jane is correct, so today is 6/18/2019.
 today = datetime(2019, 6, 18)
 # Yesterday,
@@ -50496,7 +50496,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_2019.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane thinks today is 6/18/2019 and John thinks today is 6/19/2019, then today is 6/19/2019.
+",error,"[(0, 0)]","# If Jane thinks today is 6/18/2019 and John thinks today is 6/19/2019, then today is 6/19/2019.
 today = datetime(2019, 6, 19)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -50580,7 +50580,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_2019.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane thinks today is 6/18/2019 and John thinks today is 6/19/2019, then today is 6/18/2019.
+",error,"[(0, 0)]","# If Jane thinks today is 6/18/2019 and John thinks today is 6/19/2019, then today is 6/18/2019.
 today = datetime(2019, 6, 18)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -50720,7 +50720,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_2019.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane thinks today is 6/18/2019 and John thinks today is 6/19/2019, then today is 6/18/2019.
+",error,"[(0, 0)]","# If Jane thinks today is 6/18/2019 and John thinks today is 6/19/2019, then today is 6/18/2019.
 today = datetime(2019, 6, 18)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -50748,7 +50748,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_2019.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane thinks today is 6/18/2019, but John thinks today is 6/19/2019, then today is 6/18/2019.
+",error,"[(0, 0)]","# If Jane thinks today is 6/18/2019, but John thinks today is 6/19/2019, then today is 6/18/2019.
 today = datetime(2019, 6, 18)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -53171,7 +53171,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_2019.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane thinks today is 6/18/2019, but John thinks today is 6/19/2019, then today is 6/19/2019.
+",error,"[(0, 0)]","# If Jane thinks today is 6/18/2019, but John thinks today is 6/19/2019, then today is 6/19/2019.
 today = datetime(2019, 6, 19)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -53185,7 +53185,7 @@ a_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 a_week_from_2019.strftime('%m/%d/%YY')
 
-",,"[(0, 0)]","# If Jane thinks today is 6/18/2019, but John thinks today is 6/19/2019, then today is 6/19/2019.
+",error,"[(0, 0)]","# If Jane thinks today is 6/18/2019, but John thinks today is 6/19/2019, then today is 6/19/2019.
 today = datetime(2019, 6, 19)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -58345,7 +58345,7 @@ month, day = [palindrome_number for palindrome_number in (9, 10, 11) if palindro
 # Today,
 today = datetime(year, month, day)
 # The answer formatted with %m/%d/%Y is
-today.strftime('%m/%d/%Y')",,"[(0, 0)]","# If today is the palindrome day of 2020, because the MMDDYYYY format of the date is the same backwards as forwards, then today is 10/02/2020.
+today.strftime('%m/%d/%Y')",error,"[(0, 0)]","# If today is the palindrome day of 2020, because the MMDDYYYY format of the date is the same backwards as forwards, then today is 10/02/2020.
 today = datetime(2020, 10, 2)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -58373,7 +58373,7 @@ f'{today.month}{today.day}{today.year}'
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the palindrome day of 2020, then the MMDDYYYY format of the date is the same backwards as forwards.
+",error,"[(0, 0)]","# If today is the palindrome day of 2020, then the MMDDYYYY format of the date is the same backwards as forwards.
 today = datetime(2020, 2, 2)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -58388,7 +58388,7 @@ today.strftime('%m/%d/%Y')
 # The digits must be 1, 2, 0, 2, 0, 2, 0, 1, which is the same as 1, 2, 0, 2, 0, 2, 0, 1 backwards.
 # So today is 12022020.
 today = datetime(2020, 12, 2)
-# The answer for",,"[(0, 0)]","# Today is the palindrome day of 2020, because the MMDDYYYY format of the date is the same backwards.
+# The answer for",error,"[(0, 0)]","# Today is the palindrome day of 2020, because the MMDDYYYY format of the date is the same backwards.
 # Since the date is 2020, then today is 10/02/2020.
 today = datetime(2020, 10, 2)
 # The answer formatted with %m/%d/%Y is
@@ -58418,7 +58418,7 @@ today = datetime.strptime('%d2%d2%d2' % (2020, 2020, 2020), '%Y2%m2%d2')
 today.strftime('%m/%d/%Y')
 
 
-",,"[(0, 0)]","# Today is the palindrome day of 2020, because the MMDDYYYY format of the date is the same backwards as forwards.
+",error,"[(0, 0)]","# Today is the palindrome day of 2020, because the MMDDYYYY format of the date is the same backwards as forwards.
 today = datetime(2020, 2, 2)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -58531,7 +58531,7 @@ today = datetime.strptime('20202202', '%Y%m%d')
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# A palindrome day is a day in which the MMDDYYYY format of the date is the same backwards as forwards.
+",error,"[(0, 0)]","# A palindrome day is a day in which the MMDDYYYY format of the date is the same backwards as forwards.
 today = datetime(2020, 2, 2) + relativedelta(years=20)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -58991,7 +58991,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-#",,"[(0, 0)]","# If today is the palindrome day of 2020, then today is 2020-02-02.
+#",error,"[(0, 0)]","# If today is the palindrome day of 2020, then today is 2020-02-02.
 today = datetime(2020, 2, 2)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -59015,7 +59015,7 @@ yesterday.strftime('%m/%d/%Y')
 ",02/19/2020,"[(0, 0)]","# Today is the palindrome day of 2020, because the MMDDYYYY format of the date is the same backwards as forwards.
 # The answer is: 02/02/2020
 
-",,"[(0, 0)]","# If today is the palindrome day of 2020, then today is 2020-02-02.
+",error,"[(0, 0)]","# If today is the palindrome day of 2020, then today is 2020-02-02.
 today = datetime(2020, 2, 2)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -59215,7 +59215,7 @@ ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the palindrome day of 2020, then today is in June.
+",error,"[(0, 0)]","# If today is the palindrome day of 2020, then today is in June.
 today = datetime(2020, 6, 10) + relativedelta(days=10)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -59375,7 +59375,7 @@ ten_days_ago.strftime('%m/%d/%Y')
 
 # ############### 6.4.6.1: Manipulating Dates and Times ###############
 
-",,"[(0, 0)]","# If today is the palindrome day of 2020, then today is 10 days later.
+",error,"[(0, 0)]","# If today is the palindrome day of 2020, then today is 10 days later.
 today = datetime(2020, 2, 2) + relativedelta(days=10)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -59739,7 +59739,7 @@ one_year_ago = today - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the palindrome day of 2020, then today is 1/20/2020.
+",error,"[(0, 0)]","# If today is the palindrome day of 2020, then today is 1/20/2020.
 today = datetime(2020, 1, 20)
 # One year ago from today,
 one_year_ago = today - relativedelta(years=1)
@@ -59962,7 +59962,7 @@ one_week_ago.strftime('%m/%d/%Y')
 # chronological order, i.e. the earliest date has index 0, the second earliest
 # date has index 1, and so on.
 #
-# Write a function get_prices(prices) that takes in",,"[(0, 0)]","# If today is the palindrome day of 2020, then today is the last day of Feburary, because 02/02/2020 is the palindrome day of 2020.
+# Write a function get_prices(prices) that takes in",error,"[(0, 0)]","# If today is the palindrome day of 2020, then today is the last day of Feburary, because 02/02/2020 is the palindrome day of 2020.
 # The last day of Feburary is 29th.
 today = datetime(2020, 2, 29)
 # One week ago from today,
@@ -60442,14 +60442,14 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the palindrome day of 2020, then today is the palindrome date of 2020.
+",error,"[(0, 0)]","# If today is the palindrome day of 2020, then today is the palindrome date of 2020.
 today = datetime.strptime('20202002', '%Y%m%d')
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the palindrome day of 2020, then today is 10/02/2020.
+",error,"[(0, 0)]","# If today is the palindrome day of 2020, then today is 10/02/2020.
 today = datetime(2020, 2, 10)
 # One week from today,
 later = today + relativedelta(weeks=1)
@@ -62049,7 +62049,7 @@ a_month_ago.strftime('%m/%d/%Y')
 #                                                                           #
 #############################################################################
 
-",,"[(0, 0)]","# If this is the last day of 1899, then today is 12/31/1899.
+",error,"[(0, 0)]","# If this is the last day of 1899, then today is 12/31/1899.
 today = datetime(1899, 12, 31)
 # A month ago,
 a_month_ago = today - relativedelta(months=1)
@@ -64045,7 +64045,7 @@ today = datetime(1943, 6, 1) + relativedelta(days=1)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
-ten_days_ago.strftime('%m/%d/%Y')",05/23/1943,"[(0, 0)]",# If the concert was scheduled to be o,,"[(0, 0)]","# If the concert was scheduled to be on 06/01/1943, but was delayed by one day to today, then today is one day later.
+ten_days_ago.strftime('%m/%d/%Y')",05/23/1943,"[(0, 0)]",# If the concert was scheduled to be o,error,"[(0, 0)]","# If the concert was scheduled to be on 06/01/1943, but was delayed by one day to today, then today is one day later.
 today = datetime(1943, 6, 1) + relativedelta(days=1)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -65104,7 +65104,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_2019.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If the concert was scheduled to be on 06/01/1943, but was delayed by one day to today, then today is one day later.
+",error,"[(0, 0)]","# If the concert was scheduled to be on 06/01/1943, but was delayed by one day to today, then today is one day later.
 today = datetime(1943, 6, 1) + relativedelta(days=1)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -65247,7 +65247,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_2019.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If the concert was scheduled to be on 06/01/1943, but was delayed by one day to today, then today is one day later.
+",error,"[(0, 0)]","# If the concert was scheduled to be on 06/01/1943, but was delayed by one day to today, then today is one day later.
 today = datetime(1943, 6, 1) + relativedelta(days=1)
 # One week from today,
 one_week_later = today + relativedelta(weeks=1)
@@ -65294,7 +65294,7 @@ today = datetime(1943, 6, 1) + relativedelta(days=1)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
-one_week_from_2019.strftime('%m/%d/%Y')",,"[(0, 0)]","# If the concert was scheduled to be on 06/01/1943, but was delayed by one day to today, then today is one day later.
+one_week_from_2019.strftime('%m/%d/%Y')",error,"[(0, 0)]","# If the concert was scheduled to be on 06/01/1943, but was delayed by one day to today, then today is one day later.
 today = datetime(1943, 6, 1) + relativedelta(days=1)
 #  One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -66169,7 +66169,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane scheduled 3 apointments with 5 poeple for tomorrow, then today is (Tue, 7/9/1972).
+",error,"[(0, 0)]","# If Jane scheduled 3 apointments with 5 poeple for tomorrow, then today is (Tue, 7/9/1972).
 today = datetime(1972, 7, 9)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -66426,7 +66426,7 @@ ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",06/28/1972,"[(0, 0)]",# If Jane scheduled 3 appointment,,"[(0, 0)]","# If tomorrow is Tue, 7/9/1972, then today is 7/8/1972.
+",06/28/1972,"[(0, 0)]",# If Jane scheduled 3 appointment,error,"[(0, 0)]","# If tomorrow is Tue, 7/9/1972, then today is 7/8/1972.
 today = datetime(1972, 7, 9) - relativedelta(days=1)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -66483,7 +66483,7 @@ ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane scheduled 3 apointments with 5 poeple for tomorrow, then today is 7/8/1972.
+",error,"[(0, 0)]","# If Jane scheduled 3 apointments with 5 poeple for tomorrow, then today is 7/8/1972.
 today = datetime(1972, 7, 9) - relativedelta(days=1)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -67098,7 +67098,7 @@ one_year_ago = tomorrow - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane scheduled 3 apointments with 5 poeple for tomorrow (Tue, 7/9/1972), then today is one day before.
+",error,"[(0, 0)]","# If Jane scheduled 3 apointments with 5 poeple for tomorrow (Tue, 7/9/1972), then today is one day before.
 today = datetime(1972, 7, 9) - relativedelta(days=1)
 # One year ago,
 one_year_ago = today - relativedelta(years=1)
@@ -67945,7 +67945,7 @@ later = tomorrow + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane scheduled 3 apointments with 5 poeple for tomorrow (Tue, 7/9/1972), then today is 7/9/1972.
+",error,"[(0, 0)]","# If Jane scheduled 3 apointments with 5 poeple for tomorrow (Tue, 7/9/1972), then today is 7/9/1972.
 today = datetime(1972, 7, 9)
 # 24 hours later,
 later = today + relativedelta(hours=24)
@@ -70242,7 +70242,7 @@ later = today + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If the current local time is 3:02 pm of 5/4/2004, then today is 5/4/2004.
+",error,"[(0, 0)]","# If the current local time is 3:02 pm of 5/4/2004, then today is 5/4/2004.
 today = datetime(2004, 5, 4)
 # 24 hours later,
 later = today + relativedelta(hours=24)
@@ -72875,7 +72875,7 @@ today = datetime(2003, 9, 1) + relativedelta(weekday=MO(-1))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 9/7, then today is 9/7/2003.
+",error,"[(0, 0)]","# If today is 9/7, then today is 9/7/2003.
 today = datetime(2003, 9, 7)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -72900,7 +72900,7 @@ today = datetime(2003, 9, 1) + relativedelta(weekday=SU(2))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 9/7 and Jane is watching NFL 2003, then today is in 2003.
+",error,"[(0, 0)]","# If today is 9/7 and Jane is watching NFL 2003, then today is in 2003.
 today = datetime(2003, 9, 7)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -72945,7 +72945,7 @@ today = date(2003, 9, 7)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 9/7, and Jane is watching NFL 2003, then today is 9/7/2003.
+",error,"[(0, 0)]","# If today is 9/7, and Jane is watching NFL 2003, then today is 9/7/2003.
 today = datetime(2003, 9, 7)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -73128,7 +73128,7 @@ tomorrow = today + relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 tomorrow.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 9/7 and Jane is watching NFL 2003, then today is 9/7/2003.
+",error,"[(0, 0)]","# If today is 9/7 and Jane is watching NFL 2003, then today is 9/7/2003.
 today = datetime(2003, 9, 7)
 # Tomorrow,
 tomorrow = today + relativedelta(days=1)
@@ -73635,7 +73635,7 @@ ten_days_ago = nfl_2003 - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",08/28/2003,"[(0, 0)]","# If today is 9/7 and Jane is watching NFL 2003, then toda",,"[(0, 0)]","# If today is 9/7 and Jane is watching NFL 2003, then today is 9 years and 7 months later.
+",08/28/2003,"[(0, 0)]","# If today is 9/7 and Jane is watching NFL 2003, then toda",error,"[(0, 0)]","# If today is 9/7 and Jane is watching NFL 2003, then today is 9 years and 7 months later.
 today = datetime(2003, 9, 7) + relativedelta(years=9) + relativedelta(months=7)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -73763,7 +73763,7 @@ ten_days_ago = 2003_nfl_game - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 9/7 and Jane is watching NFL 2003, then today is
+",error,"[(0, 0)]","# If today is 9/7 and Jane is watching NFL 2003, then today is
 today = datetime(2003, 9, 7)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -74340,7 +74340,7 @@ one_year_ago = today - relativedelta(years=1)
 # The answer formatted with %m/%d/%YY is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is 9/7 and Jane is watching NFL 2003, then today is 9/7/2003.
+",error,"[(0, 0)]","# If today is 9/7 and Jane is watching NFL 2003, then today is 9/7/2003.
 today = datetime(2003, 9, 7)
 # One year ago,
 one_year_ago = today - relativedelta(years=1)
@@ -74862,7 +74862,7 @@ one_week_from_today = today + relativedelta(weeks=today.weekofyear-nfl_2003.week
 # The answer formatted with %m/%d/%YY is
 one_week_from_today.strftime('%m/%d/%YY')
 
-",,"[(0, 0)]","# If today is 9/7 and Jane is watching NFL 2003, then today is 2003-09-07.
+",error,"[(0, 0)]","# If today is 9/7 and Jane is watching NFL 2003, then today is 2003-09-07.
 today = datetime(2003, 9, 7)
 # One week from today,
 one_week = today + relativedelta(weeks=1)
@@ -76079,7 +76079,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If yesterday was 12/31/1929, then today is one day later.
+",error,"[(0, 0)]","# If yesterday was 12/31/1929, then today is one day later.
 today = datetime(1929, 12, 31) + relativedelta(days=1)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -76290,7 +76290,7 @@ ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If yesterday was 12/31/1929, then today is one day later.
+",error,"[(0, 0)]","# If yesterday was 12/31/1929, then today is one day later.
 today = datetime(1929, 12, 31) + relativedelta(days=1)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -76619,7 +76619,7 @@ a_month_ago = today - relativedelta(months=1)
 # The answer formatted with %m/%d/%Y is
 a_month_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If yesterday was 12/31/1929 and today could not be 12/32/1929 because December has only 31 days, then today is 12/31/1929.
+",error,"[(0, 0)]","# If yesterday was 12/31/1929 and today could not be 12/32/1929 because December has only 31 days, then today is 12/31/1929.
 today = datetime(1929, 12, 31)
 # A month ago,
 a_month_ago = today - relativedelta(months=1)
@@ -76736,7 +76736,7 @@ one_year_ago = today - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If yesterday was 12/31/1929 and today could not be 12/32/1929 because December has only 31 days, then today is 1/1/1930.
+",error,"[(0, 0)]","# If yesterday was 12/31/1929 and today could not be 12/32/1929 because December has only 31 days, then today is 1/1/1930.
 today = datetime(1930, 1, 1)
 # One year ago from today,
 one_year_ago = today - relativedelta(years=1)
@@ -76888,7 +76888,7 @@ year_ago.strftime('%m/%d/%Y')
 ###                            HARD                                          ###
 ################################################################################
 
-",,"[(0, 0)]","# If yesterday was 12/31/1929 and today could not be 12/32/1929, then today is 1/1/1930.
+",error,"[(0, 0)]","# If yesterday was 12/31/1929 and today could not be 12/32/1929, then today is 1/1/1930.
 today = datetime(1930, 1, 1)
 # One year ago,
 one_year_ago = today - relativedelta(years=1)
@@ -77817,7 +77817,7 @@ later = today + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# Yesterday was 12/31/1929.
+",error,"[(0, 0)]","# Yesterday was 12/31/1929.
 yesterday = datetime(1929, 12, 31)
 # Today could not be 12/32/1929 because December has only 31 days.
 # 24 hours later,
@@ -78909,7 +78909,7 @@ a_month_ago = today - relativedelta(months=1)
 # The answer formatted with %m/%d/%Y is
 a_month_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If the day before yesterday was 11/23/1933, then yesterday is 11/24/1933.
+",error,"[(0, 0)]","# If the day before yesterday was 11/23/1933, then yesterday is 11/24/1933.
 yesterday = datetime(1933, 11, 23) + relativedelta(days=1)
 # A month ago,
 a_month_ago = yesterday - relativedelta(months=1)
@@ -80292,7 +80292,7 @@ today = datetime(2001, 11, 1) + relativedelta(weekday=TH(+4))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 # (With relativedelta, you can use weekday to specify which week day of the month, e.g. weekday=3 for Tuesday)
 today = datetime(2001, 11, 1) + relativedelta(weekday=4, weeks=3)
 # The answer formatted with %m/%d/%Y is
@@ -80303,14 +80303,14 @@ today = datetime(2001, 11, 22) + relativedelta(weekday=TH(4))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November.
+",error,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November.
 thanksgiving = datetime(2001, 11, 1) + relativedelta(weekday=TH(4))
 # Today is the US Thanksgiving of 2001.
 thanksgiving
 # The answer formatted with %m/%d/%Y is
 thanksgiving.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001,
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001,
 today = datetime(2001, 11, 22)
 # then today is the fourth Thursday of November.
 # The answer formatted with %m/%d/%Y is
@@ -80321,17 +80321,17 @@ today = date(2001, 11, 1) + relativedelta(weekday=TH(4))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 1) + relativedelta(weekday=TH(4))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November in 2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November in 2001.
 today = datetime(2001, 11, 22) + relativedelta(weekday=TH(4))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November. Today is the US Thanksgiving of 2001.
+",error,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November. Today is the US Thanksgiving of 2001.
 today = datetime(2001, 11, 22)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -80360,7 +80360,7 @@ today.strftime('%m/%d/%Y')
 ",11/28/2001,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November and today is the US Thanksgiving of 2001, then today is the fourth Thursday of November in 2001.
 today = datetime(2001, 11, 22) + relativedelta(weekday=TH(4))
 # The answer formatted with %m/%d/%Y is
-today.strftime('%m/%d/%Y')",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then the first Thursday of November 2001 is the day before.
+today.strftime('%m/%d/%Y')",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then the first Thursday of November 2001 is the day before.
 today = datetime(2001, 11, 22)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -80370,12 +80370,12 @@ thanksgiving = datetime(2001, 11, 1) + relativedelta(weekday=TH(3))
 # The answer formatted with %m/%d/%Y is
 thanksgiving.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 1) + relativedelta(weekday=TH(4))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November, 2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November, 2001.
 today = datetime(2001, 11, 29)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -80393,14 +80393,14 @@ thanksgiving_date = datetime(2001, 11, 1) + relativedelta(weekday=TH(+4))
 # The answer formatted with %m/%d/%Y is
 thanksgiving_date.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# The fourth Thursday of November falls
+",error,"[(0, 0)]","# The fourth Thursday of November falls
 fourth_thursday = datetime(2001, 11, 1) + relativedelta(weekday=TH(4))
 # So the US Thanksgiving of 2001 falls on
 thanksgiving_2001 = fourth_thursday + relativedelta(weeks=3)
 # The answer formatted with %m/%d/%Y is
 thanksgiving_2001.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November, and today is the US Thanksgiving of 2001, then today is (4-1)*7 days later.
+",error,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November, and today is the US Thanksgiving of 2001, then today is (4-1)*7 days later.
 today = datetime(2001, 11, 1) + relativedelta(weeks=3)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -80410,17 +80410,17 @@ today = datetime(2001, 11, 1) + relativedelta(day=1, weekday=TH(-1))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 1) + relativedelta(weekday=TH(+4))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November in 2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November in 2001.
 today = datetime(2001, 11, 1) + relativedelta(weekday=TH(4), weeks=3)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# The fourth Thursday of November is the 24th, 25th or 26th of the month.
+",error,"[(0, 0)]","# The fourth Thursday of November is the 24th, 25th or 26th of the month.
 # In 2001, the fourth Thursday of November is the 22nd.
 # If today is the US Thanksgiving of 2001, then today is 3 days later.
 today = datetime(2001, 11, 22) + relativedelta(days=3)
@@ -80444,30 +80444,30 @@ today = datetime(2001, 11, 1) + relativedelta(weekday=TH(+4))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of 2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of 2001.
 today = datetime(2001, 11, 1) + relativedelta(weekday=TH(4))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is on the fourth Thursday of November, 2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is on the fourth Thursday of November, 2001.
 today = datetime(2001, 11, 22) + relativedelta(weekday=TH(4))
 # The answer formatted with %m/%d/%Y is
-today.strftime('%m/%d/%Y')",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is on the fourth Thursday of November.
-today = datetime(2001, 11, 22) + relativedelta(weekday=TH(4))
-# The answer formatted with %m/%d/%Y is
-today.strftime('%m/%d/%Y')
-
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then the last Thursday of November 2001 is the fourth Thursday of November 2001.
+today.strftime('%m/%d/%Y')",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is on the fourth Thursday of November.
 today = datetime(2001, 11, 22) + relativedelta(weekday=TH(4))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then the last Thursday of November 2001 is the fourth Thursday of November 2001.
+today = datetime(2001, 11, 22) + relativedelta(weekday=TH(4))
+# The answer formatted with %m/%d/%Y is
+today.strftime('%m/%d/%Y')
+
+",error,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November.
 today = datetime(2001, 11, 1) + relativedelta(weekday=TH(+4))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November.
+",error,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November.
 today = datetime(2001, 11, 25)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -80477,7 +80477,7 @@ today = datetime(2001, 11, 1) + relativedelta(weekday=TH(+4))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November, then today is 4 weeks later.
+",error,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November, then today is 4 weeks later.
 today = datetime(2001, 11, 1) + relativedelta(weeks=4)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -80489,18 +80489,18 @@ thanksgiving = today + relativedelta(weekday=TH(+4))
 # The answer formatted with %m/%d/%Y is
 thanksgiving.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is on the fourth Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is on the fourth Thursday of November.
 thanksgiving = datetime(2001, 11, 1) + relativedelta(weekday=TH(+1))
 # The answer formatted with %m/%d/%Y is
 thanksgiving.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November.
+",error,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November.
 # If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 22) + relativedelta(weekday=TH(4))
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]"
+",error,"[(0, 0)]"
 Date,"In the US, Thanksgiving is on the fourth Thursday of November. Today is the US Thanksgiving of 2001. What is the date tomorrow in MM/DD/YYYY?",11/23/2002,"# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # Tomorrow,
@@ -80544,14 +80544,14 @@ tomorrow = today + relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 tomorrow.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 22) + relativedelta(weekday=TH)
 # Tomorrow,
 tomorrow = today + relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 tomorrow.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If in the US, Thanksgiving is on the fourth Thursday of November, then today is 11/22/2001.
+",error,"[(0, 0)]","# If in the US, Thanksgiving is on the fourth Thursday of November, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # Tomorrow,
 tomorrow = today + relativedelta(days=1)
@@ -80572,21 +80572,21 @@ tomorrow = today + relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 tomorrow.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November.
+",error,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November.
 today = datetime(2001, 11, 22) + relativedelta(weekday=TH(+4))
 # Tomorrow,
 tomorrow = today + relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 tomorrow.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 1) + relativedelta(weekday=TH(+4))
 # Tomorrow,
 tomorrow = today + relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 tomorrow.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is Thanksgiving of 2001, then today is 11/22/2001.
+",error,"[(0, 0)]","# If today is Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # Tomorrow,
 tomorrow = today + relativedelta(days=1)
@@ -80656,7 +80656,7 @@ tomorrow = today + relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 tomorrow.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is Nov 22, 2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is Nov 22, 2001.
 today = datetime(2001, 11, 22)
 # Tomorrow,
 tomorrow = today + relativedelta(days=1)
@@ -80714,7 +80714,7 @@ tomorrow = today + relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 tomorrow.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 22)
 # Tomorrow,
 tomorrow = today + relativedelta(days=1)
@@ -80770,7 +80770,7 @@ tomorrow = today + relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 tomorrow.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # Tomorrow,
 tomorrow = today + relativedelta(days=1)
@@ -80799,7 +80799,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# Today is the US Thanksgiving of 2001.
+",error,"[(0, 0)]","# Today is the US Thanksgiving of 2001.
 today = datetime(2001, 11, 22)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -80825,7 +80825,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 4 weeks later.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 4 weeks later.
 today = datetime(2001, 11, 1) + relativedelta(weeks=4)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -80853,7 +80853,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If in the US, Thanksgiving is on the fourth Thursday of November and today is the US Thanksgiving of 2001, then today is 11/22/2001.
+",error,"[(0, 0)]","# If in the US, Thanksgiving is on the fourth Thursday of November and today is the US Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -80937,7 +80937,7 @@ yesterday = thanksgiving - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the last Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the last Thursday of November.
 today = datetime(2001, 11, 29)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -80949,7 +80949,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If in the US, Thanksgiving is on the fourth Thursday of November and today is the US Thanksgiving of 2001, then today is 1 day later.
+",error,"[(0, 0)]","# If in the US, Thanksgiving is on the fourth Thursday of November and today is the US Thanksgiving of 2001, then today is 1 day later.
 today = datetime(2001, 11, 22) + relativedelta(days=1)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -80970,7 +80970,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November, and today is the Thanksgiving of 2001, then today is 11/22/2001.
+",error,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November, and today is the Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -81111,7 +81111,7 @@ ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November and today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+",error,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November and today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 22)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -81128,7 +81128,7 @@ ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 24 days before Dec 1.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 24 days before Dec 1.
 today = datetime(2001, 12, 1) - relativedelta(days=24)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -81158,7 +81158,7 @@ ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November 2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November 2001.
 today = datetime(2001, 11, 22)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -81259,7 +81259,7 @@ ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -81280,7 +81280,7 @@ ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 4) + relativedelta(weeks=3)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -81294,7 +81294,7 @@ ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November, and today is the US Thanksgiving of 2001, then today is 10 weeks later.
+",error,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November, and today is the US Thanksgiving of 2001, then today is 10 weeks later.
 today = datetime(2001, 11, 1) + relativedelta(weeks=10)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -81322,7 +81322,7 @@ ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%Y is
 ten_days_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -81346,7 +81346,7 @@ ten_days_ago = today - relativedelta(days=10)
 # The answer formatted with %m/%d/%YYY is
 ten_days_ago.strftime('%m/%d/%YYY')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -81401,7 +81401,7 @@ a_month_ago = today - relativedelta(months=1)
 # The answer formatted with %m/%d/%Y is
 a_month_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is on the fourth Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is on the fourth Thursday of November.
 # Today is on the fourth Thursday of November.
 today = datetime(2001, 11, 22)
 # A month ago,
@@ -81552,7 +81552,7 @@ a_month_ago.strftime('%m/%d/%Y')
 ",10/22/2001,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November, and today is the US Thanksgiving of 2001, then today is on the fourth Thursday of November.
 # But there is not enough information to determine the date.
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is Nov 22, 2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is Nov 22, 2001.
 today = datetime(2001, 11, 22)
 # A month ago,
 a_month_ago = today - relativedelta(months=1)
@@ -81656,7 +81656,7 @@ one_year_ago = today - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # One year ago from today,
 one_year_ago = today - relativedelta(years=1)
@@ -81698,14 +81698,14 @@ one_year_ago = thanksgiving - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 1) + relativedelta(weekday=TH(4))
 # One year ago from today,
 one_year_ago = today - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November in 2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November in 2001.
 today = datetime(2001, 11, 22)  # the fourth Thursday of November
 # One year ago from today,
 one_year_ago = today - relativedelta(years=1)
@@ -81719,7 +81719,7 @@ one_year_ago = today - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # One year ago from today,
 one_year_ago = today - relativedelta(years=1)
@@ -81747,7 +81747,7 @@ one_year_ago = today - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # One year ago,
 one_year_ago = today - relativedelta(years=1)
@@ -81804,7 +81804,7 @@ one_year_ago = thanksgiving - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then the date one year ago from today is the US Thanksgiving of 2000. In order to find the date of the US Thanksgiving of 2000, we can first find the date of the US Thanksgiving of 2001 and then subtract one year.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then the date one year ago from today is the US Thanksgiving of 2000. In order to find the date of the US Thanksgiving of 2000, we can first find the date of the US Thanksgiving of 2001 and then subtract one year.
 # One way to find the date of the US Thanksgiving of 2001 is to find the date that is the fourth Thursday of November 2001,
 today = datetime(2001, 11, 1) + relativedelta(weekday=TH(4))
 # The answer is one year ago from the above date.
@@ -81812,7 +81812,7 @@ one_year_ago = today - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # One year ago,
 one_year_ago = today - relativedelta(years=1)
@@ -81861,7 +81861,7 @@ one_year_ago = today - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November and today is the US Thanksgiving of 2001, then today is four weeks later.
+",error,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November and today is the US Thanksgiving of 2001, then today is four weeks later.
 today = datetime(2001, 11, 1) + relativedelta(weeks=4)
 # One year ago,
 one_year_ago = today - relativedelta(years=1)
@@ -81875,7 +81875,7 @@ one_year_ago = today - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # One year ago,
 one_year_ago = today - relativedelta(years=1)
@@ -81903,7 +81903,7 @@ one_year_ago = today - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November, then today is 4 weeks later.
+",error,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November, then today is 4 weeks later.
 today = datetime(2001, 11, 1) + relativedelta(weeks=4)
 # One year ago from today,
 one_year_ago = today - relativedelta(years=1)
@@ -81918,7 +81918,7 @@ one_week_ago = today - relativedelta(weeks=1)
 # The answer formatted with %m/%d/%YYYY is
 one_week_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November.
+",error,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November.
 # Today is the US Thanksgiving of 2001.
 today = datetime(2001, 11, 22) + relativedelta(weekday=TH(4))
 # One week ago from today,
@@ -81926,7 +81926,7 @@ one_week_ago = today - relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # One week ago from today,
 one_week_ago = today - relativedelta(weeks=1)
@@ -82038,7 +82038,7 @@ one_week_ago = today - relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If in the US, Thanksgiving is on the fourth Thursday of November and today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+",error,"[(0, 0)]","# If in the US, Thanksgiving is on the fourth Thursday of November and today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 22)
 # One week ago from today,
 one_week_ago = today - relativedelta(weeks=1)
@@ -82081,7 +82081,7 @@ one_week_ago = today - relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 14)
 # One week ago from today,
 one_week_ago = today - relativedelta(weeks=1)
@@ -82174,7 +82174,7 @@ one_week_ago = today - relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 22)
 # One week ago,
 one_week_ago = today - relativedelta(weeks=1)
@@ -82233,7 +82233,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November and today is the US Thanksgiving of 2001, then today is the fourth Thursday of November, 2001.
+",error,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November and today is the US Thanksgiving of 2001, then today is the fourth Thursday of November, 2001.
 today = datetime(2001, 11, 4)
 # One week from today,
 one_week_later = today + relativedelta(weeks=1)
@@ -82252,7 +82252,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is on November 22, 2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is on November 22, 2001.
 today = datetime(2001, 11, 22)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -82294,7 +82294,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November in 2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November in 2001.
 today = datetime(2001, 11, 22)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -82306,7 +82306,7 @@ today = datetime(2001, 11, 1) + relativedelta(weekday=TH(4))
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
-one_week_from_today.strftime('%m/%d/%Y')",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+one_week_from_today.strftime('%m/%d/%Y')",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 22)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -82325,7 +82325,7 @@ today = datetime(2001, 11, 1) + relativedelta(weekday=TH(4))
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
-one_week_from_today.strftime('%m/%d/%Y')",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+one_week_from_today.strftime('%m/%d/%Y')",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 22)
 # One week from today
 one_week_from_today = today + relativedelta(weeks=1)
@@ -82355,7 +82355,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November, and today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
+",error,"[(0, 0)]","# If Thanksgiving is on the fourth Thursday of November, and today is the US Thanksgiving of 2001, then today is the fourth Thursday of November.
 today = datetime(2001, 11, 22)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -82403,7 +82403,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November. Today is the US Thanksgiving of 2001.
+",error,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November. Today is the US Thanksgiving of 2001.
 today = datetime(2001, 11, 22)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -82431,7 +82431,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the 4th Thursday of November of 2001, then today is the 22nd day of November of 2001.
+",error,"[(0, 0)]","# If today is the 4th Thursday of November of 2001, then today is the 22nd day of November of 2001.
 today = datetime(2001, 11, 22)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -82566,7 +82566,7 @@ later = today + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If in the US, Thanksgiving is on the fourth Thursday of November, and today is the US Thanksgiving of 2001,
+",error,"[(0, 0)]","# If in the US, Thanksgiving is on the fourth Thursday of November, and today is the US Thanksgiving of 2001,
 # then today is the fourth Thursday of November in 2001.
 # Find the first Thursday in November of 2001 with date.weekday() == 3.
 for date in [datetime(2001, 11, 1), datetime(2001, 11, 2), datetime(2001, 11, 3), datetime(2001, 11, 4),
@@ -82583,7 +82583,7 @@ later.strftime('%m/%d/%Y')
 
 ### B.2 Relative Date Arithmetics
 
-This question set is about relative date arithmetics. You will be asked",,"[(0, 0)]","# If in the US, Thanksgiving is on the fourth Thursday of November and today is the US Thanksgiving of 2001, then today is 4th Thursday of November 2001.
+This question set is about relative date arithmetics. You will be asked",error,"[(0, 0)]","# If in the US, Thanksgiving is on the fourth Thursday of November and today is the US Thanksgiving of 2001, then today is 4th Thursday of November 2001.
 today = datetime(2001, 11, 22)
 # 24 hours later,
 later = today + relativedelta(hours=24)
@@ -82604,7 +82604,7 @@ later = today + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is on the fourth Thursday of November.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is on the fourth Thursday of November.
 today = datetime(2001, 11, 22)
 # 24 hours later,
 later = today + relativedelta(hours=24)
@@ -82639,7 +82639,7 @@ later = today + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # 24 hours later,
 later = today + relativedelta(hours=24)
@@ -82662,7 +82662,7 @@ later = today + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November of 2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is the fourth Thursday of November of 2001.
 today = datetime(2001, 11, 22)
 # 24 hours later,
 later = today + relativedelta(hours=24)
@@ -82704,7 +82704,7 @@ later = today + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November.
+",error,"[(0, 0)]","# In the US, Thanksgiving is on the fourth Thursday of November.
 today = datetime(2001, 11, 22)
 # 24 hours later,
 later = today + relativedelta(hours=24)
@@ -82727,7 +82727,7 @@ later = thanksgiving + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%YY')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is 11/22/2001.
 today = datetime(2001, 11, 22)
 # 24 hours later,
 later = today + relativedelta(hours=24)
@@ -82741,7 +82741,7 @@ later = today + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is changed by the following conditions,
+",error,"[(0, 0)]","# If today is the US Thanksgiving of 2001, then today is changed by the following conditions,
 # (1) year=2001,
 # (2) month=11 (November), and
 # (3) day is the fourth Thursday of November.
@@ -83941,7 +83941,7 @@ a_month_ago.strftime('%m/%d/%Y')
 #                    For all the following questions, use timedelta function                         #
 #####################################################################################################
 
-",,"[(0, 0)]","# If today's meeting is rescheduled to 11 am tomorrow, 10/16/1924, then today is one day earlier.
+",error,"[(0, 0)]","# If today's meeting is rescheduled to 11 am tomorrow, 10/16/1924, then today is one day earlier.
 today = datetime(1924, 10, 16) - relativedelta(days=1)
 # A month ago,
 a_month_ago = today - relativedelta(months=1)
@@ -84809,7 +84809,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_2019.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# Today's meeting is rescheduled to 11 am tomorrow, 10/16/1924.
+",error,"[(0, 0)]","# Today's meeting is rescheduled to 11 am tomorrow, 10/16/1924.
 # One week from tomorrow,
 one_week_from_tomorrow = datetime(1924, 10, 16, 11) + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
@@ -85077,7 +85077,7 @@ later = tomorrow + relativedelta(hours=24)
 # The answer formatted with %m/%d/%Y is
 later.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today's meeting is rescheduled to 11 am tomorrow, then today is 11 am yesterday.
+",error,"[(0, 0)]","# If today's meeting is rescheduled to 11 am tomorrow, then today is 11 am yesterday.
 today = datetime(1924, 10, 16) - relativedelta(hours=11)
 # 24 hours later,
 later = today + relativedelta(hours=24)
@@ -86257,7 +86257,7 @@ a_month_ago = today - relativedelta(months=1)
 a_month_ago.strftime('%m/%d/%Y')
 # Note that this is non-deterministic, because the last day of January 2012 is not necessarily the same calendar day as 31 days before.
 
-",,"[(0, 0)]","# If Jane is celebrating the last day of Jan 2012, then today is Jan 31, 2012.
+",error,"[(0, 0)]","# If Jane is celebrating the last day of Jan 2012, then today is Jan 31, 2012.
 today = datetime(2012, 1, 31)
 # A month ago,
 a_month_ago = today - relativedelta(months=1)
@@ -86860,7 +86860,7 @@ one_week_ago = today - relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If Jane is celebrating the last day of Jan 2012, then today is 1/31/2012.
+",error,"[(0, 0)]","# If Jane is celebrating the last day of Jan 2012, then today is 1/31/2012.
 today = datetime(2012, 1, 31)
 # One week ago from today,
 one_week_ago = today - relativedelta(weeks=1)
@@ -87764,7 +87764,7 @@ today.strftime('%m/%d/%Y')
 ### Exercise 8: Differentiating between UTC, PDT and PST -> [Solution](exercises/exercise8.py)
 
 ```python
-",,"[(0, 0)]","# If it was Sept. 1st, 2021 a week ago, then today is 7 days later.
+",error,"[(0, 0)]","# If it was Sept. 1st, 2021 a week ago, then today is 7 days later.
 today = datetime(2021, 9, 1) + relativedelta(days=7)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -88266,7 +88266,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If it was Sept. 1st, 2021 a week ago, then yesterday is 7 days later.
+",error,"[(0, 0)]","# If it was Sept. 1st, 2021 a week ago, then yesterday is 7 days later.
 yesterday = datetime(2021, 9, 1) + relativedelta(days=7)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
@@ -90943,7 +90943,7 @@ today.strftime('%m/%d/%Y')
 # If today is the first day of October in 1995, then today is 1995-10-01.
 today = datetime(1995, 10, 1)
 # Yesterday,
-",,"[(0, 0)]","# If Jane and John married on Jan 2, 1958 and it is their 5-year anniversary today, then today is 5 years later.
+",error,"[(0, 0)]","# If Jane and John married on Jan 2, 1958 and it is their 5-year anniversary today, then today is 5 years later.
 today = datetime(1958, 1, 2) + relativedelta(years=5)
 # 10 days ago,
 ten_days_ago = today - relativedelta(days=10)
@@ -91832,7 +91832,7 @@ today = datetime(1958, 1, 2) + relativedelta(years=5)
 one_week_ago = today - relativedelta(weeks=1)
 # The answer formatted with %m/%d/%YYYY is
 one_week_ago.strftime('%m/%d/%YYYY')
-'''",,"[(0, 0)]","# If Jane and John married on Jan 2, 1958 and it is their 5-year anniversary today, then today is 5 years later.
+'''",error,"[(0, 0)]","# If Jane and John married on Jan 2, 1958 and it is their 5-year anniversary today, then today is 5 years later.
 today = datetime(1958, 1, 2) + relativedelta(years=5)
 # One week ago from today,
 one_week_ago = today - relativedelta(weeks=1)
@@ -93151,7 +93151,7 @@ yesterday = today - relativedelta(days=1)
 # The answer formatted with %m/%d/%Y is
 yesterday.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If on May 9th, 2017 Jane bought 40 eggs, and she ate one per day, then today she ran out of eggs.
+",error,"[(0, 0)]","# If on May 9th, 2017 Jane bought 40 eggs, and she ate one per day, then today she ran out of eggs.
 today = datetime(2017, 5, 9) + relativedelta(days=39)
 # Yesterday,
 yesterday = today - relativedelta(days=1)
@@ -93935,7 +93935,7 @@ one_year_ago.strftime('%m/%d/%Y')
 today = datetime(2017, 5, 9) + relativedelta(days=39)
 # One year ago from today,
 one_year_ago = today - relativedelta(years=1)
-# The answe",,"[(0, 0)]","# If on May 9th, 2017 Jane bought 40 eggs, and she ate one per day, then today she ran out of eggs is 40 days later.
+# The answe",error,"[(0, 0)]","# If on May 9th, 2017 Jane bought 40 eggs, and she ate one per day, then today she ran out of eggs is 40 days later.
 today = datetime(2017, 5, 9) + relativedelta(days=40)
 # One year ago from today,
 one_year_ago = today - relativedelta(years=1)
@@ -95142,7 +95142,7 @@ today = datetime(2008, 1, 1) + relativedelta(quarters=1)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the last day of the first quarter of 2008, then today is 1/1/2008 + 3 months.
+",error,"[(0, 0)]","# If today is the last day of the first quarter of 2008, then today is 1/1/2008 + 3 months.
 today = datetime(2008, 1, 1) + relativedelta(months=3)
 # The answer formatted with %m/%d/%Y is
 today.strftime('%m/%d/%Y')
@@ -96226,7 +96226,7 @@ a_month_ago = today - relativedelta(months=1)
 # The answer formatted with %m/%d/%Y is
 a_month_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the last day of the first quarter of 2008, then today is 3/31/2008.
+",error,"[(0, 0)]","# If today is the last day of the first quarter of 2008, then today is 3/31/2008.
 today = datetime(2008, 3, 31)
 # A month ago,
 a_month_ago = today - relativedelta(months=1)
@@ -96444,7 +96444,7 @@ one_year_ago = today - relativedelta(years=1)
 # The answer formatted with %m/%d/%Y is
 one_year_ago.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If today is the last day of the first quarter of 2008, then today is 3/31/2008.
+",error,"[(0, 0)]","# If today is the last day of the first quarter of 2008, then today is 3/31/2008.
 today = datetime(2008, 3, 31)
 # One year ago,
 one_year_ago = today - relativedelta(years=1)
@@ -99509,7 +99509,7 @@ one_week_from_today = today + relativedelta(weeks=1)
 # The answer formatted with %m/%d/%Y is
 one_week_from_today.strftime('%m/%d/%Y')
 
-",,"[(0, 0)]","# If the first day of 2019 is a Tuesday, and today is the first Monday of 2019, then today is 6 days later.
+",error,"[(0, 0)]","# If the first day of 2019 is a Tuesday, and today is the first Monday of 2019, then today is 6 days later.
 today = datetime(2019, 1, 1) + relativedelta(days=6)
 # One week from today,
 one_week_from_today = today + relativedelta(weeks=1)
@@ -99683,7 +99683,7 @@ def next_weekday(d, weekday):
         days_ahead += 7
     return d + datetime.timedelta(days_ahead)
 
-",,"[(0, 0)]","# If the first day of 2019 is a Tuesday, and today is the first Monday of 2019, then today is 6 days later.
+",error,"[(0, 0)]","# If the first day of 2019 is a Tuesday, and today is the first Monday of 2019, then today is 6 days later.
 today = datetime(2019, 1, 1) + relativedelta(days=6)
 # 24 hours later,
 later = today + relativedelta(hours=24)

@@ -760,7 +760,7 @@ The red book is the second from the left. So the answer is (C).
 (3) Combining (1) and (2) we get the following ordering: ""(left) orange red blue (right)"".
 According to this ordering, the second from the left book is the red book.
 The red book is the second from the left. So the answer is (C).
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 (1) The blue book is the rightmost: ""(left) ? orange ? red blue (right)"".
 (2) The orange book is the leftmost: ""(left) orange ? red blue (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) orange ? red blue (right)"".
@@ -2269,7 +2269,7 @@ Mel finished first. So the answer is (C).
 (3) Combining (1) and (2) we get the following ordering: ""(above) Eve Mel Rob (below)"".
 According to this ordering, the person who finished first (the one at the top of this list) is Eve.
 Eve finished first. So the answer is (A).
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 (1) Rob finished below Mel: ""(above) ? Mel ? Rob ? (below)"".
 (2) Mel finished below Eve: ""(above) ? Eve ? Mel ? (below)"".
 (3) Combining (1) and (2) we get the following ordering: ""(above) Eve Mel Rob (below)"".
@@ -3086,7 +3086,7 @@ The gray book is the leftmost. So the answer is (A).'''
 # Logic Game
 lsat_logic_game_question = '''The following paragraphs each describe a set of three objects arranged in a fixed order. The statements are logically consistent within each paragraph.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The purple book is to the left of the red book: ""(left) ? purple ? red ? (right)"".
 (2) The gray book is to the left of the purple book: ""(left) gray ? purple ? red ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) gray purple red (right)"".
@@ -3406,7 +3406,7 @@ class Objects:
     def __repr__(self):
         return self.name
 
-    def add",,"[(0, 0)]","A: Let's think step by step.
+    def add",error,"[(0, 0)]","A: Let's think step by step.
 (1) The peaches are more expensive than the apples: ""(cheapest) ? apples ? peaches ? (most expensive)"".
 (2) The mangoes are the cheapest: ""(cheapest) ? mangoes ? apples ? peaches ? (most expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(cheapest) mangoes apples peaches (most expensive)"".
@@ -3882,7 +3882,7 @@ Now, let's look at the two statements describing the minivan:
 These statements are contradictory because the minivan is both to the left and to the right of other cars.
 This means that the ordering is impossible. Therefore, there is no answer.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The minivan is newer than the sedan: ""(newest) ? minivan ? sedan ? (oldest)"".
 (2) The minivan is older than the bus: ""(newest) ? minivan ? bus ? (oldest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(newest) minivan bus sedan (oldest)"".
@@ -5411,7 +5411,7 @@ def parameters():
         (0, -1),
         (1, -1),
         (2, -1)
-    ]",,"[(0, 0)]","A: Let's think step by step.
+    ]",error,"[(0, 0)]","A: Let's think step by step.
 (1) Mya finished below Ada: ""(above) ? Ada ? Mya ? (below)"".
 (2) Mel finished above Ada: ""(above) ? Mel ? Ada ? (below)"".
 (3) Combining (1) and (2) we get the following ordering: ""(above) Mel Ada Mya (below)"".
@@ -5475,7 +5475,7 @@ So there is no ordering of these three golfers that satisfies the given constrai
 Therefore, all three answers are wrong. 
 This is an example of a contradiction: it is impossible to find a configuration of objects that satisfies the given constraints.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) Mel finished last: ""(first) ? (second) ? (third) Mel"".
 (2) Ana finished second: ""(first) ? Ana ? Mel ? (third)"".
 (3) Combining (1) and (2) we get the following ordering: ""(first) Ana ? Mel (third)"".
@@ -5832,7 +5832,7 @@ The plums are the second cheapest. So the answer is (A).
 
 # A pyramid task which requires identifying a missing block in a pyramid.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The loquats are the cheapest: ""(cheapest) ? loquats ? (more expensive)"".
 (2) The plums are less expensive than the apples: ""(cheapest) ? loquats ? plums ? apples ? (most expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(cheapest) loquats plums apples (most expensive)"".
@@ -6689,7 +6689,7 @@ https://www.kaggle.com/c/tensorflow2-question-answering/data
 
 ## Deduction on a sequence of facts
 ### BoolQ
-https://github.com/google-research-datasets/",,"[(0, 0)]","A: Let's think step by step.
+https://github.com/google-research-datasets/",error,"[(0, 0)]","A: Let's think step by step.
 (1) The mangoes are less expensive than the peaches: ""(cheapest) ? mangoes ? peaches ? (most expensive)"".
 (2) The apples are less expensive than the mangoes: ""(cheapest) ? apples mangoes peaches (most expensive)"".
 Combining (1) and (2) we get the following ordering: ""(cheapest) apples mangoes peaches (most expensive)"".
@@ -8453,7 +8453,7 @@ def test_deduce_order():
 def test_deduce_order_with_left_and_right():
     """"""Test deduce_order with left and right""""""
     assert deduce_order(
-        ""On a shelf, there are three books: a white book, a green book, and an",,"[(0, 0)]","A: Let's think step by step.
+        ""On a shelf, there are three books: a white book, a green book, and an",error,"[(0, 0)]","A: Let's think step by step.
 (1) The purple book is to the right of the yellow book: ""(left) ? red ? yellow ? purple (right)"".
 (2) The yellow book is to the right of the red book: ""(left) ? red ? yellow ? purple (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) red yellow purple (right)"".
@@ -8730,7 +8730,7 @@ According to this ordering, the second-most expensive fruit is mangoes.
 The mangoes are the second-most expensive. So the answer is (C).
 
 ## Question 9
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The apples are less expensive than the mangoes: ""(least expensive) ? apples ? mangoes ? (most expensive)"".
 (2) The mangoes are less expensive than the watermelons: ""(least expensive) ? apples mangoes ? (most expensive) ? watermelons"".
 (3) Combining (1) and (2) we get the following ordering: ""(least expensive) apples mangoes watermelons (most expensive)"".
@@ -9424,7 +9424,7 @@ The bus is the second-newest. So the answer is (B).
 # ------------------------------------------------------------------------
 # The following paragraphs each describe a set of four objects arranged in a fixed order. The statements are logically consistent within each paragraph.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The bus is newer than the tractor: ""(old) ? tractor ? bus ? (new)"".
 (2) The motorcyle is the oldest: ""(old) motorcyle tractor bus (new)"".
 (3) Combining (1) and (2) we get the following ordering: ""(old) motorcyle tractor bus (new)"".
@@ -9452,7 +9452,7 @@ We can also use normalized data.
 
 This is an example of a logical deduction task which requires deducing the order of a sequence of objects.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The motorcyle is the oldest: ""(oldest) ? motorcyle ? ? (newest)"".
 (2) The bus is newer than the tractor: ""(oldest) ? motorcyle ? bus ? tractor (newest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(oldest) motorcyle bus tractor (newest)"".
@@ -9822,7 +9822,7 @@ According to this ordering, the oldest vehicle is the one at the right of the mi
 The one at the right of the minivan is the oldest. So the answer is (A).
 =end
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The minivan is older than the tractor: ""(youngest) ? (older) ? minivan ? tractor ? (oldest)"".
 (2) The minivan is the second-newest: ""(youngest) ? (older) ? minivan ? tractor (oldest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(youngest) ? (older) minivan tractor (oldest)"".
@@ -11395,7 +11395,7 @@ The yellow book is the leftmost. So the answer is (B).
 
 '''
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The yellow book is the leftmost: ""(left) ? yellow ? brown ? orange (right)"".
 (2) The orange book is to the right of the brown book: ""(left) ? yellow ? brown ? orange (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) yellow brown orange (right)"".
@@ -11565,7 +11565,7 @@ The mangoes are the second-most expensive. So the answer is (B).
 
 """"""
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The mangoes are more expensive than the apples: ""(cheapest) ? apples ? mangoes ? (most expensive)"".
 (2) The loquats are more expensive than the mangoes: ""(cheapest) ? apples ? mangoes loquats (most expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(cheapest) apples mangoes loquats (most expensive)"".
@@ -12213,7 +12213,7 @@ According to this ordering, the most expensive fruit is the peaches.
 The peaches are the most expensive. So the answer is (B).
 
 ",(B),"[(0, 0)]","
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The loquats are less expensive than the apples: ""(cheapest) ? loquats ? apples ? (most expensive)"".
 (2) The peaches are more expensive than the apples: ""(cheapest) ? loquats ? apples ? peaches (most expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(cheapest) loquats apples peaches (most expensive)"".
@@ -12860,7 +12860,7 @@ The plums are the second-most expensive. So the answer is (C).
 (3) Combining (1) and (2) we get the following ordering: ""(least expensive) oranges plums mangoes (most expensive)"".
 According to this ordering, the mangoes are the second-most expensive.
 The mangoes are the second-most expensive. So the answer is (B).
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 (1) The plums are less expensive than the mangoes: ""(most expensive) ? mangoes ? plums ? (least expensive)"".
 (2) The oranges are less expensive than the plums: ""(most expensive) ? mangoes ? plums ? oranges ? (least expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(most expensive) mangoes plums oranges (least expensive)"".
@@ -14193,7 +14193,7 @@ def get_problem_list():
             Problem20(),
             Problem21(),
             Problem22(),
-           ",,"[(0, 0)]","A: Let's think step by step.
+           ",error,"[(0, 0)]","A: Let's think step by step.
 (1) The brown book is to the left of the orange book: ""(left) ? brown ? orange ? (right)"".
 (2) The green book is to the left of the brown book: ""(left) ? green ? brown ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) green brown orange (right)"".
@@ -14507,7 +14507,7 @@ According to this ordering, the leftmost book is the orange book.
 The orange book is the leftmost. So the answer is (A).
 (4) If we use the other option for the order of blue and yellow, ""(left) orange yellow blue (right)"", we get the same result.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The orange book is to the left of the blue book: ""(left) ? orange ? blue ? (right)"".
 (2) The yellow book is to the right of the blue book: ""(left) ? orange blue ? yellow (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) orange blue yellow (right)"".
@@ -14990,7 +14990,7 @@ The red book is the rightmost. So the answer is (C).
 # """"""
 # Reverse words in a string
 # Given an input string, reverse the string word by word. 
-# For example, given",,"[(0, 0)]","A: Let's think step by step.
+# For example, given",error,"[(0, 0)]","A: Let's think step by step.
 (1) The purple book is to the left of the red book: ""(left) ? purple ? red ? (right)"".
 (2) The gray book is to the left of the purple book: ""(left) ? gray ? purple ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) gray purple red (right)"".
@@ -15224,7 +15224,7 @@ p.answer = 'B'
 p.answer_explanation = """"""
 (1) Eve finished above Amy: ""(above) ? Eve ? Amy ? (below)"".
 (2) Eli finished below Amy: ""(above) ? Amy ? Eli ? (below)"".
-(3) Combining (1)",,"[(0, 0)]","A: Let's think step by step.
+(3) Combining (1)",error,"[(0, 0)]","A: Let's think step by step.
 (1) The purple book is to the left of the red book: ""(left) ? purple ? red ? (right)"".
 (2) The gray book is to the left of the purple book: ""(left) ? gray purple ? red ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) gray purple red (right)"".
@@ -15508,7 +15508,7 @@ The minivan is the oldest. So the answer is (B).
 # https://www.kaggle.com/c/titanic/discussion/79578
 # https://www.kaggle.com/c/titanic/discussion/79467
 # https://www.kaggle.com/c/titanic/discussion/79716
-# https://www.kaggle.com",,"[(0, 0)]","A: Let's think step by step.
+# https://www.kaggle.com",error,"[(0, 0)]","A: Let's think step by step.
 (1) The minivan is older than the tractor: ""(oldest) ? minivan ? tractor ? (newest)"".
 (2) The minivan is the second-newest: ""(oldest) ? minivan ? tractor ? (newest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(oldest) minivan tractor (newest)"".
@@ -16523,7 +16523,7 @@ test_sets = [
         ]
     },
     {
-       ",,"[(0, 0)]","A: Let's think step by step.
+       ",error,"[(0, 0)]","A: Let's think step by step.
 (1) The falcon is to the right of the blue jay: ""(left) ? blue jay ? falcon ? (right)"".
 (2) The blue jay is to the right of the quail: ""(left) ? quail ? blue jay ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) quail blue jay falcon (right)"".
@@ -17093,7 +17093,7 @@ class TestInference(unittest.TestCase):
         self.inference.add_statement(Statement(False, 'B'))
         self.inference.add_statement(Statement(False, 'C'))
         result = self.inference.inference()
-        self.assertEqual",,"[(0, 0)]","A: Let's think step by step.
+        self.assertEqual",error,"[(0, 0)]","A: Let's think step by step.
 (1) The motorcyle is the oldest: ""(oldest) ? motorcyle ? (newest)"".
 (2) The bus is newer than the tractor: ""(oldest) ? motorcyle ? tractor ? bus ? (newest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(oldest) motorcyle tractor bus (newest)"".
@@ -17193,7 +17193,7 @@ The following paragraphs each describe a set of three objects arranged in a fixe
 Options:
 (A) The motorcyle is the newest
 (B) The bus is the newest
-(C) The tractor",,"[(0, 0)]","A: Let's think step by step.
+(C) The tractor",error,"[(0, 0)]","A: Let's think step by step.
 (1) The motorcyle is the oldest: ""(oldest) ? motorcyle ? bus ? tractor (newest)"".
 (2) The bus is newer than the tractor: ""(oldest) ? motorcyle ? bus tractor (newest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(oldest) motorcyle bus tractor (newest)"".
@@ -17354,7 +17354,7 @@ A: Let's think step by step.
 This is a contradiction.
 There is no such ordering of these three objects.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The minivan is older than the tractor: ""(new) ? tractor ? minivan ? (old)"".
 (2) The minivan is the second-newest: ""(new) ? tractor minivan ? (old)"".
 (3) Combining (1) and (2) we get the following ordering: ""(new) tractor minivan (old)"".
@@ -17757,7 +17757,7 @@ The apples are the most expensive. So the answer is (B).
 (3) Combining (1) and (2) we get the following ordering: ""(cheapest) loquats plums apples (most expensive)"".
 According to this ordering, the most expensive fruit is the apples.
 The apples are the most expensive. So the answer is (B).
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 (1) The loquats are the cheapest: ""(cheap) loquats ? plums ? apples ? (expensive)"".
 (2) The plums are less expensive than the apples: ""(cheap) loquats plums ? apples ? (expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(cheap) loquats plums apples (expensive)"".
@@ -17814,7 +17814,7 @@ According to this ordering, the most expensive fruit is the apples.
 The apples are the most expensive. So the answer is (B).
 """"""
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The loquats are the cheapest: ""(cheapest) ? loquats ? ? (most expensive)"".
 (2) The plums are less expensive than the apples: ""(cheapest) ? loquats ? plums ? apples ? (most expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(cheapest) loquats plums apples (most expensive)"".
@@ -18282,7 +18282,7 @@ The pears are the second-most expensive. So the answer is (A).
 # Series Completion
 A logical deduction task which requires deducing a missing number from a series of numbers.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The pears are less expensive than the plums: ""(less expensive) ? pears ? plums ? (more expensive)"".
 (2) The kiwis are less expensive than the pears: ""(less expensive) ? kiwis ? pears ? (more expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(less expensive) kiwis pears plums (more expensive)"".
@@ -18700,7 +18700,7 @@ Options:
 (C) Ingrid is the youngest
 A: Let's think step by step.
 (1) Gianni is the youngest: ""(old) ? ? Gianni (young)"".
-(2) Helga is the oldest: ""(old) Helga",,"[(0, 0)]","A: Let's think step by step.
+(2) Helga is the oldest: ""(old) Helga",error,"[(0, 0)]","A: Let's think step by step.
 (1) The hatchback is older than the convertible: ""(old) ? hatchback ? convertible ? (new)"".
 (2) The tractor is the newest: ""(old) ? hatchback ? convertible ? tractor (new)"".
 (3) Combining (1) and (2) we get the following ordering: ""(old) hatchback convertible tractor (new)"".
@@ -21198,7 +21198,7 @@ The kiwis are the second-most expensive. So the answer is (A).
 According to this ordering, the second-most expensive fruit is kiwis.
 The kiwis are the second-most expensive. So the answer is (A).
 
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 (1) The kiwis are less expensive than the loquats: ""(expensive) ? loquats ? kiwis ? (cheapest)"".
 (2) The cantaloupes are less expensive than the kiwis: ""(expensive) ? loquats ? kiwis ? cantaloupes ? (cheapest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(expensive) loquats kiwis cantaloupes (cheapest)"".
@@ -23021,7 +23021,7 @@ Options:
 According to this ordering, the cheapest fruit is the mango.
 The mangoes are the cheapest. So the answer is (C).
 
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 (1) The mangoes are the cheapest: ""(cheapest) ? mangoes ? (more expensive) ? (most expensive)"".
 (2) The cantaloupes are the second-most expensive: ""(cheapest) ? mangoes ? (more expensive) cantaloupes ? (most expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(cheapest) mangoes (more expensive) cantaloupes (most expensive)"".
@@ -23111,7 +23111,7 @@ The mangoes are the cheapest. So the answer is (C).
 (3) Combining (1) and (2) we get the following ordering: ""(cheapest) mangoes (second-most expensive) cantaloupes (most expensive) watermelons"".
 According to this ordering, the cheapest fruit is the mango.
 The mangoes are the cheapest. So the answer is (C).
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 (1) The mangoes are the cheapest: ""(cheapest) ? mangoes ? watermelons ? (most expensive)"".
 (2) The cantaloupes are the second-most expensive: ""(cheapest) ? mangoes ? watermelons ? cantaloupes (most expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(cheapest) mangoes watermelons cantaloupes (most expensive)"".
@@ -23535,7 +23535,7 @@ Options:
 (B) The yellow book is the leftmost
 (C) The yellow book is the rightmost
 A: Let's think step by step.
-(1) The yellow book is to the left of the blue book:",,"[(0, 0)]","A: Let's think step by step.
+(1) The yellow book is to the left of the blue book:",error,"[(0, 0)]","A: Let's think step by step.
 (1) Amy finished below Ana: ""(above) ? Ana ? Amy ? (below)"".
 (2) Ana finished below Joe: ""(above) ? Ana ? Joe ? (below)"".
 (3) Combining (1) and (2) we get the following ordering: ""(above) Ana Joe Amy (below)"".
@@ -23606,7 +23606,7 @@ Ada finished second. So the answer is (A).
 
 ## [Ordering](https://github.com/yantik/test-prep/blob/master/LSAT/logical-reasoning/LSAT_Logical_Reasoning_Ordering.py)
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) Mya finished below Ada: ""(above) ? Ada ? Mya ? (below)"".
 (2) Mel finished above Ada: ""(above) ? Mel Ada ? (below)"".
 (3) Combining (1) and (2) we get the following ordering: ""(above) Mel Ada Mya (below)"".
@@ -23968,7 +23968,7 @@ The motorcyle is the newest. So the answer is (B).
 (3) Combining (1) and (2) we get the following ordering: ""(newest) motorcycle convertible truck (oldest)"".
 According to this ordering, the newest vehicle is the motorcycle.
 The motorcycle is the newest. So the answer is (B).
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 (1) The motorcyle is newer than the convertible: ""(new) ? motorcycle ? convertible ? (old)"".
 (2) The convertible is newer than the truck: ""(new) ? convertible ? truck ? (old)"".
 (3) Combining (1) and (2) we get the following ordering: ""(new) motorcycle convertible truck (old)"".
@@ -25496,7 +25496,7 @@ The cantaloupes are the cheapest. So the answer is (C).
 # print(""~/Downloads/gdrive/projects/mcmc_samples/"")
 
 # ~/Downloads/gdrive/projects/mcmc_samples/
-# ~/Downloads/gdrive/projects",,"[(0, 0)]","A: Let's think step by step.
+# ~/Downloads/gdrive/projects",error,"[(0, 0)]","A: Let's think step by step.
 (1) The watermelons are the second-most expensive: ""(cheapest) ? ? watermelons ? (most expensive)"".
 (2) The loquats are more expensive than the cantaloupes: ""(cheapest) ? ? loquats ? cantaloupes ? (most expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(cheapest) ? watermelons loquats cantaloupes (most expensive)"".
@@ -25829,7 +25829,7 @@ The owl is the leftmost. So the answer is (B).
 (3) Combining (1) and (2) we get the following ordering: ""(left) owl hawk robin (right)"".
 According to this ordering, the leftmost bird is the owl.
 The owl is the leftmost. So the answer is (B).
-*/",,"[(0, 0)]","A: Let's think step by step.
+*/",error,"[(0, 0)]","A: Let's think step by step.
 (1) The robin is to the right of the hawk: ""(left) ? hawk ? robin ? (right)"".
 (2) The owl is the leftmost: ""(left) owl ? hawk ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) owl hawk robin (right)"".
@@ -26743,7 +26743,7 @@ The bus is the oldest. So the answer is (C).
 ```
 
 ```
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The sedan is older than the tractor: ""(oldest) ? sedan ? tractor ? (youngest)"".
 (2) The bus is older than the sedan: ""(oldest) ? bus ? sedan ? tractor ? (youngest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(oldest) bus sedan tractor (youngest)"".
@@ -27374,7 +27374,7 @@ Eve finished first. So the answer is (C).
 (3) Combining (1) and (2) we get the following ordering: ""(above) Eve Amy Eli (below)"".
 According to this ordering, the person who finished first (the one at the top of this list) is Eve.
 Eve finished first. So the answer is (C).
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 (1) Eve finished above Amy: ""(above) ? Eve ? Amy ? (below)"".
 (2) Eli finished below Amy: ""(above) ? Amy ? Eli ? (below)"".
 (3) Combining (1) and (2) we get the following ordering: ""(above) Eve Amy Eli (below)"".
@@ -29359,7 +29359,7 @@ The limousine is the oldest. So the answer is (B).
 # A person sets a combination lock to a 3-digit number in which all three digits are different. After turning the dial left and right several times, the person forgets the combination. The dial is now at a setting that has two different digits. With only one more turn of the dial, to which digit can the dial be set so that the combination lock will open?
 def combo_lock_1():
     print('A person sets a combination lock to a 3-digit number in which all three digits are different.')
-    print('After turning the dial left and right several",,"[(0, 0)]","A: Let's think step by step.
+    print('After turning the dial left and right several",error,"[(0, 0)]","A: Let's think step by step.
 (1) The limousine is older than the bus: ""(oldest) ? limousine ? bus ? (youngest)"".
 (2) The bus is older than the convertible: ""(oldest) ? limousine bus convertible (youngest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(oldest) limousine bus convertible (youngest)"".
@@ -30062,7 +30062,7 @@ Options:
 (B) The yellow book is the rightmost
 (C) The green book is the rightmost
 A: Let's think step by step.
-(1) The blue book is to the left",,"[(0, 0)]","A: Let's think step by step.
+(1) The blue book is to the left",error,"[(0, 0)]","A: Let's think step by step.
 (1) The owl is to the right of the cardinal: ""(left) ? cardinal ? owl ? (right)"".
 (2) The cardinal is to the right of the crow: ""(left) ? crow ? cardinal ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) crow cardinal owl (right)"".
@@ -30169,7 +30169,7 @@ The owl is the rightmost. So the answer is (A).
 
 ",(A),"[(0, 0)]","A: Let's think step by step.
 (1) The owl is to the right of the cardinal: ""(left) ? cardinal ? owl ? (right)"".
-(2) The cardinal is to the right of the crow: ""(left) ? cardinal ? crow ? ow",,"[(0, 0)]","A: Let's think step by step.
+(2) The cardinal is to the right of the crow: ""(left) ? cardinal ? crow ? ow",error,"[(0, 0)]","A: Let's think step by step.
 (1) The owl is to the right of the cardinal: ""(left) ? cardinal ? owl ? (right)"".
 (2) The cardinal is to the right of the crow: ""(left) ? crow ? cardinal ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) crow cardinal owl (right)"".
@@ -31419,7 +31419,7 @@ The quail is the leftmost. So the answer is (C).
 (3) Combining (1) and (2) we get the following ordering: ""(left) quail robin raven (right)"".
 According to this ordering, the leftmost bird is the quail.
 The quail is the leftmost. So the answer is (C).
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 (1) The quail is to the left of the robin: ""(left) ? quail ? robin ? (right)"".
 (2) The robin is the second from the left: ""(left) ? quail ? robin ? raven (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) quail robin raven (right)"".
@@ -31669,7 +31669,7 @@ The raven is the leftmost. So the answer is (C).
 (3) Combining (1) and (2) we get the following ordering: ""(left) hummingbird blue jay raven (right)"".
 According to this ordering, the leftmost bird is the hummingbird.
 The hummingbird is the leftmost. So the answer is (A).
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 (1) The blue jay is to the right of the hummingbird: ""(left) ? hummingbird ? blue jay ? (right)"".
 (2) The raven is the second from the left: ""(left) ? hummingbird raven blue jay ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) hummingbird raven blue jay (right)"".
@@ -32666,7 +32666,7 @@ The motorcyle is the oldest. So the answer is (A).
 (2) The bus is newer than the tractor: ""(oldest) ? motorcyle ? (newer) ? bus ? tractor ? (newest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(oldest) motorcyle bus tractor (newest)"".
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The motorcyle is the oldest: ""(oldest) ? motorcycle ? ? (newest)"".
 (2) The bus is newer than the tractor: ""(oldest) ? motorcycle ? tractor ? bus ? (newest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(oldest) motorcycle tractor bus (newest)"".
@@ -33285,7 +33285,7 @@ The pears are the second-most expensive. So the answer is (B).
 #Options:
 #(A) The red book is the leftmost
 #(B) The gray book is the leftmost
-#(C) The",,"[(0, 0)]","A: Let's think step by step.
+#(C) The",error,"[(0, 0)]","A: Let's think step by step.
 (1) The pears are more expensive than the loquats: ""(less) ? loquats ? pears ? (more)"".
 (2) The pears are less expensive than the apples: ""(less) ? loquats ? pears ? apples (more)"".
 (3) Combining (1) and (2) we get the following ordering: ""(less) loquats pears apples (more)"".
@@ -33446,7 +33446,7 @@ The hatchback is the newest. So the answer is (A).
 """"""
 
 # Convert the above into a dictionary and print out each question
-sub_questions = re.split(r'",,"[(0, 0)]","A: Let's think step by step.
+sub_questions = re.split(r'",error,"[(0, 0)]","A: Let's think step by step.
 (1) The convertible is older than the tractor: ""(oldest) ? convertible ? tractor ? (newest)"".
 (2) The hatchback is the second-newest: ""(oldest) ? convertible hatchback tractor (newest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(oldest) convertible hatchback tractor (newest)"".
@@ -34394,7 +34394,7 @@ The cantaloupes are the cheapest. So the answer is (A).
 # (1) Amy finished above Eli: ""(above) ? Amy ? Eli ? (below)"".
 # (2) Eve finished below Eli: ""(above) ? Eli ? Eve ? (below)"".
 # (3) Combining (1) and (2) we get the following ordering: ""(above) Amy Eli Eve (below)"".
-# According to this ordering, the person who",,"[(0, 0)]","A: Let's think step by step.
+# According to this ordering, the person who",error,"[(0, 0)]","A: Let's think step by step.
 (1) The loquats are more expensive than the apples: ""(cheap) ? apples ? loquats ? (expensive)"".
 (2) The cantaloupes are less expensive than the apples: ""(cheap) ? cantaloupes ? apples ? (expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(cheap) cantaloupes apples loquats (expensive)"".
@@ -34988,7 +34988,7 @@ def puzzle_deduce_order(q, a):
         
 def exercise_deduce_order():
     correct = 0
-    incorrect =",,"[(0, 0)]","A: Let's think step by step.
+    incorrect =",error,"[(0, 0)]","A: Let's think step by step.
 (1) The black book is to the left of the purple book: ""(left) ? black ? purple ? (right)"".
 (2) The purple book is to the left of the white book: ""(left) ? black purple ? white (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) black purple white (right)"".
@@ -36022,7 +36022,7 @@ The green book is the leftmost. So the answer is (A).
 
 # Logic Questions 5
 '''
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The red book is the rightmost: ""(left) ? green ? red (right)"".
 (2) The blue book is to the right of the green book: ""(left) ? green ? blue ? red (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) green blue red (right)"".
@@ -36747,7 +36747,7 @@ The robin is the second from the left. So the answer is (A).
 '''
 A numerical analogy task which requires using addition, subtraction, division or multiplication to derive a relationship between two numbers.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The quail is to the left of the robin: ""(left) ? quail ? robin ? (right)"".
 (2) The robin is the second from the left: ""(left) ? quail robin ? ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) quail robin ? (right)"".
@@ -37047,7 +37047,7 @@ In this file you'll find the following functions:
 - `get_start_end_points_9x9(obj, obj_type)`
 
 - `get_all_start_end_points_5x5(obj_type)`
-- `get_all_start_end_points_7x",,"[(0, 0)]","A: Let's think step by step.
+- `get_all_start_end_points_7x",error,"[(0, 0)]","A: Let's think step by step.
 (1) The crow is to the left of the raven: ""(left) ? crow ? raven ? (right)"".
 (2) The falcon is to the right of the raven: ""(left) ? crow raven ? falcon (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) crow raven falcon (right)"".
@@ -39164,7 +39164,7 @@ The plums are the second-most expensive. So the answer is (A).
 
 # Level 8
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The loquats are the cheapest: ""(least) ? loquats ? plums ? ? apples (most)"".
 (2) The plums are less expensive than the apples: ""(least) ? loquats ? plums ? apples (most)"".
 (3) Combining (1) and (2) we get the following ordering: ""(least) loquats plums apples (most)"".
@@ -39492,7 +39492,7 @@ The quail is the rightmost. So the answer is (B).
 (3) Combining (1) and (2) we get the following ordering: ""(left) hummingbird crow ? (right)""
 According to this ordering, the rightmost bird is the quail.
 The quail is the rightmost. So the answer is (B).
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 (1) The crow is the second from the left: ""(left) ? crow ? ? (right)"".
 (2) The hummingbird is to the left of the crow: ""(left) ? hummingbird ? crow ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) hummingbird crow ? (right)"".
@@ -39569,7 +39569,7 @@ The quail is the rightmost. So the answer is (B).
 scenarios = []
 
 # Scenario 1
-question = '''The following paragraphs each describe a set of three objects arranged in a fixed order. The statements are logically consistent within each paragraph. On a shelf, there are three books: a blue book, a green book, and a purple book. The purple book is to the right of the blue book. The",,"[(0, 0)]","A: Let's think step by step.
+question = '''The following paragraphs each describe a set of three objects arranged in a fixed order. The statements are logically consistent within each paragraph. On a shelf, there are three books: a blue book, a green book, and a purple book. The purple book is to the right of the blue book. The",error,"[(0, 0)]","A: Let's think step by step.
 (1) The crow is the second from the left: ""(left) ? quail ? crow ? (right)"".
 (2) The hummingbird is to the left of the crow: ""(left) ? quail ? hummingbird ? crow ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) quail hummingbird crow (right)"".
@@ -40607,7 +40607,7 @@ data = df.values
 
 # Split Train, Validation, Test
 split_ratio = 0.6
-split_threshold = int(data.shape[0] * split_rat",,"[(0, 0)]","A: Let's think step by step.
+split_threshold = int(data.shape[0] * split_rat",error,"[(0, 0)]","A: Let's think step by step.
 (1) The owl is to the right of the cardinal: ""(left) ? crow ? cardinal ? owl ? (right)"".
 (2) The cardinal is to the right of the crow: ""(left) ? crow ? cardinal ? owl ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) crow cardinal owl (right)"".
@@ -40621,7 +40621,7 @@ The crow is the second from the left. So the answer is (B).
 According to this ordering, the crow is the second from the left.
 The crow is the second from the left.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The owl is to the right of the cardinal: ""(left) ? cardinal ? owl ? (right)"".
 (2) The cardinal is to the right of the crow: ""(left) ? crow ? cardinal ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) crow cardinal owl (right)"".
@@ -41372,7 +41372,7 @@ Joe finished first. So the answer is (A).
 questions = """"""
 Q: The following paragraphs each describe a set of three objects arranged in a fixed order. The statements are logically consistent within each paragraph. On a shelf, there are three books: a green book, a white book, and a purple book. The purple book is to the right of the green book. The white book is the rightmost.
 Q: The following paragraphs each describe a set of three objects arranged in a fixed order. The statements are logically consistent within each paragraph. On a shelf, there are three books: a green book, a red book, and a purple book. The purple book is to the right of the green book. The red book is the rightmost.
-Q:",,"[(0, 0)]"
+Q:",error,"[(0, 0)]"
 logic,"The following paragraphs each describe a set of three objects arranged in a fixed order. The statements are logically consistent within each paragraph. On a shelf, there are three books: a gray book, an orange book, and a brown book. The orange book is the leftmost. The gray book is to the right of the brown book.
 Options:
 (A) The gray book is the leftmost
@@ -41431,7 +41431,7 @@ The orange book is the leftmost. So the answer is (B).
 # Part 2: More Analogy and Logic
 # ==============================
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The orange book is the leftmost: ""(left) ? orange ? (middle) ? (right)"".
 (2) The gray book is to the right of the brown book: ""(left) ? orange ? brown ? gray (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) orange brown gray (right)"".
@@ -43284,7 +43284,7 @@ The oranges are the second-most expensive. So the answer is (B).
 """"""
 
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The oranges are more expensive than the kiwis: ""(cheaper) ? kiwis ? oranges ? (more expensive)"".
 (2) The oranges are less expensive than the watermelons: ""(cheaper) ? kiwis ? oranges ? watermelons (more expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(cheaper) kiwis oranges watermelons (more expensive)"".
@@ -43459,7 +43459,7 @@ The cardinal is the leftmost. So the answer is (C).
 
 Day 4:
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The owl is to the right of the cardinal: ""(left) ? cardinal ? owl ? (right)"".
 (2) The cardinal is to the right of the crow: ""(left) ? crow ? cardinal ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) crow cardinal owl (right)"".
@@ -44023,7 +44023,7 @@ g.add_edges([
   (0, 4),
   (0, 5),
   (0, 6),
-  (0, 7),",,"[(0, 0)]","A: Let's think step by step.
+  (0, 7),",error,"[(0, 0)]","A: Let's think step by step.
 (1) The robin is to the right of the crow: ""(left) ? crow ? robin ? (right)"".
 (2) The robin is to the left of the blue jay: ""(left) ? crow robin ? blue jay (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) crow robin blue jay (right)"".
@@ -44324,7 +44324,7 @@ The truck is the newest. So the answer is (B).
 """"""
 
 q_text = """"""
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The minivan is older than the truck: ""(newest) ? truck ? minivan ? (oldest)"".
 (2) The limousine is the second-newest: ""(newest) ? limousine ? truck ? minivan ? (oldest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(newest) limousine truck minivan (oldest)"".
@@ -44506,7 +44506,7 @@ The limousine is the newest. So the answer is (A).
 Question:
 The following paragraphs each describe a set of three objects arranged in a fixed order. The statements are logically consistent within each paragraph.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The minivan is older than the truck: ""(new) ? truck ? minivan ? (old)"".
 (2) The limousine is the second-newest: ""(new) ? truck limousine ? (old)"".
 (3) Combining (1) and (2) we get the following ordering: ""(new) truck limousine minivan (old)"".
@@ -45582,7 +45582,7 @@ Eve finished first. So the answer is (A).
 (3) Combining (1) and (2) we get the following ordering: ""(above) Eve Amy Rob (below)"".
 According to this ordering, the person who finished first (the one at the top of this list) is Eve.
 Eve finished first. So the answer is (A).
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 (1) Amy finished above Rob: ""(above) ? Amy ? Rob ? (below)"".
 (2) Eve finished above Amy: ""(above) ? Eve ? Amy ? (below)"".
 (3) Combining (1) and (2) we get the following ordering: ""(above) Eve Amy Rob (below)"".
@@ -45730,7 +45730,7 @@ The hawk is the second from the left. So the answer is (B).
 ## Question Type: Insert a Symbol
 This question type presents you with three boxes containing symbols that are like mathematical operators. Your task is to select the one that accomplishes the task described in the question.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The hummingbird is to the right of the hawk: ""(left) ? cardinal ? hawk ? hummingbird (right)"".
 (2) The cardinal is to the left of the hawk: ""(left) cardinal ? hawk ? hummingbird (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) cardinal hawk hummingbird (right)"".
@@ -46318,7 +46318,7 @@ A: The answer to (1) is (B) because the subject, ""The two competing teams"", is
 The answer to (2) is (A) because the subject, ""The team of three physicists"", is singular.
 The answer to (3) is (A) because the subject, ""The team of three physicists"", is singular.
 
-# In the following sentences, the subject is underlined and the main verb is in bold. Select the option that best describes the underlined subject in terms of",,"[(0, 0)]","A: Let's think step by step.
+# In the following sentences, the subject is underlined and the main verb is in bold. Select the option that best describes the underlined subject in terms of",error,"[(0, 0)]","A: Let's think step by step.
 (1) The oranges are more expensive than the kiwis: ""(least expensive) ? kiwis ? oranges ? (most expensive)"".
 (2) The oranges are less expensive than the watermelons: ""(least expensive) ? kiwis oranges ? watermelons (most expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(least expensive) kiwis oranges watermelons (most expensive)"".
@@ -46699,7 +46699,7 @@ In this case, we consider the other case:
 (5) Eli finished second: ""(first) ? (second) ? Eli ? (third)"".
 (6) Ana finished second: ""(first) ? Ana ? (second) ? (third)"".
 (7) Eli finished below Amy: ""(first) ? (second) ? Amy ? Eli ? (third)"".
-(8) Combining (5), (6), and (7) we get the following ordering: ""(first) ?",,"[(0, 0)]","A: Let's think step by step.
+(8) Combining (5), (6), and (7) we get the following ordering: ""(first) ?",error,"[(0, 0)]","A: Let's think step by step.
 (1) Eli finished below Amy: ""(above) ? Amy ? Eli ? (below)"".
 (2) Eli finished second: ""(above) ? first ? Eli ? (below)"".
 (3) Combining (1) and (2) we get the following ordering: ""(above) Amy Eli (below)"".
@@ -47009,7 +47009,7 @@ The pears are the second-most expensive. So the answer is (B).
 (3) Combining (1) and (2) we get the following ordering: ""(cheapest) apples pears plums (most expensive)"".
 According to this ordering, the second-most expensive fruit is the pears.
 The pears are the second-most expensive. So the answer is (B).
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 (1) The pears are less expensive than the plums: ""(least expensive) ? apples ? pears ? plums (most expensive)"".
 (2) The pears are more expensive than the apples: ""(least expensive) ? apples pears plums (most expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(least expensive) apples pears plums (most expensive)"".
@@ -47660,7 +47660,7 @@ Example:
 In a golf tournament, there were three golfers: Amy, Eli, and Eve. Eve finished above Amy. Eli finished below Amy.
 Could we determine the order in which the players finished?
 Let's think step by step.
-(1) Eve finished above Amy: ""(above) ?",,"[(0, 0)]","A: Let's think step by step.
+(1) Eve finished above Amy: ""(above) ?",error,"[(0, 0)]","A: Let's think step by step.
 (1) The truck is the newest: ""(oldest) sedan convertible ? truck (newest)"".
 (2) The sedan is older than the convertible: ""(oldest) sedan convertible truck (newest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(oldest) sedan convertible truck (newest)"".
@@ -48379,7 +48379,7 @@ The kiwis are the cheapest. So the answer is (C).
 (3) Combining (1) and (2) we get the following ordering: ""(cheaper) kiwis pears plums (more expensive)"".
 According to this ordering, the cheapest fruit is the kiwis.
 The kiwis are the cheapest. So the answer is (C).
-```",,"[(0, 0)]","A: Let's think step by step.
+```",error,"[(0, 0)]","A: Let's think step by step.
 (1) The pears are less expensive than the plums: ""(cheapest) ? pears ? plums ? (most expensive)"".
 (2) The kiwis are less expensive than the pears: ""(cheapest) ? pears ? kiwis ? (most expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(cheapest) kiwis pears plums (most expensive)"".
@@ -48803,7 +48803,7 @@ const problemSet = [
 	{ id: 1, title: 'Graphic Logic', description: graphicLogicDescription, problemSets: graphicLogicProblemSets },
 	{ id: 2, title: 'Symbol Logic', description: symbolLogicDescription, problemSets: symbolLogicProblemSets },
 	{ id: 3, title: 'Code Translation', description: codeTranslationDescription, problemSets: codeTranslationProblemSets },
-	{ id: 4, title: 'Logical",,"[(0, 0)]","A: Let's think step by step.
+	{ id: 4, title: 'Logical",error,"[(0, 0)]","A: Let's think step by step.
 (1) Ada finished above Ana: ""(above) ? Ada ? Ana ? (below)"".
 (2) Mel finished below Ana: ""(above) ? Ana ? Mel ? (below)"".
 (3) Combining (1) and (2) we get the following ordering: ""(above) Ada Ana Mel (below)"".
@@ -49099,7 +49099,7 @@ def main():
     pass
 
 if __name__ == ""__main__"":
-    main()",,"[(0, 0)]","A: Let's think step by step.
+    main()",error,"[(0, 0)]","A: Let's think step by step.
 (1) The red book is to the left of the green book: ""(left) ? red ? green ? (right)"".
 (2) The yellow book is to the left of the red book: ""(left) ? yellow ? red ? green ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) yellow red green (right)"".
@@ -49519,7 +49519,7 @@ The watermelons are the second-most expensive. So the answer is (B).
 
 
 
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 (1) The watermelons are the second-most expensive: ""(most expensive) ? ? watermelon ? (least expensive)"".
 (2) The loquats are more expensive than the cantaloupes: ""(most expensive) ? loquat ? watermelon cantaloupe (least expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(most expensive) loquat watermelon cantaloupe (least expensive)"".
@@ -50140,7 +50140,7 @@ Amy finished first. So the answer is (A).
 # TASK 4.7.2
 
 """"""
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) Joe finished below Ada: ""(above) ? Ada ? Joe ? (below)"".
 (2) Amy finished above Ada: ""(above) ? Amy ? Ada ? (below)"".
 (3) Combining (1) and (2) we get the following ordering: ""(above) Amy Ada Joe (below)"".
@@ -50785,7 +50785,7 @@ The station wagon is the second-newest. So the answer is (A).
     for i in range(2):
         print('\n')
     play_quiz(quiz)
-    for i in range(2):",,"[(0, 0)]","A: Let's think step by step.
+    for i in range(2):",error,"[(0, 0)]","A: Let's think step by step.
 (1) The truck is newer than the station wagon: ""(oldest) ? station wagon ? truck ? (newest)"".
 (2) The motorcyle is the oldest: ""(oldest) ? motorcyle ? station wagon ? truck ? (newest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(oldest) motorcyle station wagon truck (newest)"".
@@ -51038,7 +51038,7 @@ from sklearn.pipeline import make_pipeline
 # ## 1. Preprocessing
 
 # %%
-df",,"[(0, 0)]","A: Let's think step by step.
+df",error,"[(0, 0)]","A: Let's think step by step.
 (1) The limousine is older than the bus: ""(oldest) ? limo ? bus ? (newest)"".
 (2) The bus is older than the convertible: ""(oldest) ? limo ? bus ? convertible (newest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(oldest) limo bus convertible (newest)"".
@@ -51378,7 +51378,7 @@ The bird marked with the question mark is the rightmost. So the answer is (C).
 (2) The hawk is the second from the left: ""(left) ? cardinal hawk ? (right)"".
 The statements (1) and (2) are not logically consistent. Hence, we can't solve this task.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The hawk is to the left of the cardinal: ""(left) ? hawk ? cardinal ? (right)"".
 (2) The hawk is the second from the left: ""(left) ? hawk ? cardinal ? falcon (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) hawk cardinal falcon (right)"".
@@ -52488,7 +52488,7 @@ Ana finished last. So the answer is (A).
 According to this ordering, the person who finished last (the one at the bottom of this list) is ?.
 We don't know who finished last. So we can't answer this question.
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) Dan finished second: ""(first) ? Mel ? Dan ? (last)"".
 (2) Mel finished first: ""(first) Mel ? Dan ? (last)"".
 (3) Combining (1) and (2) we get the following ordering: ""(first) Mel Dan Ana (last)"".
@@ -53172,7 +53172,7 @@ According to this ordering, the person who finished last (the one at the bottom 
 Mel finished last. So the answer is (B).
 
 ",(B),"[(0, 0)]","
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) Dan finished above Amy: ""(above) ? Dan ? Amy ? (below)"".
 (2) Amy finished above Mel: ""(above) ? Dan Amy Mel (below)"".
 (3) Combining (1) and (2) we get the following ordering: ""(above) Dan Amy Mel (below)"".
@@ -53316,7 +53316,7 @@ Options:
 (B) The gray book is the leftmost
 (C) The red book is the leftmost
 A: Let's think step by step.
-(1) The gray book is to the right of the white book: ""(left) ? white ?",,"[(0, 0)]","A: Let's think step by step.
+(1) The gray book is to the right of the white book: ""(left) ? white ?",error,"[(0, 0)]","A: Let's think step by step.
 (1) Amy finished above Rob: ""(above) ? Amy ? Rob ? (below)"".
 (2) Eve finished above Amy: ""(above) ? Eve ? Amy ? (below)"".
 (3) Combining (1) and (2) we get the following ordering: ""(above) Eve Amy Rob (below)"".
@@ -54116,7 +54116,7 @@ The hawk is the second from the left. So the answer is (C).
 (3) Combining (1) and (2) we get the following ordering: ""(left) owl hawk robin (right)"".
 According to this ordering, the second from the left bird is the owl.
 The owl is the second from the left. So the answer is (B).
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 (1) The robin is to the right of the hawk: ""(left) ? hawk ? robin ? (right) "".
 (2) The owl is the leftmost: ""(left) ? owl ? hawk ? robin ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) owl hawk robin (right)"".
@@ -54141,7 +54141,7 @@ def get_second_order_string(obj, second_order, obj2):
 
 
 def get_third_order_string(obj, third_order, obj2, obj3):
-    return '%s is %s %s and %s' % (obj, third_order, obj2, obj",,"[(0, 0)]","A: Let's think step by step.
+    return '%s is %s %s and %s' % (obj, third_order, obj2, obj",error,"[(0, 0)]","A: Let's think step by step.
 (1) The robin is to the right of the hawk: ""(left) ? hawk ? robin ? (right)"".
 (2) The owl is the leftmost: ""(left) owl hawk robin (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) owl hawk robin (right)"".
@@ -55282,7 +55282,7 @@ The watermelons are the most expensive. So the answer is (A).
 (3) Combining (1) and (2) we get the following ordering: ""(cheapest) apples mangoes watermelons (most expensive)"".
 According to this ordering, the most expensive fruit is the watermelon.
 The watermelons are the most expensive. So the answer is (A).
-""""""",,"[(0, 0)]","A: Let's think step by step.
+""""""",error,"[(0, 0)]","A: Let's think step by step.
 (1) The apples are less expensive than the mangoes: ""(least expensive) apples ? mangoes ? (most expensive)"".
 (2) The mangoes are less expensive than the watermelons: ""(least expensive) apples mangoes ? watermelons (most expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(least expensive) apples mangoes watermelons (most expensive)"".
@@ -56168,7 +56168,7 @@ The convertible is the second-newest. So the answer is (B).
 
 """"""
 
-print(deduce_order_of_sequence_of_objects.__doc__)",,"[(0, 0)]","A: Let's think step by step.
+print(deduce_order_of_sequence_of_objects.__doc__)",error,"[(0, 0)]","A: Let's think step by step.
 (1) The truck is the newest: ""(oldest) ? ? ? truck (newest)"".
 (2) The sedan is older than the convertible: ""(oldest) ? ? ? truck ? convertible ? sedan (newest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(oldest) ? ? ? truck ? convertible sedan (newest)"".
@@ -56298,7 +56298,7 @@ public class Ordering {
                 words.add(scanner.nextLine());
             }
             String[] wordDict = scanner.nextLine().split("" "");
-            System.",,"[(0, 0)]","A: Let's think step by step.
+            System.",error,"[(0, 0)]","A: Let's think step by step.
 (1) The truck is the newest: ""(oldest) ? sedan ? convertible ? truck (newest)"".
 (2) The sedan is older than the convertible: ""(oldest) ? convertible ? sedan ? truck (newest)"".
 (3) Combining (1) and (2) we get the following ordering: ""(oldest) convertible sedan truck (newest)"".
@@ -56797,7 +56797,7 @@ According to this ordering, the most expensive fruit is watermelons.
 The watermelons are the most expensive. So the answer is (B).
 
 ",(B),"[(0, 0)]","
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The mangoes are the cheapest: "" (cheap) ? mangoes ? ? (expensive) "".
 (2) The cantaloupes are the second-most expensive: ""(cheap) ? mangoes ? cantaloupes ? (expensive)"".
 (3) Combining (1) and (2) we get the following ordering: ""(cheap) mangoes cantaloupes (expensive)"".
@@ -58546,7 +58546,7 @@ The falcon is the rightmost. So the answer is (B).
 
 ### Syllogism:
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The crow is to the left of the raven: ""(left) ? crow ? raven ? (right)"".
 (2) The falcon is to the right of the raven: ""(left) ? crow ? raven ? falcon (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) crow raven falcon (right)"".
@@ -59869,7 +59869,7 @@ The minivan is the second-newest. So the answer is (B).
 (3) Combining (1) and (2) we get the following ordering: ""truck minivan tractor"".
 According to this ordering, the second-newest vehicle is the minivan.
 The minivan is the second-newest. So the answer is (B).
- '''",,"[(0, 0)]","(D) None of the above
+ '''",error,"[(0, 0)]","(D) None of the above
 A: Let's think step by step.
 (1) The truck is newer than the minivan: ""(oldest) ? minivan ? truck ? (newest)"".
 (2) The minivan is newer than the tractor: ""(oldest) ? tractor ? minivan ? (newest)"".
@@ -60171,7 +60171,7 @@ The blue jay is the rightmost. So the answer is (A).
 
 # 5-13. Evaluate Sentences
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The falcon is to the left of the blue jay: ""(left) ? falcon ? blue jay ? (right)"".
 (2) The falcon is to the right of the raven: ""(left) ? raven ? falcon ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) raven falcon blue jay (right)"".
@@ -60579,7 +60579,7 @@ sequence_of_three_objects_questions = [
      ],
 
     [""On a shelf, there are three books: a white book, a green book, and an orange book. The green book is to the right of the white book. The orange book is the rightmost."",
-     [""The white book is the leftmost"", ""The green book is the left",,"[(0, 0)]","A: Let's think step by step.
+     [""The white book is the leftmost"", ""The green book is the left",error,"[(0, 0)]","A: Let's think step by step.
 (1) Joe finished above Ana: ""(above) ? Joe ? Ana ? (below)"".
 (2) Rob finished second: ""(above) ? Joe ? Rob ? Ana (below)"".
 (3) Combining (1) and (2) we get the following ordering: ""(above) Joe Rob Ana (below)"".
@@ -60754,7 +60754,7 @@ The orange book is the rightmost. So the answer is (C).
 """"""
 
 """"""
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The brown book is to the left of the orange book: ""(left) ? brown ? orange ? (right)"".
 (2) The green book is to the left of the brown book: ""(left) ? green ? brown ? orange ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) green brown orange (right)"".
@@ -60767,7 +60767,7 @@ The orange book is the rightmost. So the answer is (C).
 (3) Combining (1) and (2) we get the following ordering: ""(left) green brown orange (right)"".
 According to this ordering, the rightmost book is the orange book.
 The orange book is the rightmost. So the answer is (C).
-'''",,"[(0, 0)]","A: Let's think step by step.
+'''",error,"[(0, 0)]","A: Let's think step by step.
 (1) The brown book is to the left of the orange book: ""(left) ? brown ? orange ? (right)"".
 (2) The green book is to the left of the brown book: ""(left) ? green brown ? orange ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) green brown orange (right)"".
@@ -61221,7 +61221,7 @@ questions = questions[1:]
 
 # Let's remove the answers from the questions.
 
-questions = [q.split('\nA')[0] for q in",,"[(0, 0)]"
+questions = [q.split('\nA')[0] for q in",error,"[(0, 0)]"
 logic,"The following paragraphs each describe a set of three objects arranged in a fixed order. The statements are logically consistent within each paragraph. A fruit stand sells three fruits: oranges, watermelons, and pears. The oranges are the second-most expensive. The pears are more expensive than the watermelons.
 Options:
 (A) The oranges are the cheapest
@@ -61875,7 +61875,7 @@ The crow is the leftmost. So the answer is (B).
 # =====================================================================================
 # =====================================================================================
 # =====================================================================================
-# =================================================================================",,"[(0, 0)]","A: Let's think step by step.
+# =================================================================================",error,"[(0, 0)]","A: Let's think step by step.
 (1) The quail is the leftmost: ""(left) ? quail ? ? (right)"".
 (2) The raven is the rightmost: ""(left) ? quail ? ? raven (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) quail ? raven (right)"".
@@ -61967,7 +61967,7 @@ According to this ordering, the bird in the middle is the crow.
 The crow is the leftmost. So the answer is (C).
 """"""
 
-",,"[(0, 0)]","A: Let's think step by step.
+",error,"[(0, 0)]","A: Let's think step by step.
 (1) The quail is the leftmost: ""(left) ? quail ? ? (right)"".
 (2) The raven is the rightmost: ""(left) ? quail ? ? raven (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) quail ? ? raven (right)"".
@@ -62430,7 +62430,7 @@ import statsmodels.api as sm
 import warnings
 warnings.filterwarnings('ignore')
 
-plt.style.use",,"[(0, 0)]","A: Let's think step by step.
+plt.style.use",error,"[(0, 0)]","A: Let's think step by step.
 (1) The raven is to the left of the owl: ""(left) ? raven ? owl ? (right)"".
 (2) The falcon is the leftmost: ""(left) ? falcon raven owl ? (right)"".
 (3) Combining (1) and (2) we get the following ordering: ""(left) falcon raven owl (right)"".
