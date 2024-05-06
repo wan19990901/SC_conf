@@ -90,16 +90,19 @@ def CS_early_stopping(df, threshold, N=5, stop_mechanism='PositiveN'):
     df['CS_correctness'] = CS_correctness
     df['CS_steps'] = CS_steps
 
-    df_model_comp_dict = {}
-    df_model_comp_dict['SC_ACC'] = df.SC_correctness.sum() / len(df)
-    df_model_comp_dict['ES_ACC'] = df.ES_correctness.sum() / len(df)
-    df_model_comp_dict['CS_ACC'] = df.CS_correctness.sum() / len(df)
-    df_model_comp_dict['SC_Avg_Steps'] = 40
-    df_model_comp_dict['ES_Avg_Steps'] = df.ES_steps.mean()
-    df_model_comp_dict['CS_Avg_Steps'] = df.CS_steps.mean()
-
+    df_model_comp_dict = {
+        'SC_ACC': df.SC_correctness.sum() / len(df),
+        'ES_ACC': df.ES_correctness.sum() / len(df),
+        'CS_ACC': df.CS_correctness.sum() / len(df),
+        'SC_Avg_Steps': 40,
+        'ES_Avg_Steps': df.ES_steps.mean(),
+        'CS_Avg_Steps': df.CS_steps.mean(),
+        'ASC_Avg_Steps': df.asc_steps.mean(),
+        'ASC_ACC': df.asc_correctness.sum() / len(df)
+    }
+    # Print each metric
     for key, val in df_model_comp_dict.items():
-        print(key, ' : ', val)
+        print(f"{key} : {val}")
 
     return df, df_model_comp_dict
 
@@ -108,7 +111,7 @@ if __name__ == '__main__':
     # storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/{MODEL}')
     file_path = os.path.join(DATA_DIR, 'final.csv')
     df_raw = pd.read_csv(file_path)
-    df_raw = df_raw.sample(1000).reset_index(drop=True)
+    df_raw = df_raw.sample(100).reset_index(drop=True)
     df_with_features = pd.DataFrame(extract_feature(df_raw))
     feature_li = [
         'LEN',
@@ -126,10 +129,10 @@ if __name__ == '__main__':
     # coe = [-0.1, -5, -1, 3, 2, 2, 2]
     # intercept = -2
     # df_cs, threshold = customized_LR_model(df=df_with_features, feature_li=feature_li, coe=coe, intercept=intercept)
-    # threshold = float(sys.argv[1])
-    # N = int(sys.argv[2])
-    N = 3
-    threshold = 0.5
+    threshold = float(sys.argv[1])
+    N = int(sys.argv[2])
+    # N = 3
+    # threshold = 0.5
     df_cs, _ = trained_LR_model(df=df_with_features, feature_li=feature_li)
     stop_mechanism = 'ConsistencyN'
     df, _ = CS_early_stopping(df=df_cs, threshold=threshold, N=N, stop_mechanism=stop_mechanism)

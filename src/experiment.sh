@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Array of threshold values
-thresholds=(0.3 0.4 0.5 0.6 0.7)
+thresholds=(0.4 0.5)
 
 # Array of N values
-Ns=(2 3 4 5)
+Ns=(2 3 4)
 
 # Iterate over threshold values
 for threshold in "${thresholds[@]}"
@@ -13,6 +13,6 @@ do
     for N in "${Ns[@]}"
     do
         # Call the Python script with the current threshold and N values
-        python your_script.py "$threshold" "$N"
+        python CS_based_early_stopping.py "$threshold" "$N"
     done
 done

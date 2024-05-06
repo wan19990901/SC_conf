@@ -6,6 +6,8 @@ import numpy as np
 import statsmodels.api as sm
 from sklearn.metrics import roc_auc_score,roc_curve,f1_score
 from sklearn.linear_model import LogisticRegression
+from adaptive_consistency import AC, BetaStoppingCriteria
+
 DATA_DIR = '../data'
 DF_NAME = 'GSM8K'
 DIFFICULTY = 'easy'
@@ -89,7 +91,42 @@ def concatenate_columns(df, data_columns, outcome_column):
     df = pd.DataFrame(concatenated_data)
 
     return df
-def prepare_df(df, feature_li,ES_window_size = 5):
+def calculate_ASC_correctness(df):
+    # Define the helper function to get majority vote and length of answers
+    def majority_and_length(answers):
+        if not answers:
+            return None, 0
+        most_common_answer = Counter(answers).most_common(1)[0][0]
+        return most_common_answer, len(answers)
+
+    # Prepare to collect data for new columns
+    asc_correctness = []
+    asc_steps = []
+    ac = AC(stop_criteria=BetaStoppingCriteria(0.95), max_gens=40)
+
+    # Iterate over each row of the DataFrame
+    for index, row in df.iterrows():
+        answers = row['CoT answers']
+        correct_answer = row['correct answer']
+        # Assuming ac.should_stop is a method that determines when to stop appending answers
+        # Implement your condition in ac.should_stop(answers) or define it accordingly
+        for i, answer in enumerate(answers):
+            if ac.should_stop(answers[:i+1]):  # Pass the slice up to the current point
+                break
+        # Get the majority vote and length of the sequence
+        majority_vote, length_of_answers = majority_and_length(answers[:i+1])
+        # Compare majority vote to the correct answer and determine correctness
+        asc_correctness.append(1 if majority_vote == str(correct_answer) else 0)
+        asc_steps.append(length_of_answers)
+
+    # Update DataFrame with new columns
+    df['asc_correctness'] = asc_correctness
+    df['asc_steps'] = asc_steps
+
+    return df
+
+# Example of integrating the new function into your existing workflow
+def prepare_df(df, feature_li, ES_window_size = 5):
     # Reset first sim to 0.5
     for row_idx in range(len(df)):
         df['SIM_COT_AGG'][row_idx][0] = 0.5
@@ -101,6 +138,11 @@ def prepare_df(df, feature_li,ES_window_size = 5):
     # Adding Early Stopping Self Consistency Baseline
     df = calculate_ES_correctness(df, window_size=ES_window_size)
     print(df.ES_correctness.value_counts())
+
+    # Adding ASC Correctness and Steps
+    print(df.columns)
+    df = calculate_ASC_correctness(df)
+    print("ASC Steps and Answers added.")
 
     # Concate cols
     df_concate = concatenate_columns(df, feature_li, 'Correctness')
@@ -197,8 +239,7 @@ def trained_LR_model(df,feature_li):
 
 
 if __name__ == '__main__':
-    storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/{MODEL}')
-    file_path = os.path.join(storage_dir, f'{DF_NAME}_{DIFFICULTY}.csv')
+    file_path = os.path.join(DATA_DIR, 'final.csv')
     df_raw = pd.read_csv(file_path)
     df_with_features = pd.DataFrame(extract_feature(df_raw))
     feature_li = [
@@ -214,6 +255,6 @@ if __name__ == '__main__':
         'SIM_AC_PW',
         # 'size_of_cot'
     ]
-    coe = [-0.1,-5,-1,3,2,2,2]
-    intercept = -1.5
+    # coe = [-0.1,-5,-1,3,2,2,2]
+    # intercept = -1.5
     df = trained_LR_model(df_with_features,feature_li)
