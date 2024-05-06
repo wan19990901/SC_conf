@@ -243,7 +243,7 @@ if __name__ == '__main__':
     df_raw = pd.read_csv(file_path)
     df_with_features = pd.DataFrame(extract_feature(df_raw))
     feature_li = [
-        # 'LEN',
+        'LEN',
         'QUA_IM',
         'DIF_IV',
         # 'DIF_SUB',
