@@ -51,20 +51,19 @@ def extract_len(df):
         if col.startswith('CoT_'):
             cleaned_answers = []
             for entry in df[col]:
-                # Extract numbers using regular expression
-                if re.match(r'^(\s?A:)|(def)|(#)',entry):
-                    num_of_sentence = len(entry.split('.'))-1
-                    cleaned_answers.append(num_of_sentence)
+                entry_str = str(entry)
+                # Count the number of new lines in the entry
+                num_of_newlines = entry_str.count('\n')
+                
+                if num_of_newlines == 0:
+                    # If no new lines, count the number of sentences
+                    num_of_sentences = entry_str.count('.') + 1
+                    cleaned_answers.append(num_of_sentences)
                 else:
-                    steps = re.findall(r'[Ss]tep\s?\d', str(entry))
-                    if steps:
-                        # Join all numbers with space if there are multiple numbers
-                        cleaned_answers.append(len(steps))
-                    else:
-                        # If no number is found, replace with 'error'
-                        cleaned_answers.append(0)
+                    cleaned_answers.append(num_of_newlines)
+            
             step_count_buffer.append(cleaned_answers)
-
+    
     step_count = np.array(step_count_buffer).T
     return step_count
 
@@ -160,7 +159,7 @@ def extract_feature(df):
         'LEN': [],
         'QUA_IM': [],
         'DIF_IV': [],
-        'DIF_SUB': [],
+        # 'DIF_SUB': [],
         # 'SIM_COT_BIGRAM': [],
         'SIM_COT_AGG': [],
         # 'SIM_COT_PW': [],
@@ -185,7 +184,7 @@ def extract_feature(df):
         feature_dict['Name'].append(df.iloc[row]['Name'])  # Add this line
         feature_dict['Model'].append(df.iloc[row]['Model'])  # Add this line
         feature_dict['correct answer'].append(df.iloc[row]['Correct Answer'])
-        feature_dict['DIF_SUB'].append(df.iloc[row]['Category'])
+        # feature_dict['DIF_SUB'].append(df.iloc[row]['Category'])
         feature_dict['CoT answers'].append(cot_answer_arr[row].tolist())
         feature_dict['Correctness'].append(binary_arr[row].tolist())
         feature_dict['QUA_IM'].append(IM[row].tolist())
