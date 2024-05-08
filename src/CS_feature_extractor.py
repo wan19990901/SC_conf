@@ -85,34 +85,15 @@ def extract_IM(df):
     mistakes = np.array(mistake_buffer).T
     return mistakes
 
-# def extract_UKW(df):
-#     UKW_buffer = []
-#     for col in df:
-#         if col.startswith('CoT_'):
-#             cleaned_answers = []
-#             for entry in df[col]:
-#                 # Extract numbers using regular expression
-#                 UKW = re.findall(r'(be a mistake)|(be an error)', str(entry))
-#                 if UKW:
-#                     cleaned_answers.append(1)
-#                 else:
-#                     # If no number is found, replace with 'error'
-#                     cleaned_answers.append(0)
-#             UKW_buffer.append(cleaned_answers)
-#
-#     UKW_arr = np.array(UKW_buffer).T
-#     return UKW_arr
-
 
 def extract_IV(df):
     instruction_buffer = []
     for col in df:
-        if col.startswith('Instruction Violation_'):
+        if col.startswith('Final Answer_'):
             cleaned_answers = []
             for entry in df[col]:
                 # Extract numbers using regular expression
-                x = ast.literal_eval(entry)
-                cleaned_answers.append(sum([sum(idx) for idx in x]))
+                cleaned_answers.append(1 if str(entry).lower() == 'error' else 0)
             instruction_buffer.append(cleaned_answers)
 
     instruction_error = np.array(instruction_buffer).T

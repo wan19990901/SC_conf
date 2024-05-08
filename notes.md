@@ -16,3 +16,8 @@ TO DO:
 
 Plots and experiments for different N
 
+
+1: Fix features (by selection)
+2: Run different tests on different N and optimization methods
+3: Viz
+4: clean data (make sure 2.0 == 2)

@@ -117,23 +117,21 @@ if __name__ == '__main__':
         'LEN',
         'QUA_IM',
         'DIF_IV',
-        # 'DIF_SUB',
         # 'SIM_COT_BIGRAM',
         'SIM_COT_AGG',
         # 'SIM_COT_PW',
         'SIM_AC_BIGRAM',
         'SIM_AC_AGG',
         'SIM_AC_PW',
-        # 'size_of_cot'
+        # statistical test to justify feature selection 
     ]
     # coe = [-0.1, -5, -1, 3, 2, 2, 2]
     # intercept = -2
     # df_cs, threshold = customized_LR_model(df=df_with_features, feature_li=feature_li, coe=coe, intercept=intercept)
-    threshold = float(sys.argv[1])
     N = int(sys.argv[2])
     # N = 3
     # threshold = 0.5
-    df_cs, _ = trained_LR_model(df=df_with_features, feature_li=feature_li)
+    df_cs, threshold = trained_LR_model(df=df_with_features, feature_li=feature_li)
     stop_mechanism = 'ConsistencyN'
     df, _ = CS_early_stopping(df=df_cs, threshold=threshold, N=N, stop_mechanism=stop_mechanism)
     file_name = f"df_threshold_{threshold}_N_{N}_stop_{stop_mechanism}.csv"
