@@ -188,54 +188,43 @@ def customized_LR_model(df,feature_li,coe,intercept):
     print('=================================================================================')
     return df,0.36
 
-def trained_LR_model(df,feature_li):
+def trained_LR_model(df, feature_li):
     df_concate = prepare_df(df, feature_li)
     split_idx = int(len(df_concate) * 0.8)  # 80% of the length of the dataset
-
+    print('Model fitting started ')
     # Split the data into training and test sets
-    X_train_hard = df_concate[feature_li].iloc[:split_idx]
-    y_train_hard = df_concate['Correctness'].iloc[:split_idx]
-    X_test_hard = df_concate[feature_li].iloc[split_idx:]
-    y_test_hard = df_concate['Correctness'].iloc[split_idx:]
+    X_train = df_concate[feature_li].iloc[:split_idx]
+    y_train = df_concate['Correctness'].iloc[:split_idx]
+    X_test = df_concate[feature_li].iloc[split_idx:]
+    y_test = df_concate['Correctness'].iloc[split_idx:]
 
     # Add a constant term to the features for the intercept for training and testing set
-    X_train_hard = sm.add_constant(X_train_hard)
-    X_test_hard = sm.add_constant(X_test_hard)
+    X_train = sm.add_constant(X_train)
+    X_test = sm.add_constant(X_test)
 
     # Fit the logistic regression model using statsmodels
-    model = sm.Logit(y_train_hard, X_train_hard)
+    model = sm.Logit(y_train, X_train)
     result = model.fit()
     print(result.summary())
 
-    # Split the data into training and test sets
-    X_train_hard = df_concate[feature_li].iloc[:split_idx]
-    y_train_hard = df_concate['Correctness'].iloc[:split_idx]
-    X_test_hard = df_concate[feature_li].iloc[split_idx:]
-    y_test_hard = df_concate['Correctness'].iloc[split_idx:]
-
-    # Initialize and fit the logistic regression model
-    model = LogisticRegression(max_iter=1000)
-    model.fit(X_train_hard, y_train_hard)
-
-    # Print the model coefficients and intercept
-    print("Coefficients:", model.coef_)
-    print("Intercept:", model.intercept_)
-
     # Make predictions on the test data (predicting probabilities)
-    y_pred_proba = model.predict_proba(X_test_hard)[:, 1]  # Get probabilities for the positive class
+    y_pred_proba = result.predict(X_test)
 
     # Calculate the AUROC
-    auroc = roc_auc_score(y_test_hard, y_pred_proba)
-    fpr, tpr, thresholds = roc_curve(y_test_hard, y_pred_proba)
-    f1_scores = [f1_score(y_test_hard, y_pred_proba > thresh) for thresh in thresholds]
+    auroc = roc_auc_score(y_test, y_pred_proba)
+    fpr, tpr, thresholds = roc_curve(y_test, y_pred_proba)
+    f1_scores = [f1_score(y_test, y_pred_proba > thresh) for thresh in thresholds]
     best_threshold = thresholds[np.argmax(f1_scores)]
     print(f"The AUROC score is: {auroc}")
 
-    df_concate['confidence_score'] = model.predict_proba(df_concate[feature_li])[:, 1]
+    # Calculate and store the confidence score for all data
+    df_concate['confidence_score'] = result.predict(sm.add_constant(df_concate[feature_li]))
+    NUM_OF_COT = 40  # assuming this constant defines how to split the confidence score for lists
     lists = [df_concate['confidence_score'].iloc[i:i + NUM_OF_COT].tolist() for i in range(0, len(df_concate), NUM_OF_COT)]
     df['confidence_score'] = lists
     print('=================================================================================')
-    return df,best_threshold
+
+    return df, best_threshold
 
 
 if __name__ == '__main__':

@@ -17,7 +17,10 @@ TO DO:
 Plots and experiments for different N
 
 
-1: Fix features (by selection)
-2: Run different tests on different N and optimization methods
-3: Viz
-4: clean data (make sure 2.0 == 2)
+1: Fix features (by selection) (select on ROC or final results?); Run a BERT regression on CoT directly.
+
+2: Run different tests on different N and optimization methods run all data, how to pick best model? (acc vs steps)
+
+3: llama
+
+4: Viz more.

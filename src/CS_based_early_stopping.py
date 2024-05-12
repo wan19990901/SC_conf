@@ -111,7 +111,7 @@ if __name__ == '__main__':
     # storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/{MODEL}')
     file_path = os.path.join(DATA_DIR, 'final.csv')
     df_raw = pd.read_csv(file_path)
-    df_raw = df_raw.sample(100).reset_index(drop=True)
+    df_raw = df_raw.sample(2000).reset_index(drop=True)
     df_with_features = pd.DataFrame(extract_feature(df_raw))
     feature_li = [
         'LEN',
@@ -130,9 +130,9 @@ if __name__ == '__main__':
     # df_cs, threshold = customized_LR_model(df=df_with_features, feature_li=feature_li, coe=coe, intercept=intercept)
     N = int(sys.argv[2])
     # N = 3
-    # threshold = 0.5
-    df_cs, threshold = trained_LR_model(df=df_with_features, feature_li=feature_li)
-    stop_mechanism = 'ConsistencyN'
+    threshold = float(sys.argv[1])
+    df_cs, _ = trained_LR_model(df=df_with_features, feature_li=feature_li)
+    stop_mechanism = str(sys.argv[3])
     df, _ = CS_early_stopping(df=df_cs, threshold=threshold, N=N, stop_mechanism=stop_mechanism)
     file_name = f"df_threshold_{threshold}_N_{N}_stop_{stop_mechanism}.csv"
     storage_dir = '../result/experiments_output/'
