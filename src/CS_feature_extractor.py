@@ -164,8 +164,14 @@ def extract_feature(df):
     assert (cot_answer_arr).shape == (binary_arr).shape == (IV).shape == (LEN).shape
     for row in tqdm(range(len(df))):
         feature_dict['id'].append(row)
-        feature_dict['Name'].append(df.iloc[row]['Name'])  # Add this line
-        feature_dict['Model'].append(df.iloc[row]['Model'])  # Add this line
+        try:
+            feature_dict['Name'].append(df.iloc[row]['Name'])  # Add this line
+        except:
+            feature_dict['Name'].append('ES')
+        try:
+            feature_dict['Model'].append(df.iloc[row]['Model'])  # Add this line
+        except:
+            feature_dict['Model'].append('None')
         feature_dict['correct answer'].append(df.iloc[row]['Correct Answer'])
         # feature_dict['DIF_SUB'].append(df.iloc[row]['Category'])
         feature_dict['CoT answers'].append(cot_answer_arr[row].tolist())

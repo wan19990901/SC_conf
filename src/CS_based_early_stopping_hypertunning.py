@@ -11,8 +11,8 @@ DATA_DIR = '../data/Evaluation_CoTs/'
 
 def normalize_cs(cs_li, threshold):
     cs_arr = np.array(cs_li)
-    normalized_cs = [(cs-threshold)/(1-threshold) if cs > threshold else (cs-threshold)/(threshold) for cs in cs_arr]
-    # normalized_cs = cs_arr - threshold
+    # normalized_cs = [(cs-threshold)/(1-threshold) if cs > threshold else (cs-threshold)/(threshold) for cs in cs_arr]
+    normalized_cs = cs_arr - threshold
     # normalized_cs = [0.5 if cs > threshold else -0.5 for cs in cs_arr]
     return np.array(normalized_cs)
 
@@ -109,7 +109,7 @@ def CS_early_stopping(df, threshold, N=5, stop_mechanism='PositiveN'):
 
 if __name__ == '__main__':
     # storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/{MODEL}')
-    file_path = os.path.join(DATA_DIR, 'final_ASC.csv')
+    file_path = os.path.join(DATA_DIR, 'final_ES.csv')
     df_raw = pd.read_csv(file_path)
     # df_raw = df_raw.sample(2000).reset_index(drop=True)
     df_with_features = pd.DataFrame(extract_feature(df_raw))
@@ -117,21 +117,23 @@ if __name__ == '__main__':
         # 'LEN',
         'QUA_IM',
         'DIF_IV',
+        # 'SIM_COT_BIGRAM',
         'SIM_COT_AGG',
+        # 'SIM_COT_PW',
         'SIM_AC_BIGRAM',
         'SIM_AC_AGG',
         'SIM_AC_PW',
         # statistical test to justify feature selection 
     ]
-    coe = [-5, -5, 3, 2, 1, 3]
-    intercept = -2.5
+    coe = [-5, -3, 3, 2, 1, 3]
+    intercept = -4
     # coe = [-1, -0.9, 1, 0.5, 0.3, 1]
     # intercept = -1.8
     df_cs, _ = customized_LR_model(df=df_with_features, feature_li=feature_li, coe=coe, intercept=intercept)
     N = int(sys.argv[2])
     # N = 3
     threshold = float(sys.argv[1])
-    # df_cs, _ = trained_LR_model(df=df_with_features, feature_li=feature_li)
+    df_cs, _ = trained_LR_model(df=df_with_features, feature_li=feature_li)
     stop_mechanism = str(sys.argv[3])
     df, _ = CS_early_stopping(df=df_cs, threshold=threshold, N=N, stop_mechanism=stop_mechanism)
     file_name = f"df_threshold_{threshold}_N_{N}_stop_{stop_mechanism}.csv"
