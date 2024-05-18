@@ -6,7 +6,7 @@ from langchain_anthropic import ChatAnthropic
 from langchain_core.messages import AIMessage
 from typing import List, Optional
 import re
-from langchain_community.llms import Ollama
+from langchain_community.chat_models import ChatOllama
 from Parsers import *
 
 class LLM_agent:
@@ -18,7 +18,7 @@ class LLM_agent:
             self.llm = ChatAnthropic(model=model,
                                   anthropic_api_key=self.api_key)
         elif llm_type == 'ollama':
-            self.llm = Ollama(model=model)
+            self.llm = ChatOllama(model=model)
         self.llm_type = llm_type
         self.chat_prompt = None
 
@@ -27,34 +27,47 @@ class LLM_agent:
             output_parser = self.parser
         elif self.llm_type == 'anthropic':
             output_parser = extract_json
-        elif self.llm_type == 'ollama':
-            output_parser = extract_json
-        chain = self.chat_prompt | self.llm | output_parser
+
+        
+        if self.llm_type == 'ollama':
+            chain = self.chat_prompt | self.llm 
+        else:
+            chain = self.chat_prompt | self.llm | output_parser
         success = False
         attempts = 0
         response = None
         while (not success) and attempts < 3:
             try:
                 response = chain.invoke(var_dict)
-                if len(response) == self.num_of_llm_output:
+                if(self.llm_type != 'ollama'):
+
+                    if len(response) == self.num_of_llm_output:
+                        success = True
+                    else:
+                        print("Response length does not match the expected length.")
+                else:
                     success = True
-            except:
+            except Exception as e:
+                print("An exception occurred:", str(e))
                 attempts += 1
                 success = False
-                if attempts == 3:
-                    print('maximum attempts arrived')
-                    chain = self.chat_prompt | self.llm
-                    response = chain.invoke(var_dict)
 
-        return response, attempts
+            if attempts == 3:
+                print('Maximum attempts reached.')
+                chain = self.chat_prompt | self.llm
+                response = chain.invoke(var_dict)
+
+        return response,attempts
+
     def get_llm(self):
         return self.llm
     def set_prompt(self,prompt_json_link):
         with open(prompt_json_link) as f:
             message = []
             for key,val in json.load(f).items():
-                if key == 'system':
-                    val += '\n{format_instructions}'
+                if(self.llm_type != 'ollama'):
+                    if key == 'system':
+                        val += '\n{format_instructions}'
                 message.append((key,val))
 
         chat_prompt = ChatPromptTemplate.from_messages(message)
