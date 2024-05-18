@@ -37,8 +37,6 @@ def save_csv(row):
     else:
         # The file exists, append without header
         row.to_frame().T.to_csv(file_path, mode='a', index=False, header=False)
-
-
 if __name__ == '__main__':
     with open(llm_config['api_key_link'], 'r') as f:
         api_key = f.read()
@@ -64,8 +62,11 @@ if __name__ == '__main__':
                 cot_agent = LLM_agent(llm_type=llm_config['llm_type'], api_key=api_key, model=llm_config['model'],
                                       temperature=llm_config['temperature'])
                 cot_agent.set_prompt(llm_config['prompt_link'])
-                cot_agent.set_parser(llm_config['parser_template'])
+                if(llm_config['llm_type'] != 'ollama'):
+                    cot_agent.set_parser(llm_config['parser_template'])
                 response, attempts = cot_agent.involk(arguments_dict)
+                if(llm_config['llm_type'] == 'ollama'):
+                    response = response.content
                 try:
                     CoT = response['CoT']
                     Final_Answer = response['Final_answer']
@@ -75,6 +76,9 @@ if __name__ == '__main__':
                     Final_Answer = 'error'
                     parse_error = True
                     parse_error_attempt += 1
+                    if(llm_config['llm_type'] == 'ollama'):
+                        Final_Answer = None
+                        parse_error = False                                            
                 instruction_violation_count.append((attempts,parse_error_attempt))
             row[f'CoT_{round}'] = CoT
             row[f'Final Answer_{round}'] = Final_Answer
