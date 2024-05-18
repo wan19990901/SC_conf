@@ -1,7 +1,11 @@
+import os.path
+
+import pandas as pd
+
 from IDV_CS_Model import *
 import sys
-
-DATA_DIR = '../data/Evaluation_CoTs/'
+import json
+DATA_DIR = '../data/Evaluation_CoTs/Final_results'
 # DF_NAME = 'GSM8K'
 # DIFFICULTY = 'easy'
 # NUM_OF_SAMPLES = 500
@@ -54,7 +58,7 @@ def CS_early_stopping(df, threshold, N=5, stop_mechanism='PositiveN'):
             stop_idx = stop_con2(individual_cs, buffer_size=N)
 
             if stop_idx:
-                num_of_steps = stop_idx
+                num_of_steps = stop_idx + 1  # +1 to account for the 0-indexing
             else:
                 num_of_steps = 40
             answers = test_row['CoT answers'][:num_of_steps]
@@ -101,27 +105,26 @@ def CS_early_stopping(df, threshold, N=5, stop_mechanism='PositiveN'):
         'ASC_ACC': df.asc_correctness.sum() / len(df)
     }
     # Print each metric
-    for key, val in df_model_comp_dict.items():
-        print(f"{key} : {val}")
+
+    # for key, val in df_model_comp_dict.items():
+    #     print(f"{key} : {val}")
 
     return df, df_model_comp_dict
 
 
 if __name__ == '__main__':
-    # storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/{MODEL}')
-    file_path = os.path.join(DATA_DIR, 'final_ASC.csv')
-    df_raw = pd.read_csv(file_path)
-    # df_raw = df_raw.sample(2000).reset_index(drop=True)
-    df_with_features = pd.DataFrame(extract_feature(df_raw))
+    # file_path = os.path.join(DATA_DIR, 'final_ASC.csv')
+    # df_raw = pd.read_csv(file_path)
+    # df_with_features = pd.DataFrame(extract_feature(df_raw))
+    # df_with_features.to_json(os.path.join(DATA_DIR,'final_ASC_with_feature.json'))
+    df_with_features = pd.read_json(os.path.join(DATA_DIR,'final_with_feature.json'))
     feature_li = [
-        # 'LEN',
         'QUA_IM',
         'DIF_IV',
         'SIM_COT_AGG',
         'SIM_AC_BIGRAM',
         'SIM_AC_AGG',
         'SIM_AC_PW',
-        # statistical test to justify feature selection 
     ]
     coe = [-5, -5, 3, 2, 1, 3]
     intercept = -2.5
@@ -135,5 +138,5 @@ if __name__ == '__main__':
     stop_mechanism = str(sys.argv[3])
     df, _ = CS_early_stopping(df=df_cs, threshold=threshold, N=N, stop_mechanism=stop_mechanism)
     file_name = f"df_threshold_{threshold}_N_{N}_stop_{stop_mechanism}.csv"
-    # storage_dir = '../result/experiments_output/'
-    # df.to_csv(storage_dir + file_name, index=False)
+    storage_dir = '../result/experiments_output/'
+    df.to_csv(storage_dir + file_name, index=False)

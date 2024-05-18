@@ -91,7 +91,7 @@ def concatenate_columns(df, data_columns, outcome_column):
     df = pd.DataFrame(concatenated_data)
 
     return df
-def calculate_ASC_correctness(df):
+def calculate_ASC_correctness(df,beta = 0.95):
     # Define the helper function to get majority vote and length of answers
     def majority_and_length(answers):
         if not answers:
@@ -102,7 +102,7 @@ def calculate_ASC_correctness(df):
     # Prepare to collect data for new columns
     asc_correctness = []
     asc_steps = []
-    ac = AC(stop_criteria=BetaStoppingCriteria(0.95), max_gens=40)
+    ac = AC(stop_criteria=BetaStoppingCriteria(beta), max_gens=40)
 
     # Iterate over each row of the DataFrame
     for index, row in df.iterrows():
@@ -129,28 +129,28 @@ def calculate_ASC_correctness(df):
 def prepare_df(df, feature_li, ES_window_size = 5):
     # Reset first sim to 0.5
     for row_idx in range(len(df)):
-        df['SIM_COT_AGG'][row_idx][0] = 0.5
+        df['SIM_COT_AGG'].iloc[row_idx][0] = 0.5
 
     # Adding Self Consistency Baseline
     df = calculate_SC_correctness(df)
-    print(df.SC_correctness.value_counts())
+    # print(df.SC_correctness.value_counts())
 
     # Adding Early Stopping Self Consistency Baseline
     df = calculate_ES_correctness(df, window_size=ES_window_size)
-    print(df.ES_correctness.value_counts())
+    # print(df.ES_correctness.value_counts())
 
     # Adding ASC Correctness and Steps
-    print(df.columns)
+    # print(df.columns)
     df = calculate_ASC_correctness(df)
-    print("ASC Steps and Answers added.")
+    # print("ASC Steps and Answers added.")
 
     # Concate cols
     df_concate = concatenate_columns(df, feature_li, 'Correctness')
     df_concate['cot_answer'] = np.repeat(df['correct answer'].values, NUM_OF_COT)
-    print('------------DF Stats-------------')
-    for col in df_concate.columns:
-        if not col.startswith('SIM_COT_'):
-            print(col, ':', Counter(df_concate[col]))
+    # print('------------DF Stats-------------')
+    # for col in df_concate.columns:
+    #     if not col.startswith('SIM_COT_'):
+    #         print(col, ':', Counter(df_concate[col]))
     return df_concate
 def customized_LR(coe,intercept,features):
     lincomb = sum([coe[i]*features[i] for i in range(len(coe))]) +intercept
