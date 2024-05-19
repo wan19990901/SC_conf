@@ -7,7 +7,10 @@ from tqdm import tqdm
 from utils import *
 from collections import Counter
 import statistics
-DATA_DIR = '../data/Evaluation_CoTs/'
+import sys
+
+
+DATA_DIR = "../data/adaptive_consistency_outputs/"
 
 class NpEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -131,65 +134,98 @@ def extract_AC(arr, method='bigram'):
         consistency_checks = np.array(results)
     return consistency_checks
 
-def extract_feature(df):
+def extract_feature(df, features_li):
+    # Initialize an empty dictionary for collecting features
     feature_dict = {
-        'id': [],
-        'Name': [],
-        'Model': [],
-        'correct answer': [],
-        'CoT answers': [],
-        'Correctness': [],
-        'LEN': [],
-        'QUA_IM': [],
-        'DIF_IV': [],
-        # 'DIF_SUB': [],
-        # 'SIM_COT_BIGRAM': [],
-        'SIM_COT_AGG': [],
-        # 'SIM_COT_PW': [],
-        'SIM_AC_BIGRAM': [],
-        'SIM_AC_AGG': [],
-        'SIM_AC_PW': [],
+        'id': []
     }
-    cot_answer_arr, binary_arr = extract_cot_answer(df)
-    IV = extract_IV(df)
-    LEN = extract_len(df)
-    IM = extract_IM(df)
-    # SIM_cot_bigram = extract_sim(df, method='bigram')
-    SIM_cot_agg = extract_sim(df, method='agg')
-    # SIM_cot_pw = extract_sim(df, method='pw')
-    SIM_AC_bigram = extract_AC(cot_answer_arr, method='bigram')
-    SIM_AC_agg = extract_AC(cot_answer_arr, method='agg')
-    SIM_AC_pw = extract_AC(cot_answer_arr, method='pw')
+    
+    # Always include 'Name' and 'Model' if they are in the DataFrame
+    always_include = ['Name', 'Model']
+    for key in always_include:
+        if key in df.columns:
+            feature_dict[key] = []
 
-    assert (cot_answer_arr).shape == (binary_arr).shape == (IV).shape == (LEN).shape
+    # Include 'correct answer', 'CoT answers', and 'Correctness' directly from function output
+    feature_dict['correct answer'] = []
+    feature_dict['CoT answers'] = []
+    feature_dict['Correctness'] = []
+
+    # Initialize lists in the dictionary only for requested features that are not already included
+    requested_features = set(features_li) - set(always_include) - {'correct answer', 'CoT answers', 'Correctness'}
+    for feature in requested_features:
+        feature_dict[feature] = []
+
+    cot_answer_arr, binary_arr = extract_cot_answer(df)
+    # Populate 'CoT answers' and 'Correctness'
+    for idx in range(len(df)):
+        feature_dict['CoT answers'].append(cot_answer_arr[idx].tolist())
+        feature_dict['Correctness'].append(binary_arr[idx].tolist())
+    
+    if 'DIF_IV' in features_li:
+        IV = extract_IV(df)
+    
+    if 'LEN' in features_li:
+        LEN = extract_len(df)
+    
+    if 'QUA_IM' in features_li:
+        IM = extract_IM(df)
+    
+    sim_features = ['SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_COT_PW', 'SIM_AC_BIGRAM', 'SIM_AC_AGG', 'SIM_AC_PW']
+    sim_methods = {}
+    for feature in sim_features:
+        if feature in features_li:
+            method = feature.split('_')[-1].lower()
+            if 'SIM_COT_' in feature:
+                sim_methods[feature] = extract_sim(df, method=method)
+            elif 'SIM_AC_' in feature:
+                sim_methods[feature] = extract_AC(cot_answer_arr, method=method)
+
+    # Populate feature data for each row
     for row in tqdm(range(len(df))):
         feature_dict['id'].append(row)
-        feature_dict['Name'].append(df.iloc[row]['Name'])  # Add this line
-        feature_dict['Model'].append(df.iloc[row]['Model'])  # Add this line
-        feature_dict['correct answer'].append(df.iloc[row]['Correct Answer'])
-        # feature_dict['DIF_SUB'].append(df.iloc[row]['Category'])
-        feature_dict['CoT answers'].append(cot_answer_arr[row].tolist())
-        feature_dict['Correctness'].append(binary_arr[row].tolist())
-        feature_dict['QUA_IM'].append(IM[row].tolist())
-        feature_dict['DIF_IV'].append(IV[row].tolist())
-        feature_dict['LEN'].append(LEN[row].tolist())
-        # feature_dict['SIM_COT_BIGRAM'].append(SIM_cot_bigram[row].tolist())
-        feature_dict['SIM_COT_AGG'].append(SIM_cot_agg[row].tolist())
-        # feature_dict['SIM_COT_PW'].append(SIM_cot_pw[row].tolist())
-        feature_dict['SIM_AC_BIGRAM'].append(SIM_AC_bigram[row].tolist())
-        feature_dict['SIM_AC_AGG'].append(SIM_AC_agg[row].tolist())
-        feature_dict['SIM_AC_PW'].append(SIM_AC_pw[row].tolist())
+        for key in always_include:
+            if key in feature_dict:
+                feature_dict[key].append(df.iloc[row].get(key, None))
+        
+        if 'Correct Answer' in df.columns:
+            feature_dict['correct answer'].append(df.iloc[row]['Correct Answer'])
+
+        for feature in requested_features:
+            if feature in sim_methods:
+                feature_dict[feature].append(sim_methods[feature][row].tolist())
+            elif feature == 'DIF_IV':
+                feature_dict[feature].append(IV[row].tolist())
+            elif feature == 'LEN':
+                feature_dict[feature].append(LEN[row].tolist())
+            elif feature == 'QUA_IM':
+                feature_dict[feature].append(IM[row].tolist())
+
+    # Convert dictionary to DataFrame
     return feature_dict
+
 if __name__ == '__main__':
-    file_path = os.path.join(DATA_DIR, 'final.csv')
-    df = pd.read_csv(file_path)
-    data = extract_feature(df)
-
+    input_file_path = os.path.join(DATA_DIR, 'final_asc.csv')
+    df = pd.read_csv(input_file_path).iloc[:10000]
+    feature_li = ['QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM', 'SIM_AC_PW']
+    data = extract_feature(df,feature_li)
     df_to_save = pd.DataFrame(data)
-    storage_dir = os.path.join(DATA_DIR, f'Algo_Design_Data/')
 
-    file_store_path = os.path.join(storage_dir, 'final.json')
-    with open(file_store_path,'w') as f:
-        json.dump(data,f,cls=NpEncoder)
-    # df_to_save.to_csv(file_store_path,index=False)
+    df = calculate_SC_correctness(df_to_save)
+    
+    # Calculate Early Stopping Correctness with a specific window size
+    window_size = 5  # Define your window size
+    df = calculate_ES_correctness(df, window_size)
+    
+    # Calculate Adaptive Consensus Correctness
+    df = calculate_ASC_correctness(df)
+
+    storage_dir = os.path.join(DATA_DIR, 'Algo_Design_Data')
+    os.makedirs(storage_dir, exist_ok=True)
+
+    # Save df_to_save before prepare_df
+    output_file_name_before = 'final_asc_extracted.json'
+    file_store_path_before = os.path.join(storage_dir, output_file_name_before)
+    df_to_save.to_json(file_store_path_before, orient='records', lines=True)
+    print(f'File saved in : {file_store_path_before}')
 

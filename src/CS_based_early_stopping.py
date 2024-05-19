@@ -1,18 +1,14 @@
 from IDV_CS_Model import *
 import sys
+import time
 
-DATA_DIR = '../data/Evaluation_CoTs/'
-# DF_NAME = 'GSM8K'
-# DIFFICULTY = 'easy'
-# NUM_OF_SAMPLES = 500
-# NUM_OF_COT = 40
-# MODEL = 'gpt-3.5-turbo-0125'
+DATA_DIR = '../data/Evaluation_CoTs/Algo_Design_Data/'
 
 
 def normalize_cs(cs_li, threshold):
     cs_arr = np.array(cs_li)
-    # normalized_cs = [(cs-threshold)/(1-threshold) if cs > threshold else (cs-threshold)/(threshold) for cs in cs_arr]
-    normalized_cs = cs_arr - threshold
+    normalized_cs = [(cs-threshold)/(1-threshold) if cs > threshold else (cs-threshold)/(threshold) for cs in cs_arr]
+    # normalized_cs = cs_arr - threshold
     # normalized_cs = [0.5 if cs > threshold else -0.5 for cs in cs_arr]
     return np.array(normalized_cs)
 
@@ -104,36 +100,40 @@ def CS_early_stopping(df, threshold, N=5, stop_mechanism='PositiveN'):
     for key, val in df_model_comp_dict.items():
         print(f"{key} : {val}")
 
-    return df, df_model_comp_dict
+    return df
 
 
 if __name__ == '__main__':
-    # storage_dir = os.path.join(DATA_DIR, f'Evaluation_CoTs/{MODEL}')
-    file_path = os.path.join(DATA_DIR, 'final.csv')
-    df_raw = pd.read_csv(file_path)
-    df_raw = df_raw.sample(2000).reset_index(drop=True)
-    df_with_features = pd.DataFrame(extract_feature(df_raw))
+    # Read JSON data
+    file_path = os.path.join(DATA_DIR, 'final_extracted.json')
+    df_with_features = pd.read_json(file_path, lines=True)
+
+    # Define the features list
     feature_li = [
-        'LEN',
+        # 'LEN',
         'QUA_IM',
         'DIF_IV',
-        # 'SIM_COT_BIGRAM',
+        'SIM_COT_BIGRAM',
         'SIM_COT_AGG',
         # 'SIM_COT_PW',
         'SIM_AC_BIGRAM',
-        'SIM_AC_AGG',
+        # 'SIM_AC_AGG',
         'SIM_AC_PW',
-        # statistical test to justify feature selection 
     ]
-    # coe = [-0.1, -5, -1, 3, 2, 2, 2]
-    # intercept = -2
-    # df_cs, threshold = customized_LR_model(df=df_with_features, feature_li=feature_li, coe=coe, intercept=intercept)
+    # Continue with the rest of the script
+    coe = [0, -10, -2, 3, 1, 2]
+    intercept = -1
+    # df_cs = trained_LR_model(df_with_features, feature_li, report_auroc=True)
+    df_cs = customized_LR_model(df_with_features,feature_li,coe, intercept, report_auroc=True)
+    # Command line arguments for early stopping parameters
     N = int(sys.argv[2])
-    # N = 3
     threshold = float(sys.argv[1])
-    df_cs, _ = trained_LR_model(df=df_with_features, feature_li=feature_li)
     stop_mechanism = str(sys.argv[3])
-    df, _ = CS_early_stopping(df=df_cs, threshold=threshold, N=N, stop_mechanism=stop_mechanism)
+
+    # Applying early stopping mechanism
+    df_final = CS_early_stopping(df=df_cs, threshold=threshold, N=N, stop_mechanism=stop_mechanism)
+
+    # Saving the resulting DataFrame
     file_name = f"df_threshold_{threshold}_N_{N}_stop_{stop_mechanism}.csv"
-    storage_dir = '../result/experiments_output/'
-    df.to_csv(storage_dir + file_name, index=False)
+    storage_dir = '../result/experiments_output/new_test/'
+    df_final.to_csv(os.path.join(storage_dir, file_name), index=False)
