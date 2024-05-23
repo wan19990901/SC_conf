@@ -7,7 +7,7 @@ DATA_DIR = '../data'
 
 # Experiment Config
 
-DF_NAME = 'MathQA'
+DF_NAME = 'BigBench'
 DIFFICULTY = 'easy'
 
 NUM_OF_SAMPLES = 500

@@ -4,6 +4,7 @@ from sklearn.feature_extraction.text import CountVectorizer,TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity, euclidean_distances
 from nltk.metrics.distance import jaccard_distance
 from nltk.util import ngrams
+from nltk.tokenize import word_tokenize
 import Levenshtein
 from transformers import AutoTokenizer, AutoModel
 import torch
@@ -67,9 +68,16 @@ def calculate_similarity(method, sentence1, sentence2):
         vector1, vector2 = vectorizer.transform([sentence1, sentence2])
         similarity = cosine_similarity(vector1, vector2)[0, 0]
 
-    elif method == 'jaccard':
-        set1 = set(ngrams(sentence1, n=2))
-        set2 = set(ngrams(sentence2, n=2))
+    if method == 'jaccard':
+        # Tokenize the sentences into words
+        words1 = word_tokenize(sentence1)
+        words2 = word_tokenize(sentence2)
+        
+        # Create sets of word n-grams (unigrams)
+        set1 = set(ngrams(words1, n=1))
+        set2 = set(ngrams(words2, n=1))
+        
+        # Calculate Jaccard similarity
         similarity = 1 - jaccard_distance(set1, set2)
 
     elif method == 'euclidean':

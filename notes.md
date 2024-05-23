@@ -17,10 +17,63 @@ TO DO:
 Plots and experiments for different N
 
 
-1: Fix features (by selection) (select on ROC or final results?); Run a BERT regression on CoT directly.
+1: Fix features (by selection) (select on ROC or final results?); think about how to formalize the entire process.
 
-2: Run different tests on different N and optimization methods run all data, how to pick best model? (acc vs steps)
+2: extract features should be given pre-defined and should be able to run on test data directly.
 
-3: llama
+3: llama (parser)
 
-4: Viz more.
+4: Viz more (different models).
+
+5: code; setting code ready for pre-trained model (no need to extract features and fit models everytime; also saved model can be used on new data directly)
+
+6: thresold (good results; how to justify?)
+
+
+# Figures to have
+
+
+## Methods
+
+1: save json
+2: statistical test, find datasets make data nicer
+3: intergate BERT into current code
+
+TO DO:
+
+ES DATA AND AC DATA (need three seeds?), NEED TO MAKE THEM READY LIKE final.csv, and make information like Name and Model ready.
+
+### Figure
+
+Coefficients of logistic regression three different similarity (which motivates us define our parameters)
+
+##  Main Results
+
+### Table: 
+
+Row Name Methods：
+Columns: Dataset/
+
+Time and Cost analysis
+
+### Figure
+
+Comparsion of Different budget and accuracy at different steps for selected dataset
+
+AuROC for our scoring methods
+
+## Abalation Study 
+
+### Table:
+
+Different Scoring/Decision Models
+
+### Figure:
+
+Different N/thresholds Models
+
+### Appendix
+
+
+
+

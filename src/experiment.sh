@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Array of threshold values
-thresholds=(0.5)
+thresholds=(0.1 0.2 0.3 0.4 0.5)
 
 # Array of N values
 Ns=(2 3 4 5 6 7 8 9 10)
 
 # Array of stop_mechanism values
-stop_mechanisms=("PositiveN")
+stop_mechanisms=("PositiveN" "ConsistencyN")
 
 # Iterate over threshold values
 for threshold in "${thresholds[@]}"

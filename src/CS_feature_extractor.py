@@ -8,7 +8,8 @@ from utils import *
 from collections import Counter
 import statistics
 import sys
-
+import nltk
+nltk.download('punkt')
 
 DATA_DIR = "../data/adaptive_consistency_outputs/"
 
@@ -48,6 +49,30 @@ def extract_cot_answer(df):
     cot_answer_arr = tmp_arr.T
     return cot_answer_arr,binary_arr
 
+def extract_sim_input(df, method='jaccard'):
+    # Get the 'Question' column as a list
+    questions = df['Question'].tolist()
+    
+    # Initialize a list to store the similarity scores
+    similarity_scores = []
+    
+    # Iterate over each column starting with 'CoT_'
+    for col in df:
+        if col.startswith('CoT_'):
+            # Get the column values as a list
+            cot_values = df[col].tolist()
+            
+            # Calculate the similarity between each 'Question' and 'CoT_' pair
+            similarities = [calculate_similarity(method, question, cot) for question, cot in zip(questions, cot_values)]
+            
+            # Append the similarity scores to the list
+            similarity_scores.append(similarities)
+    
+    # Convert the similarity scores to a NumPy array and transpose it
+    similarity_scores = np.array(similarity_scores).T
+    
+    return similarity_scores
+
 def extract_len(df):
     step_count_buffer = []
     for col in df:
@@ -55,15 +80,18 @@ def extract_len(df):
             cleaned_answers = []
             for entry in df[col]:
                 entry_str = str(entry)
-                # Count the number of new lines in the entry
-                num_of_newlines = entry_str.count('\n')
+                # Look for patterns like Step 1: ... Step2:
+                steps = re.findall(r'Step (\d+):', entry_str)
                 
-                if num_of_newlines == 0:
-                    # If no new lines, count the number of sentences
-                    num_of_sentences = entry_str.count('.') + 1
-                    cleaned_answers.append(num_of_sentences)
+                if steps:
+                    # If the pattern is found, use the last digit as the length
+                    last_step = int(steps[-1])
+                    cleaned_answers.append(last_step)
                 else:
-                    cleaned_answers.append(num_of_newlines)
+                    # If the pattern is not found, use nltk to tokenize the text into sentences
+                    sentences = nltk.sent_tokenize(entry_str)
+                    num_of_sentences = len(sentences)
+                    cleaned_answers.append(max(num_of_sentences - 2, 0))
             
             step_count_buffer.append(cleaned_answers)
     
@@ -171,15 +199,18 @@ def extract_feature(df, features_li):
     if 'QUA_IM' in features_li:
         IM = extract_IM(df)
     
-    sim_features = ['SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_COT_PW', 'SIM_AC_BIGRAM', 'SIM_AC_AGG', 'SIM_AC_PW']
+    sim_features = ['SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_COT_PW', 'SIM_AC_BIGRAM', 'SIM_AC_AGG', 'SIM_AC_PW', 'SIM_INPUT']
     sim_methods = {}
     for feature in sim_features:
         if feature in features_li:
-            method = feature.split('_')[-1].lower()
-            if 'SIM_COT_' in feature:
-                sim_methods[feature] = extract_sim(df, method=method)
-            elif 'SIM_AC_' in feature:
-                sim_methods[feature] = extract_AC(cot_answer_arr, method=method)
+            if feature == 'SIM_INPUT':
+                sim_methods[feature] = extract_sim_input(df)
+            else:
+                method = feature.split('_')[-1].lower()
+                if 'SIM_COT_' in feature:
+                    sim_methods[feature] = extract_sim(df, method=method)
+                elif 'SIM_AC_' in feature:
+                    sim_methods[feature] = extract_AC(cot_answer_arr, method=method)
 
     # Populate feature data for each row
     for row in tqdm(range(len(df))):
