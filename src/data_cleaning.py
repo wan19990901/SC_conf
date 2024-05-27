@@ -16,7 +16,10 @@ def load_data(main_dir, subdirectories):
 
 def preprocess_data(df):
     unnamed_cols = ['index'] + [col for col in df.columns if col.startswith('Unnamed:')]
-    df.drop(columns=unnamed_cols, inplace=True)
+    try:
+        df.drop(columns=unnamed_cols, inplace=True)
+    except:
+        pass
     df.dropna(inplace=True)
     df = df[df['Correct Answer'] != 'NO']
     return df
@@ -81,11 +84,10 @@ def process_math_answers(df):
 
 def main():
     main_dir = "../data/Evaluation_CoTs"
-    subdirectories = ["claude-3-haiku-20240307", "gpt-3.5-turbo-0125", "gpt-4"]
+    subdirectories = ["claude-3-haiku-20240307", "gpt-3.5-turbo-0125", "gpt-4",'llama3_cleaned']
 
     final_df = load_data(main_dir, subdirectories)
     final_df = preprocess_data(final_df)
-
     df_gsm8k = final_df[final_df.Name.str.startswith('GSM')]
     clean_gsm8k_answers(df_gsm8k)
 
@@ -95,7 +97,7 @@ def main():
     df_math = final_df[final_df.Name.str.startswith('Math')]
     process_math_answers(df_math)
 
-    pd.concat([df_gsm8k, df_bb, df_math]).reset_index(drop=True).to_csv('../data/final.csv', index=False)
+    pd.concat([df_gsm8k, df_bb, df_math]).reset_index(drop=True).to_csv('../data/Evaluation_CoTs/final.csv', index=False)
 
 if __name__ == "__main__":
     main()

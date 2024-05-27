@@ -80,7 +80,8 @@ To do today:
 2: intergate BERT/LR/Customized LR into the code; write notebooks to compare each of them.
 3: pull the notebook and show the results with data from llama3
 4: clean the code
-5: get readt the rebuttal
+5: time and cost analysis
+6: 
 
 
 

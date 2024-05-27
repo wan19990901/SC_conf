@@ -109,22 +109,13 @@ if __name__ == '__main__':
     df_with_features = pd.read_json(file_path, lines=True)
 
     # Define the features list
-    feature_li = [
-        # 'LEN',
-        'QUA_IM',
-        'DIF_IV',
-        'SIM_COT_BIGRAM',
-        'SIM_COT_AGG',
-        # 'SIM_COT_PW',
-        'SIM_AC_BIGRAM',
-        # 'SIM_AC_AGG',
-        'SIM_AC_PW',
-    ]
+    feature_li = ['QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM',
+       'SIM_INPUT', 'SIM_AC_PW']
     # Continue with the rest of the script
     coe = [0, -10, -2, 3, 1, 2]
     intercept = -1
-    # df_cs = trained_LR_model(df_with_features, feature_li, report_auroc=True)
-    df_cs = customized_LR_model(df_with_features,feature_li,coe, intercept, report_auroc=True)
+    df_cs = trained_LR_model(df_with_features, feature_li, report_auroc=True)
+    # df_cs = customized_LR_model(df_with_features,feature_li,coe, intercept, report_auroc=True)
     # Command line arguments for early stopping parameters
     N = int(sys.argv[2])
     threshold = float(sys.argv[1])

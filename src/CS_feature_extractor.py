@@ -11,7 +11,7 @@ import sys
 import nltk
 nltk.download('punkt')
 
-DATA_DIR = "../data/adaptive_consistency_outputs/"
+
 
 class NpEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -234,9 +234,14 @@ def extract_feature(df, features_li):
     return feature_dict
 
 if __name__ == '__main__':
-    input_file_path = os.path.join(DATA_DIR, 'final_asc.csv')
-    df = pd.read_csv(input_file_path).iloc[:10000]
-    feature_li = ['QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM', 'SIM_AC_PW','SIM_INPUT','LEN','SIM_AC_AGG','SIM_COT_PW']
+    
+    # DATA_DIR = "../data/adaptive_consistency_outputs/"
+    # input_file_path = os.path.join(DATA_DIR, 'final_asc.csv')
+    DATA_DIR = "../data/Evaluation_CoTs/"
+    input_file_path = os.path.join(DATA_DIR, 'final.csv')
+    df = pd.read_csv(input_file_path)
+    print(df.shape)
+    feature_li = ['QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM','SIM_INPUT','LEN','SIM_AC_PW']
     data = extract_feature(df,feature_li)
     df_to_save = pd.DataFrame(data)
 
@@ -253,7 +258,7 @@ if __name__ == '__main__':
     os.makedirs(storage_dir, exist_ok=True)
 
     # Save df_to_save before prepare_df
-    output_file_name_before = 'final_asc_extracted.json'
+    output_file_name_before = 'final_extracted.json'
     file_store_path_before = os.path.join(storage_dir, output_file_name_before)
     df_to_save.to_json(file_store_path_before, orient='records', lines=True)
     print(f'File saved in : {file_store_path_before}')
