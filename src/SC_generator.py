@@ -7,7 +7,7 @@ DATA_DIR = '../data'
 
 # Experiment Config
 
-DF_NAME = 'BigBench'
+DF_NAME = 'GSM8K'
 DIFFICULTY = 'easy'
 
 NUM_OF_SAMPLES = 500
@@ -16,7 +16,7 @@ llm_config = {
     # change these three together
     'llm_type': 'ollama',  # openai, ollama, anthropic
     'api_key_link': 'api_key_yw.txt',
-    'model': "llama3",  # see llm_model.txt
+    'model': "llama2",  # see llm_model.txt
     # change these two together
     'prompt_link': 'prompt_template.json',
     'parser_template': CoT,
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     df_subset = df[:NUM_OF_SAMPLES]
 
     # Data collection
-    for row_idx in tqdm(range(len(df_subset)), colour='blue', desc='Sample Progress', position=0):
+    for row_idx in tqdm(range(47,len(df_subset)), colour='blue', desc='Sample Progress', position=0):
         row = df_subset.iloc[row_idx]
         subject = row['Category']
         question = row['Question']

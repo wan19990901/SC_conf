@@ -72,13 +72,17 @@ def calculate_similarity(method, sentence1, sentence2):
         # Tokenize the sentences into words
         words1 = word_tokenize(sentence1)
         words2 = word_tokenize(sentence2)
-        
+
         # Create sets of word n-grams (unigrams)
         set1 = set(ngrams(words1, n=1))
         set2 = set(ngrams(words2, n=1))
-        
-        # Calculate Jaccard similarity
-        similarity = 1 - jaccard_distance(set1, set2)
+
+        # Check if both sets are empty
+        if len(set1) == 0 and len(set2) == 0:
+            similarity = 1  # Assign a default similarity value when both sets are empty
+        else:
+            # Calculate Jaccard similarity
+            similarity = 1 - jaccard_distance(set1, set2)
 
     elif method == 'euclidean':
         vectorizer = TfidfVectorizer().fit([sentence1, sentence2])
@@ -110,8 +114,7 @@ def calculate_similarity(method, sentence1, sentence2):
         vectors = [vectorize_document(doc, glove_model) for doc in sentences]
         similarity = cosine_similarity(vectors)[0][1]
 
-    elapsed_time = time.time() - start_time
-    return similarity, elapsed_time
+    return similarity
 
 
 
@@ -133,7 +136,7 @@ def calculate_similarity_with_aggregation(df, method='levenshtein'):
 
             aggregated_sentence += previous_sentence + ' '
             similarity = calculate_similarity(method, aggregated_sentence, current_sentence)
-            similarity_matrices[index, i] = similarity[0]
+            similarity_matrices[index, i] = similarity
     elapsed_time = time.time() - start_time
     print(f'{method} with aggregation time cost: {elapsed_time}s')
     return similarity_matrices
@@ -167,7 +170,7 @@ def calculate_similarity_pairwise(df, method='levenshtein'):
                 # Calculate similarity and fill both [i, j] and [j, i] to maintain symmetry
                 similarity = calculate_similarity(method, current_sentence, other_sentence)
 
-                sim_buffer.append(similarity[0])
+                sim_buffer.append(similarity)
             similarity_matrices[index, i] = np.mean(sim_buffer)
 
     elapsed_time = time.time() - start_time
@@ -185,7 +188,7 @@ def calculate_similarity_with_bigram(df, method='levenshtein'):
             current_sentence = row[f'CoT_{i}']
             previous_sentence = row[f'CoT_{i - 1}']
             similarity = calculate_similarity(method, previous_sentence, current_sentence)
-            similarity_matrices[index, i] = similarity[0]
+            similarity_matrices[index, i] = similarity
     elapsed_time = time.time() - start_time
     print(f'{method} with bigram time cost: {elapsed_time}s')
     return similarity_matrices

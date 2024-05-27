@@ -61,10 +61,8 @@ def extract_sim_input(df, method='jaccard'):
         if col.startswith('CoT_'):
             # Get the column values as a list
             cot_values = df[col].tolist()
-            
             # Calculate the similarity between each 'Question' and 'CoT_' pair
             similarities = [calculate_similarity(method, question, cot) for question, cot in zip(questions, cot_values)]
-            
             # Append the similarity scores to the list
             similarity_scores.append(similarities)
     
@@ -238,7 +236,7 @@ def extract_feature(df, features_li):
 if __name__ == '__main__':
     input_file_path = os.path.join(DATA_DIR, 'final_asc.csv')
     df = pd.read_csv(input_file_path).iloc[:10000]
-    feature_li = ['QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM', 'SIM_AC_PW']
+    feature_li = ['QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM', 'SIM_AC_PW','SIM_INPUT','LEN','SIM_AC_AGG','SIM_COT_PW']
     data = extract_feature(df,feature_li)
     df_to_save = pd.DataFrame(data)
 

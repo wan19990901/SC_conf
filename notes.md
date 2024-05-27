@@ -35,9 +35,8 @@ Plots and experiments for different N
 
 ## Methods
 
-1: save json
-2: statistical test, find datasets make data nicer
-3: intergate BERT into current code
+
+
 
 TO DO:
 
@@ -73,6 +72,15 @@ Different Scoring/Decision Models
 Different N/thresholds Models
 
 ### Appendix
+
+
+To do today:
+
+1: statistical test, find datasets make data nicer.
+2: intergate BERT/LR/Customized LR into the code; write notebooks to compare each of them.
+3: pull the notebook and show the results with data from llama3
+4: clean the code
+5: get readt the rebuttal
 
 
 
