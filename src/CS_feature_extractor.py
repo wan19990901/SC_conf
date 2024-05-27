@@ -236,7 +236,7 @@ def extract_feature(df, features_li):
 if __name__ == '__main__':
     input_file_path = os.path.join(DATA_DIR, 'final_asc.csv')
     df = pd.read_csv(input_file_path).iloc[:10000]
-    feature_li = ['QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM', 'SIM_AC_PW','SIM_INPUT','LEN','SIM_AC_AGG','SIM_COT_PW']
+    feature_li = ['QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM','SIM_INPUT','LEN','SIM_AC_AGG']
     data = extract_feature(df,feature_li)
     df_to_save = pd.DataFrame(data)
 
