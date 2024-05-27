@@ -95,7 +95,7 @@ def main():
     df_math = final_df[final_df.Name.str.startswith('Math')]
     process_math_answers(df_math)
 
-    pd.concat([df_gsm8k, df_bb, df_math]).reset_index(drop=True).to_csv('../data/final.csv', index=False)
+    pd.concat([df_gsm8k, df_bb, df_math]).reset_index(drop=True).to_csv('../data/Evaluation_CoTs/final.csv', index=False)
 
 if __name__ == "__main__":
     main()
