@@ -13,12 +13,6 @@ def normalize_cs(cs_li, threshold):
     return np.array(normalized_cs)
 
 
-def stop_con1(individual_cs):
-    cumulative_difference = (individual_cs).cumsum()
-    stop_idx = np.argmax(cumulative_difference > 0.5)
-    return stop_idx
-
-
 def stop_con2(individual_cs, buffer_size=5):
     buffer = []
     for idx, cs in enumerate(individual_cs):
@@ -109,8 +103,7 @@ if __name__ == '__main__':
     df_with_features = pd.read_json(file_path, lines=True)
     df_with_features = df_with_features[df_with_features.Model != 'gpt-4'].reset_index(drop=True)
     # Define the features list
-    feature_li = ['LEN','QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM',
-       'SIM_INPUT', 'SIM_AC_PW']
+    feature_li = ['LEN','QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_INPUT']
     # Continue with the rest of the script
     # coe = [0, -10, -2, 3, 1, 2]
     # intercept = -1
