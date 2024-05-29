@@ -42,7 +42,7 @@ def customized_LR_model(df_raw, feature_li, coe, intercept, report_auroc=False):
 
     return df_raw
 
-def trained_LR_model(df_raw, feature_li, test_size=0.3, random_state=None, report_auroc=False):
+def trained_LR_model(df_raw, feature_li, test_size=0.3, random_state=2024, report_auroc=False):
     # Randomly split the raw dataframe into training and testing sets
     df_train_raw, df_test_raw = train_test_split(df_raw, test_size=test_size, random_state=random_state)
         # Reset the index of the training and testing dataframes
