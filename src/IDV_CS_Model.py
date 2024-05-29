@@ -37,6 +37,7 @@ def customized_LR_model(df_raw, feature_li, coe, intercept, report_auroc=False):
         print("Coefficients:", coe)
         print("Intercept:", intercept)
         print(f"The AUROC score is: {auroc}")
+        return df_raw, auroc
 
     return df_raw
 
@@ -65,6 +66,7 @@ def trained_LR_model(df_raw,feature_li, report_auroc=False):
         y_pred_proba = result.predict(X_test)
         auroc = roc_auc_score(y_test, y_pred_proba)
         print(f"The AUROC score is: {auroc}")
+        return df_raw, auroc
 
     return df_raw
 

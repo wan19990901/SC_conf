@@ -107,24 +107,23 @@ if __name__ == '__main__':
     # Read JSON data
     file_path = os.path.join(DATA_DIR, 'final_extracted.json')
     df_with_features = pd.read_json(file_path, lines=True)
-
+    df_with_features = df_with_features[df_with_features.Model != 'gpt-4'].reset_index(drop=True)
     # Define the features list
-    feature_li = ['QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM',
+    feature_li = ['LEN','QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM',
        'SIM_INPUT', 'SIM_AC_PW']
     # Continue with the rest of the script
-    coe = [0, -10, -2, 3, 1, 2]
-    intercept = -1
-    df_cs = trained_LR_model(df_with_features, feature_li, report_auroc=True)
+    # coe = [0, -10, -2, 3, 1, 2]
+    # intercept = -1
     # df_cs = customized_LR_model(df_with_features,feature_li,coe, intercept, report_auroc=True)
-    # Command line arguments for early stopping parameters
+    df_cs = trained_LR_model(df_with_features, feature_li, report_auroc=False)
+
     N = int(sys.argv[2])
     threshold = float(sys.argv[1])
-    stop_mechanism = str(sys.argv[3])
 
     # Applying early stopping mechanism
-    df_final = CS_early_stopping(df=df_cs, threshold=threshold, N=N, stop_mechanism=stop_mechanism)
+    df_final = CS_early_stopping(df=df_cs, threshold=threshold, N=N)
 
     # Saving the resulting DataFrame
-    file_name = f"df_threshold_{threshold}_N_{N}_stop_{stop_mechanism}.csv"
-    storage_dir = '../result/experiments_output/new_test/'
+    file_name = f"df_threshold_{threshold}_N_{N}.csv"
+    storage_dir = '../result/experiments_output/test_N_threshold/'
     df_final.to_csv(os.path.join(storage_dir, file_name), index=False)
