@@ -83,13 +83,13 @@ def extract_len(df):
                 
                 if steps:
                     # If the pattern is found, use the last digit as the length
-                    last_step = int(steps[-1])
-                    cleaned_answers.append(last_step)
+                    last_step = int(steps[-1])>4
+                    cleaned_answers.append(int(last_step))
                 else:
                     # If the pattern is not found, use nltk to tokenize the text into sentences
                     sentences = nltk.sent_tokenize(entry_str)
                     num_of_sentences = len(sentences)
-                    cleaned_answers.append(max(num_of_sentences - 2, 0))
+                    cleaned_answers.append(int(max(num_of_sentences - 2, 0)>5))
             
             step_count_buffer.append(cleaned_answers)
     
@@ -103,7 +103,7 @@ def extract_IM(df):
             cleaned_answers = []
             for entry in df[col]:
                 # Extract numbers using regular expression
-                misktake = re.findall(r'(be a mistake)|(be an error)|(not solvable)|(not enough information)', str(entry))
+                misktake = re.findall(r'(a mistake)|(an error)|(not solvable)|(not enough information)|(apologize)', str(entry))
                 if misktake:
                     cleaned_answers.append(1)
                 else:
@@ -241,7 +241,7 @@ if __name__ == '__main__':
     input_file_path = os.path.join(DATA_DIR, 'final.csv')
     df = pd.read_csv(input_file_path)
     print(df.shape)
-    feature_li = ['QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM','SIM_INPUT','LEN','SIM_AC_PW']
+    feature_li = ['LEN','QUA_IM','DIF_IV','SIM_INPUT','SIM_COT_BIGRAM']
     data = extract_feature(df,feature_li)
     df_to_save = pd.DataFrame(data)
 

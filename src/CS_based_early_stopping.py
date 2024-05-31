@@ -44,7 +44,7 @@ def CS_early_stopping(df, threshold, N=5, stop_mechanism='PositiveN'):
             stop_idx = stop_con2(individual_cs, buffer_size=N)
 
             if stop_idx:
-                num_of_steps = stop_idx
+                num_of_steps = stop_idx +1
             else:
                 num_of_steps = 40
             answers = test_row['CoT answers'][:num_of_steps]
@@ -103,7 +103,7 @@ if __name__ == '__main__':
     df_with_features = pd.read_json(file_path, lines=True)
     df_with_features = df_with_features[df_with_features.Model != 'gpt-4'].reset_index(drop=True)
     # Define the features list
-    feature_li = ['LEN','QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_INPUT']
+    feature_li = ['LEN','QUA_IM','DIF_IV','SIM_INPUT','SIM_COT_BIGRAM']
     # Continue with the rest of the script
     # coe = [0, -10, -2, 3, 1, 2]
     # intercept = -1

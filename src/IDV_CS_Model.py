@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import statsmodels.api as sm
 from sklearn.metrics import roc_auc_score
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split,StratifiedShuffleSplit
 from utils import *
 
 DATA_DIR = '../data/Evaluation_CoTs/Algo_Design_Data/'
@@ -42,9 +42,36 @@ def customized_LR_model(df_raw, feature_li, coe, intercept, report_auroc=False):
 
     return df_raw
 
-def trained_LR_model(df_raw, feature_li, test_size=0.3, random_state=2024, report_auroc=False):
+def train_test_split_stratify(df,test_size,random_state):
+
+    df['Stratify'] = df['Model'] + '_' + df['Name']
+
+    # Initialize StratifiedShuffleSplit
+    split = StratifiedShuffleSplit(n_splits=1, test_size=test_size, random_state=random_state)
+
+    # Split the data
+    for train_index, test_index in split.split(df, df['Stratify']):
+        train_df = df.iloc[train_index]
+        test_df = df.iloc[test_index]
+
+    # Drop the 'Stratify' column if it's no longer needed
+    train_df = train_df.drop(columns=['Stratify'])
+    test_df = test_df.drop(columns=['Stratify'])
+    # Display the result
+    print("Train DataFrame:")
+    print(train_df['Model'].value_counts())
+    print(train_df['Name'].value_counts())
+
+    print("\nTest DataFrame:")
+    print(test_df['Model'].value_counts())
+    print(test_df['Name'].value_counts())
+    return train_df,test_df
+
+
+def trained_LR_model(df_raw, feature_li, test_size=0.3, random_state=2024, report_auroc=False, train_mode = False):
     # Randomly split the raw dataframe into training and testing sets
-    df_train_raw, df_test_raw = train_test_split(df_raw, test_size=test_size, random_state=random_state)
+    # df_train_raw, df_test_raw = train_test_split(df_raw, test_size=test_size, random_state=random_state)
+    df_train_raw, df_test_raw = train_test_split_stratify(df_raw, test_size=test_size, random_state=random_state)
         # Reset the index of the training and testing dataframes
     df_train_raw.reset_index(drop=True, inplace=True)
     df_test_raw.reset_index(drop=True, inplace=True)
@@ -76,6 +103,9 @@ def trained_LR_model(df_raw, feature_li, test_size=0.3, random_state=2024, repor
         auroc = roc_auc_score(y_test, y_pred_proba)
         print(f"The AUROC score is: {auroc}")
         return df_test_raw, auroc
+    if train_mode:
+        coef = result.params.values
+        return df_test_raw, coef
 
     return df_test_raw
 
@@ -83,19 +113,8 @@ def trained_LR_model(df_raw, feature_li, test_size=0.3, random_state=2024, repor
 if __name__ == '__main__':
     file_path = os.path.join(DATA_DIR, 'final_extracted.json')
     df_with_features = pd.read_json(file_path, lines=True)
-    feature_li = [
-        # 'LEN',
-        'QUA_IM',
-        'DIF_IV',
-        # 'DIF_SUB',
-        'SIM_COT_BIGRAM',
-        'SIM_COT_AGG',
-        # 'SIM_COT_PW',
-        'SIM_AC_BIGRAM',
-        # 'SIM_AC_AGG',
-        'SIM_AC_PW',
-    ]
+    feature_li =['LEN','QUA_IM','DIF_IV','SIM_INPUT','SIM_COT_BIGRAM']
     coe = [-5,-3,-1,1,1,1]
     intercept = -2.5
-    # df = trained_LR_model(df_with_flat_features,feature_li, report_auroc=True)
-    df = customized_LR_model(df_with_features,feature_li,coe, intercept, report_auroc=True)
+    df = trained_LR_model(df_with_features,feature_li, report_auroc=True,train_mode=True)
+    # df = customized_LR_model(df_with_features,feature_li,coe, intercept, report_auroc=True)
