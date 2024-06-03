@@ -31,16 +31,22 @@ def extract_sim(df,method = 'bigram',emb='jaccard'):
         return calculate_similarity_pairwise(df,method=emb)
     else:
         print('error')
+
+
+def modify_float(num):
+    try:
+        return str(round(float(num), 1))
+    except:
+        return num
+
+
 def extract_cot_answer(df):
     tmp = []
     binary_correct = []
     for col in df.columns:
         if col.startswith('Final Answer_'):
-            if (type(df[col][0])==np.float64):
-                final_ans=np.array([str(int(i)) for i in df[col]])
-            else:
-                final_ans = df[col].to_numpy()
-            correct_ans = [str(i) for i in df['Correct Answer']]
+            final_ans = df[col].apply(modify_float)
+            correct_ans = [modify_float(i) for i in df['Correct Answer']]
             correctness = 1*(final_ans == correct_ans)
             tmp.append(final_ans)
             binary_correct.append(correctness)
