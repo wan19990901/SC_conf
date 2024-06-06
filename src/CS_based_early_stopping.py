@@ -103,7 +103,7 @@ if __name__ == '__main__':
     df_with_features = pd.read_json(file_path, lines=True)
     df_with_features = df_with_features[df_with_features.Model != 'gpt-4'].reset_index(drop=True)
     # Define the features list
-    feature_li = ['LEN','QUA_IM','DIF_IV','SIM_INPUT','SIM_COT_BIGRAM']
+    feature_li = ['LEN','QUA_IM','DIF_IV','SIM_INPUT','SIM_COT_BIGRAM','SIM_COT_AGG','SIM_AC_BIGRAM','SIM_AC_PW']
     # Continue with the rest of the script
     # coe = [0, -10, -2, 3, 1, 2]
     # intercept = -1

@@ -521,9 +521,11 @@ def concatenate_columns(df, data_columns, outcome_column):
 def prepare_df(df, feature_li, ES_window_size = 5):
     # Reset first sim to 0.5
     for row_idx in range(len(df)):
-        df['SIM_COT_AGG'][row_idx][0] = 0.5
-
-    # Concate cols
+        try:
+            df['SIM_COT_AGG'][row_idx][0] = 0.5
+            df['SIM_COT_BIGRAM'][row_idx][0] = 0.5
+        except:
+            break
     df_concate = concatenate_columns(df, feature_li, 'Correctness')
     return df_concate
 

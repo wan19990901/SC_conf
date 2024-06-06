@@ -243,8 +243,8 @@ if __name__ == '__main__':
     
     # DATA_DIR = "../data/adaptive_consistency_outputs/"
     # input_file_path = os.path.join(DATA_DIR, 'final_asc.csv')
-    DATA_DIR = "../data/Evaluation_CoTs/"
-    input_file_path = os.path.join(DATA_DIR, 'final.csv')
+    DATA_DIR = "../data/ES_data/"
+    input_file_path = os.path.join(DATA_DIR, 'final_es.csv')
     df = pd.read_csv(input_file_path)
     print(df.shape)
     feature_li = ['LEN','QUA_IM','DIF_IV','SIM_INPUT','SIM_COT_BIGRAM']
@@ -264,7 +264,7 @@ if __name__ == '__main__':
     os.makedirs(storage_dir, exist_ok=True)
 
     # Save df_to_save before prepare_df
-    output_file_name_before = 'final_extracted.json'
+    output_file_name_before = 'final_extracted_es.json'
     file_store_path_before = os.path.join(storage_dir, output_file_name_before)
     df_to_save.to_json(file_store_path_before, orient='records', lines=True)
     print(f'File saved in : {file_store_path_before}')
