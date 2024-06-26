@@ -84,7 +84,7 @@ def process_math_answers(df):
 
 def main():
     main_dir = "../data/Evaluation_CoTs"
-    subdirectories = ["claude-3-haiku-20240307", "gpt-3.5-turbo-0125", "gpt-4",'llama3_cleaned']
+    subdirectories = ["claude-3-haiku-20240307", "gpt-3.5-turbo-0125", "gpt-4"]
 
     final_df = load_data(main_dir, subdirectories)
     final_df = preprocess_data(final_df)
