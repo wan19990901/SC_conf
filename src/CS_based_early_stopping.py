@@ -99,7 +99,7 @@ def CS_early_stopping(df, threshold, N=5, stop_mechanism='PositiveN'):
 
 if __name__ == '__main__':
     # Read JSON data
-    file_path = os.path.join(DATA_DIR, 'final_extracted.json')
+    file_path = os.path.join(DATA_DIR, 'Category.json')
     df_with_features = pd.read_json(file_path, lines=True)
     df_with_features = df_with_features[df_with_features.Model != 'gpt-4'].reset_index(drop=True)
     # Define the features list

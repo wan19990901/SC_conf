@@ -1,6 +1,7 @@
 import json
 import os
 import pandas as pd
+import numpy as np
 import re
 import ast
 from tqdm import tqdm
@@ -9,9 +10,40 @@ from collections import Counter
 import statistics
 import sys
 import nltk
+from nltk.tokenize import word_tokenize, sent_tokenize
 nltk.download('punkt')
+nltk.download('stopwords')
 
 
+def count_steps(text):
+    return len(re.findall(r'Step \d+:', str(text)))
+
+def average_step_length(text):
+    steps = re.split(r'Step \d+:', str(text))[1:]
+    step_lengths = [len(word_tokenize(step)) for step in steps]
+    return sum(step_lengths) / len(step_lengths) if step_lengths else 0
+
+def mathematical_term_density(text):
+    words = word_tokenize(str(text).lower())
+    math_terms = ['calculate', 'number', 'integer', 'digit', 'product', 'divide', 'probability']
+    math_term_count = sum(1 for word in words if word in math_terms)
+    return math_term_count / len(words) if words else 0
+
+def imperative_density(text):
+    words = word_tokenize(str(text).lower())
+    imperative_verbs = ['calculate', 'find', 'determine', 'compute', 'divide', 'multiply', 'add', 'subtract', 'output']
+    imperative_count = sum(1 for word in words if word in imperative_verbs)
+    return imperative_count / len(words) if words else 0
+
+def consecutive_step_coherence(text):
+    steps = re.split(r'Step \d+:', str(text))[1:]
+    coherence_scores = []
+    for i in range(len(steps) - 1):
+        step1_words = set(word_tokenize(steps[i].lower()))
+        step2_words = set(word_tokenize(steps[i+1].lower()))
+        common_words = step1_words.intersection(step2_words)
+        coherence_scores.append(len(common_words) / len(step1_words.union(step2_words)))
+    return sum(coherence_scores) / len(coherence_scores) if coherence_scores else 0
 
 class NpEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -203,7 +235,7 @@ def extract_feature(df, features_li):
     if 'QUA_IM' in features_li:
         IM = extract_IM(df)
     
-    sim_features = ['SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_COT_PW', 'SIM_AC_BIGRAM', 'SIM_AC_AGG', 'SIM_AC_PW', 'SIM_INPUT']
+    sim_features = ['SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM', 'SIM_AC_AGG', 'SIM_INPUT']
     sim_methods = {}
     for feature in sim_features:
         if feature in features_li:
@@ -235,6 +267,16 @@ def extract_feature(df, features_li):
                 feature_dict[feature].append(LEN[row].tolist())
             elif feature == 'QUA_IM':
                 feature_dict[feature].append(IM[row].tolist())
+            elif feature == 'STEP_COUNT':
+                feature_dict[feature].append([count_steps(cot) for cot in df.iloc[row][[col for col in df.columns if col.startswith('CoT_')]]])
+            elif feature == 'AVG_STEP_LENGTH':
+                feature_dict[feature].append([average_step_length(cot) for cot in df.iloc[row][[col for col in df.columns if col.startswith('CoT_')]]])
+            elif feature == 'MATH_TERM_DENSITY':
+                feature_dict[feature].append([mathematical_term_density(cot) for cot in df.iloc[row][[col for col in df.columns if col.startswith('CoT_')]]])
+            elif feature == 'IMPERATIVE_DENSITY':
+                feature_dict[feature].append([imperative_density(cot) for cot in df.iloc[row][[col for col in df.columns if col.startswith('CoT_')]]])
+            elif feature == 'STEP_COHERENCE':
+                feature_dict[feature].append([consecutive_step_coherence(cot) for cot in df.iloc[row][[col for col in df.columns if col.startswith('CoT_')]]])
 
     # Convert dictionary to DataFrame
     return feature_dict
@@ -243,11 +285,11 @@ if __name__ == '__main__':
     
     # DATA_DIR = "../data/adaptive_consistency_outputs/"
     # input_file_path = os.path.join(DATA_DIR, 'final_asc.csv')
-    DATA_DIR = "../data/ES_data/"
-    input_file_path = os.path.join(DATA_DIR, 'final_es.csv')
-    df = pd.read_csv(input_file_path)
+    DATA_DIR = "../data/CoT_data/"
+    input_file_path = os.path.join(DATA_DIR, 'final_train.csv')
+    df = pd.read_csv(input_file_path).sample(frac=0.5).reset_index(drop=True)
     print(df.shape)
-    feature_li = ['LEN','QUA_IM','DIF_IV','SIM_INPUT','SIM_COT_BIGRAM']
+    feature_li = ['LEN', 'QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM', 'SIM_AC_AGG', 'SIM_INPUT', 'STEP_COUNT', 'AVG_STEP_LENGTH', 'MATH_TERM_DENSITY', 'IMPERATIVE_DENSITY', 'STEP_COHERENCE']
     data = extract_feature(df,feature_li)
     df_to_save = pd.DataFrame(data)
 
@@ -260,11 +302,11 @@ if __name__ == '__main__':
     # Calculate Adaptive Consensus Correctness
     df = calculate_ASC_correctness(df)
 
-    storage_dir = os.path.join(DATA_DIR, 'Algo_Design_Data')
+    storage_dir = os.path.join(DATA_DIR, 'new_extracted_data')
     os.makedirs(storage_dir, exist_ok=True)
 
     # Save df_to_save before prepare_df
-    output_file_name_before = 'final_extracted_es.json'
+    output_file_name_before = 'final_extracted.json'
     file_store_path_before = os.path.join(storage_dir, output_file_name_before)
     df_to_save.to_json(file_store_path_before, orient='records', lines=True)
     print(f'File saved in : {file_store_path_before}')
