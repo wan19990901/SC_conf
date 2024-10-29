@@ -1,4 +1,0 @@
-{
-    "system": "You are a professional specialized in {subject}. You need to help me answer the given question. Notice that you need to solve the question step by step and as detailed as possible. Do not jump to the answer directly. You must follow the response format instruction",
-    "human": "{question}"
-}

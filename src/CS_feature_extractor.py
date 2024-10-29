@@ -285,9 +285,9 @@ if __name__ == '__main__':
     
     # DATA_DIR = "../data/adaptive_consistency_outputs/"
     # input_file_path = os.path.join(DATA_DIR, 'final_asc.csv')
-    DATA_DIR = "../data/CoT_data/"
-    input_file_path = os.path.join(DATA_DIR, 'final_train.csv')
-    df = pd.read_csv(input_file_path).sample(frac=0.5).reset_index(drop=True)
+    DATA_DIR = "../data/Evaluation_CoTs/gpt-4o-mini"
+    input_file_path = os.path.join(DATA_DIR, 'GSM8K_LTM.csv')
+    df = pd.read_csv(input_file_path).reset_index(drop=True)
     print(df.shape)
     feature_li = ['LEN', 'QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM', 'SIM_AC_AGG', 'SIM_INPUT', 'STEP_COUNT', 'AVG_STEP_LENGTH', 'MATH_TERM_DENSITY', 'IMPERATIVE_DENSITY', 'STEP_COHERENCE']
     data = extract_feature(df,feature_li)
@@ -306,8 +306,8 @@ if __name__ == '__main__':
     os.makedirs(storage_dir, exist_ok=True)
 
     # Save df_to_save before prepare_df
-    output_file_name_before = 'final_extracted.json'
+    output_file_name_before = 'final_extracted_LTM.json'
     file_store_path_before = os.path.join(storage_dir, output_file_name_before)
-    df_to_save.to_json(file_store_path_before, orient='records', lines=True)
+    df.to_json(file_store_path_before, orient='records', lines=True)
     print(f'File saved in : {file_store_path_before}')
 

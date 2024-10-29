@@ -407,14 +407,29 @@ def _strip_string(string):
     return string
 
 def calculate_SC_correctness(df):
-    # Define a helper function to determine the majority and compare it with the correct answer
     def check_majority(answers, correct):
         if not answers:
             return 0
+        
+        # Convert answers to floats if possible, otherwise keep as strings
+        converted_answers = []
+        for answer in answers:
+            try:
+                converted_answers.append(float(answer))
+            except ValueError:
+                converted_answers.append(answer.strip().lower())
+        
+        # Convert correct answer to float if possible
+        try:
+            correct_float = float(correct)
+        except ValueError:
+            correct_float = correct.strip().lower()
+        
         # Count the occurrences of each answer and find the most common one
-        most_common = Counter(answers).most_common(1)[0][0]
+        most_common = Counter(converted_answers).most_common(1)[0][0]
+        
         # Compare the most common answer with the correct answer
-        return 1 if most_common == str(correct) else 0
+        return 1 if most_common == correct_float else 0
 
     # Apply the helper function across the DataFrame rows
     df['SC_correctness'] = df.apply(lambda row: check_majority(row['CoT answers'], row['correct answer']), axis=1)
@@ -422,64 +437,78 @@ def calculate_SC_correctness(df):
 
 
 def calculate_ES_correctness(df, window_size):
-    # Helper function to evaluate answers with a sliding window
     def evaluate_window(answers, correct):
-        # Track the number of steps (checks) taken
         steps = window_size - 1
-
-        # If the list is shorter than the window size, adjust the window size to the length of the list
         window_size_adjusted = min(window_size, len(answers))
 
-        # Slide through the list with the adjusted window size
-        for i in range(len(answers) - window_size_adjusted + 1):
-            # Check the window content
-            window = answers[i:i + window_size_adjusted]
+        # Convert answers to floats if possible, otherwise keep as strings
+        converted_answers = []
+        for answer in answers:
+            try:
+                converted_answers.append(float(answer))
+            except ValueError:
+                converted_answers.append(answer.strip().lower())
+
+        # Convert correct answer to float if possible
+        try:
+            correct_float = float(correct)
+        except ValueError:
+            correct_float = correct.strip().lower()
+
+        for i in range(len(converted_answers) - window_size_adjusted + 1):
+            window = converted_answers[i:i + window_size_adjusted]
             steps += 1
 
-            # If all elements in the window are the same, evaluate correctness
-            if window.count(window[0]) == window_size_adjusted:
-                return 1 if window[0] == str(correct) else 0, steps
+            if all(x == window[0] for x in window):
+                return 1 if window[0] == correct_float else 0, steps
 
-        # If no unanimous window is found, use the same value as SC_correctness and set steps to the length of the list
-        majority = Counter(answers).most_common(1)[0][0]
-        correctness = 1 if majority == str(correct) else 0
+        majority = Counter(converted_answers).most_common(1)[0][0]
+        correctness = 1 if majority == correct_float else 0
         return correctness, len(answers)
 
-    # Apply the function to each row in the DataFrame
     result = df.apply(lambda row: evaluate_window(row['CoT answers'], row['correct answer']), axis=1)
     df['ES_correctness'] = result.apply(lambda x: x[0])
     df['ES_steps'] = result.apply(lambda x: x[1])
 
     return df
-def calculate_ASC_correctness(df,beta = 0.95):
-    # Define the helper function to get majority vote and length of answers
+def calculate_ASC_correctness(df, beta=0.95):
     def majority_and_length(answers):
         if not answers:
             return None, 0
-        most_common_answer = Counter(answers).most_common(1)[0][0]
+        
+        # Convert answers to floats if possible, otherwise keep as strings
+        converted_answers = []
+        for answer in answers:
+            try:
+                converted_answers.append(float(answer))
+            except ValueError:
+                converted_answers.append(answer.strip().lower())
+        
+        most_common_answer = Counter(converted_answers).most_common(1)[0][0]
         return most_common_answer, len(answers)
 
-    # Prepare to collect data for new columns
     asc_correctness = []
     asc_steps = []
     ac = AC(stop_criteria=BetaStoppingCriteria(beta), max_gens=40)
 
-    # Iterate over each row of the DataFrame
     for index, row in df.iterrows():
         answers = row['CoT answers']
         correct_answer = row['correct answer']
-        # Assuming ac.should_stop is a method that determines when to stop appending answers
-        # Implement your condition in ac.should_stop(answers) or define it accordingly
-        for i, answer in enumerate(answers):
-            if ac.should_stop(answers[:i+1]):  # Pass the slice up to the current point
+        
+        # Convert correct answer to float if possible
+        try:
+            correct_float = float(correct_answer)
+        except ValueError:
+            correct_float = correct_answer.strip().lower()
+
+        for i, _ in enumerate(answers):
+            if ac.should_stop(answers[:i+1]):
                 break
-        # Get the majority vote and length of the sequence
+        
         majority_vote, length_of_answers = majority_and_length(answers[:i+1])
-        # Compare majority vote to the correct answer and determine correctness
-        asc_correctness.append(1 if majority_vote == str(correct_answer) else 0)
+        asc_correctness.append(1 if majority_vote == correct_float else 0)
         asc_steps.append(length_of_answers)
 
-    # Update DataFrame with new columns
     df['asc_correctness'] = asc_correctness
     df['asc_steps'] = asc_steps
 

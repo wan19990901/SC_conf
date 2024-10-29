@@ -2,7 +2,7 @@ from IDV_CS_Model import *
 import sys
 import time
 
-DATA_DIR = '../data/Evaluation_CoTs/Algo_Design_Data/'
+DATA_DIR = '../data/CoT_data/new_extracted_data/'
 
 
 def normalize_cs(cs_li, threshold):
@@ -33,45 +33,50 @@ def consecutive_scores_above_threshold(scores, answers, threshold, n):
 
 
 def CS_early_stopping(df, threshold, N=5, stop_mechanism='PositiveN'):
+    def compare_answers(answer1, answer2):
+        try:
+            return float(answer1) == float(answer2)
+        except ValueError:
+            return str(answer1).strip().lower() == str(answer2).strip().lower()
+
     CS_Answer = []
     CS_correctness = []
     CS_steps = []
+
     if stop_mechanism == 'PositiveN':
         for row_idx in range(len(df)):
             test_row = df.iloc[row_idx]
             individual_cs = normalize_cs(test_row['confidence_score'], threshold)
-            # individual_cs = test_row['confidence_score'][warm_up_steps:] - threshold
             stop_idx = stop_con2(individual_cs, buffer_size=N)
 
-            if stop_idx:
-                num_of_steps = stop_idx +1
-            else:
-                num_of_steps = 40
+            num_of_steps = stop_idx + 1 if stop_idx else 40
             answers = test_row['CoT answers'][:num_of_steps]
             scores = individual_cs[:num_of_steps]
             weighted_votes = Counter()
+
             for answer, score in zip(answers, scores):
                 if score > 0:
                     weighted_votes[answer] += score
-            # Find the answer with the highest total score
-            if (len(weighted_votes)) == 0:
+
+            if len(weighted_votes) == 0:
                 for answer, score in zip(answers, scores):
                     weighted_votes[answer] += score
+
             result = max(weighted_votes, key=weighted_votes.get)
             CS_Answer.append(result)
-            CS_correctness.append(1 if result == str(test_row['correct answer']) else 0)
+            CS_correctness.append(1 if compare_answers(result, test_row['correct answer']) else 0)
             CS_steps.append(num_of_steps)
+
     elif stop_mechanism == 'ConsistencyN':
-        found_count = 0
         for idx, row in df.iterrows():
             confidence_scores = row['confidence_score']
             answers = row['CoT answers']
             found, num_of_steps, answer = consecutive_scores_above_threshold(confidence_scores, answers, threshold, N)
+
             if found:
-                found_count += 1
                 CS_Answer.append(answer)
-                CS_correctness.append(1 if answer == str(row['correct answer']) else 0)
-                CS_steps.append(num_of_steps)  # +1 to account for the 0-indexing
+                CS_correctness.append(1 if compare_answers(answer, row['correct answer']) else 0)
+                CS_steps.append(num_of_steps)
             else:
                 CS_Answer.append(None)
                 CS_correctness.append(row['SC_correctness'])
@@ -99,11 +104,12 @@ def CS_early_stopping(df, threshold, N=5, stop_mechanism='PositiveN'):
 
 if __name__ == '__main__':
     # Read JSON data
-    file_path = os.path.join(DATA_DIR, 'Category.json')
+    file_path = os.path.join(DATA_DIR, 'final_extracted_train.json')
     df_with_features = pd.read_json(file_path, lines=True)
     df_with_features = df_with_features[df_with_features.Model != 'gpt-4'].reset_index(drop=True)
     # Define the features list
-    feature_li = ['LEN','QUA_IM','DIF_IV','SIM_INPUT','SIM_COT_BIGRAM','SIM_COT_AGG','SIM_AC_BIGRAM','SIM_AC_PW']
+    feature_li = ['LEN', 'QUA_IM', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM',
+       'SIM_AC_AGG', 'IMPERATIVE_DENSITY', 'STEP_COHERENCE']
     # Continue with the rest of the script
     # coe = [0, -10, -2, 3, 1, 2]
     # intercept = -1
