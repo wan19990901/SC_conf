@@ -9,4 +9,11 @@
 # Jupyter Notebook autosave
 *.autosave.ipynb
 
+# Data files
+*.csv
+*.json
+
+# API key files
+api_key*.txt
+
 data/Evaluation_CoTs/final.csv

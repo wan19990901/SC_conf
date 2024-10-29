@@ -2,7 +2,7 @@ from IDV_CS_Model import *
 import sys
 import time
 
-DATA_DIR = '../data/CoT_data/new_extracted_data/'
+
 
 
 def normalize_cs(cs_li, threshold):
@@ -104,12 +104,13 @@ def CS_early_stopping(df, threshold, N=5, stop_mechanism='PositiveN'):
 
 if __name__ == '__main__':
     # Read JSON data
+    DATA_DIR = '../data/CoT_data/new_extracted_data/'
     file_path = os.path.join(DATA_DIR, 'final_extracted_train.json')
     df_with_features = pd.read_json(file_path, lines=True)
     df_with_features = df_with_features[df_with_features.Model != 'gpt-4'].reset_index(drop=True)
     # Define the features list
-    feature_li = ['LEN', 'QUA_IM', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM',
-       'SIM_AC_AGG', 'IMPERATIVE_DENSITY', 'STEP_COHERENCE']
+    feature_li = ['LEN', 'QUA_IM', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM', 'SIM_AC_AGG', 'SIM_INPUT', 'STEP_COUNT', 'STEP_COHERENCE']
+
     # Continue with the rest of the script
     # coe = [0, -10, -2, 3, 1, 2]
     # intercept = -1

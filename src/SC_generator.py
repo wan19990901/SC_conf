@@ -89,7 +89,7 @@ def process_difficulty(llm_config, start_index=0):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run GSM8K evaluation')
     parser.add_argument('--llm_type', default='openai', choices=['openai', 'ollama', 'anthropic'], help='LLM type')
-    parser.add_argument('--api_key_file', default='api_key_yw.txt', help='API key file')
+    parser.add_argument('--api_key_file', default='api_key_gy.txt', help='API key file')
     parser.add_argument('--model', default='gpt-4o-mini', help='Model name')
     parser.add_argument('--prompt_file', default='least_to_most.json', help='Prompt template file')
     parser.add_argument('--temperature', type=float, default=0.5, help='Temperature for LLM')
