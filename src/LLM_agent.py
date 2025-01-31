@@ -1,6 +1,6 @@
 from langchain_openai import ChatOpenAI
 from langchain.prompts.chat import ChatPromptTemplate
-from langchain_core.output_parsers import JsonOutputParser
+from langchain_core.output_parsers import StructuredOutputParser
 import json
 from langchain_anthropic import ChatAnthropic
 from langchain_core.messages import AIMessage
@@ -65,8 +65,8 @@ class LLM_agent:
         chain = self.chat_prompt | self.llm
         output = chain.invoke(arg_dict)
         output_text = extract_json(output.content)
-        print(0)
-        print(output_text)
+        # print(0)
+        # print(output_text)
         formatted_response = self.parser.invoke(output_text)
         return formatted_response
 
@@ -82,7 +82,7 @@ class LLM_agent:
                 messages.append((key, val))
 
         # Set up the parser and prompt
-        self.parser = JsonOutputParser(pydantic_object=parser_obj)
+        self.parser = StructuredOutputParser(pydantic_object=parser_obj)
         self.num_of_llm_output = len(parser_obj.__fields__)
         self.chat_prompt = ChatPromptTemplate(messages,partial_variables = {"format_instructions": self.parser.get_format_instructions()})
 

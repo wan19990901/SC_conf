@@ -285,11 +285,11 @@ if __name__ == '__main__':
     
     DATA_DIR = "../data/CoT_data/"
     input_file_path = os.path.join(DATA_DIR, 'final.csv') # Change to other files for replication
-    # DATA_DIR = "../data/Evaluation_CoTs/gpt-4o-mini"
+    # DATA_DIR = "../data/Evaluation_CoTs/gpt-4o-mini" 
     # input_file_path = os.path.join(DATA_DIR, 'GSM8K_LTM.csv')
     df = pd.read_csv(input_file_path).reset_index(drop=True)
     print(df.shape)
-    feature_li = ['LEN', 'QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM', 'SIM_AC_AGG', 'SIM_INPUT', 'STEP_COUNT', 'AVG_STEP_LENGTH', 'MATH_TERM_DENSITY', 'IMPERATIVE_DENSITY', 'STEP_COHERENCE']
+    feature_li = ['LEN', 'QUA_IM', 'DIF_IV', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM', 'SIM_AC_AGG', 'SIM_INPUT', 'STEP_COUNT', 'AVG_STEP_LENGTH', 'MATH_TERM_DENSITY', 'IMPERATIVE_DENSITY', 'STEP_COHERENCE'] # This can be updated
     data = extract_feature(df,feature_li)
     df_to_save = pd.DataFrame(data)
 

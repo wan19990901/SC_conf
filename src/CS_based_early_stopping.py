@@ -2,14 +2,9 @@ from IDV_CS_Model import *
 import sys
 import time
 
-
-
-
 def normalize_cs(cs_li, threshold):
     cs_arr = np.array(cs_li)
     normalized_cs = [(cs-threshold)/(1-threshold) if cs > threshold else (cs-threshold)/(threshold) for cs in cs_arr]
-    # normalized_cs = cs_arr - threshold
-    # normalized_cs = [0.5 if cs > threshold else -0.5 for cs in cs_arr]
     return np.array(normalized_cs)
 
 
@@ -107,7 +102,6 @@ if __name__ == '__main__':
     DATA_DIR = '../data/CoT_data/new_extracted_data/'
     file_path = os.path.join(DATA_DIR, 'final_extracted_train.json')
     df_with_features = pd.read_json(file_path, lines=True)
-    df_with_features = df_with_features[df_with_features.Model != 'gpt-4'].reset_index(drop=True)
     # Define the features list
     feature_li = ['LEN', 'QUA_IM', 'SIM_COT_BIGRAM', 'SIM_COT_AGG', 'SIM_AC_BIGRAM', 'SIM_AC_AGG', 'SIM_INPUT', 'STEP_COUNT', 'STEP_COHERENCE']
 
